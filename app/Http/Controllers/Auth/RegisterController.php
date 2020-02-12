@@ -70,4 +70,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    protected function redirectTo() {
+        if (back()->getTargetUrl() == 'http://personal/3') {
+            return '/4';
+        }
+    }
 }

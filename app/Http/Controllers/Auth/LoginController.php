@@ -37,4 +37,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function redirectTo() {
+        if (back()->getTargetUrl() == 'http://personal/3') {
+            return '/4';
+        }
+    }
 }
