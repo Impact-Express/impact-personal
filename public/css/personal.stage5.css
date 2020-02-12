@@ -1,0 +1,45 @@
+input[type=text] {
+  padding-left: 10px;
+}
+
+.island-container {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+
+.left-islands {
+  width: 70%;
+}
+
+.right-islands {
+  width: 28%;
+}
+
+.quote-island {
+  width: 100%;
+  background: #e2e2e2;
+  position: relative;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.logo-circle {
+  position: absolute;
+  z-index: 2;
+}
+
+.quote-body {
+  height: 500px;
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  z-index: 1;
+}
+
+.quote-stage-5 {
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+

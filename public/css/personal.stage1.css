@@ -1,0 +1,73 @@
+.parcel-form-container {
+  margin: 100px;
+  padding-left: 50px;
+}
+
+.row-1 input {
+  width: 350px;
+  margin: 10px 30px 10px 0;
+  padding-left: 10px;
+}
+
+.row-1 select {
+  width: 350px;
+  margin: 10px 30px 10px 0;
+  padding-left: 10px;
+}
+
+.row-2 {
+  margin-top: 50px;
+}
+
+.row-2 input {
+  width: 184px;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+.quantity-input {
+  margin-right: 30px;
+}
+
+.weight-input {
+  margin-right: 80px;
+}
+
+.dim-input {
+  margin-right: 30px;
+}
+
+.row-3 {
+  margin-top: 50px;
+}
+
+.row-3 span {
+  padding-top: 20px;
+}
+
+.row-4 {
+  margin-top: 50px;
+}
+
+.row-5 {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.row-5 input {
+  color: white;
+  background: black;
+  border: none;
+  padding: 20px 50px 20px 50px;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.business-link {
+  background: white;
+  padding: 20px;
+  border-radius: 30px;
+}
+

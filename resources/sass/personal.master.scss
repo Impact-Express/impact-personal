@@ -1,0 +1,445 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+.button-grey {
+    color: white;
+    background: #868080;
+    border: none;
+    padding: 16px 50px 16px 50px;
+    letter-spacing: 1px;
+    cursor:pointer;
+}
+.button-black {
+    color: white;
+    background: black;
+    border: none;
+    padding: 16px 50px 16px 50px;
+    letter-spacing: 1px;
+    cursor:pointer;
+}
+.bg-yellow {
+    background: #FECE00;
+}
+.bg-white {
+    background: whitesmoke;
+}
+.tc {
+    text-align: center;
+}
+.tc-white {
+    color: white;
+}
+.bold {
+    font-weight: bold;
+}
+.mb30 {
+    margin-bottom: 30px;
+}
+.mt30 {
+    margin-top: 30px;
+}
+.ml30 {
+    margin-left: 30px;
+}
+.mr30 {
+    margin-bottom: 30px;
+}
+
+
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    text-decoration: none;
+    color: #535353;
+}
+.container {
+    margin-left:auto;
+    margin-right:auto;
+    width: 78%;
+}
+.toUpper {
+    text-transform: uppercase;
+}
+/* Button Styles */
+.button-main {
+    border:none;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 15px 25px;
+    background: #FECE00;
+    border-radius: 10px;
+}
+.button-alt {
+    border:none;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #F2ECEC;
+    padding: 15px 25px;
+    background: #707070;
+    border-radius: 10px;
+}
+.button-white {
+    border:none;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 25px;
+    background: #F2ECEC;
+    border-radius: 10px;
+}
+.button-square {
+    border:none;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 10px 10px;
+    background: #FECE00;
+    border-radius: 5px;
+}
+
+.arrow-down {
+    /* display: inline-block; */
+    margin-right: auto;
+    margin-left: auto;
+    width: 0; 
+    height: 0; 
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-top: 40px solid #fff;
+}  
+
+/* Mobile Navigation */
+.mobile-nav {
+    position:fixed;
+    top:0;
+    background: white;
+    height: 100vh;
+    width: 80vw;
+    color: #2D3332;
+    display:block;
+     /* justify-content: center; */
+     /* align-items: center; */
+     /* text-align: center; */
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 500ms;
+}
+.mobile-nav-items {
+    width:100%;
+    list-style-type: none;
+    padding:0;
+}
+.mobile-nav-item {
+     /* width:100%; */
+    padding:10px 20px 10px 20px;
+    margin-top: -1px;
+    border-bottom:0.5px solid #2D3332;
+    border-right:0.5px solid #2D3332;
+    border-top:0.5px solid #2D3332;
+}
+.mobile-nav-item-top {
+     /* width:100%; */
+    padding: 10px 20px 10px 20px;
+    display: table-cell;
+    width: inherit;
+    margin-left: -4px;
+    white-space: nowrap;
+    border-bottom: 0.5px solid #2D3332;
+    border-right: 0.5px solid #2D3332;
+    border-top: 0.5px solid #2D3332;
+}
+.mobile-nav-img {
+    padding: 10px 20px 10px 20px;
+    display: table-cell;
+    width: inherit;
+    margin-left: -4px;
+    white-space: nowrap;
+}
+.hamburger-container {
+    display:inline-block;
+    position: absolute;
+    right: 17px;
+    top: 26px;
+}
+.open {
+    display: flex;
+    transform: translateX(0);
+}
+
+/* DHL Authorised Service Partner Strip*/
+.top-strip {
+    width:100%;
+    height:20px;
+    background:#FECE00;
+}
+.top-strip-img {
+    height: 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Navigation Bar */
+.nav-logo-img {
+    width: auto;
+}
+.nav-items {
+    display:none;
+}
+
+@media (min-width: 768px) {
+    
+    .mobile-nav {
+        position: fixed;
+        top: 0;
+        background: white;
+        height: 100vh;
+        width: 45vw;
+        color: #2D3332;
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        background:#2D3332;
+        /* background: #e5e5e5; */
+    }
+    .container {
+        max-width: 1500px;
+    }
+
+/***********************************
+    *? HIDE BORGAR
+***********************************/
+    .hamburger {
+        display: none;
+    }
+
+ /***********************************************
+    *? Top "Authorised Service Partner" Strip
+************************************************/
+    .top-strip {
+        width:100%;
+        height:20px;
+        background:#FECE00;
+    }
+    .top-strip-img {
+        height: 20px;
+        float: right;
+    }
+
+/***********************************
+    *? Navigation Bar Styles
+***********************************/
+/* Reset */
+    .main-nav {
+        display:flex;
+        width:100%;
+        height:100px;
+        background:white;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .nav-logo-img {
+        margin-left: 44px;
+    }
+    .nav-items {
+        display:flex;
+        list-style-type:none;
+        margin-right:44px;
+        padding:0;
+    }
+    .nav-item {
+        margin-left:10px;
+        padding: 10px;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #000;
+    }
+    
+    /* Mega Menu */
+    .nav-dropdown button:hover+.mega-menu {
+	    display:block;
+    }
+    .nav-dropdown {
+        margin-left:10px;
+        padding: 10px;
+        float: left;
+    }
+
+
+/* Dropdown button */
+.nav-dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    background-color: inherit;
+    font: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+    padding-bottom: 10px;
+    padding-top: 0px;
+  }
+
+
+/*****************/
+/* Navigation Bar /
+/*****************/
+    .navbar-logo {
+        height: 60px;
+    }
+
+
+
+    /* Personal Quote stage 1 */
+    .progress {
+        margin: 70px 10% 0 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .stage-border {
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height: 72px;
+        width: 72px;
+        border: 6px solid white;
+        border-radius: 50px;
+        background: black;
+    }
+    .stage-number {
+        font-size: 35px;
+        color: white;
+    }
+    .stage-line {
+        height: 0;
+        width: 125px;
+        border-top:3px solid white;
+        border-bottom:3px solid white;
+    }
+    .stage-text {
+        margin: 10px 10% 0 10%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    .stage-text p {
+        margin: 0 28px 0 28px;
+    }
+    .stage-border.tick {
+        background: #FECE00;
+    }
+    .stage-border.tick .stage-number {
+        color: black;
+    }
+    h1 {
+        font-size: 5em;
+        font-weight: 100;
+    }
+    .form-rows {
+        list-style-type: none;
+    }
+    .form-row {
+        display: flex;
+        justify-content: flex-start;
+    }
+    .form-input {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .form-input input {
+        border:none;
+        height: 50px;
+    }
+    .form-input select {
+        border:none;
+        height: 50px;
+    }
+    
+    /* Customize the label (the container) */
+    .cb-container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .cb-container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .cb-container:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .cb-container input:checked ~ .checkmark {
+        background-color: black;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .cb-container input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .cb-container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .loggedin {
+        display:flex;
+    }
+    .loggedin span {
+        margin-right: 10px;
+    }
+
+
+
+
+}
