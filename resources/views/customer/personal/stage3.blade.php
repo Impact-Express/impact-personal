@@ -45,14 +45,26 @@
                         <form class="login-form" action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="form-input email-input">
-                                <input class="@error('email') is-invalid @enderror" id="email" name="email" type="email" placeholder="EMAIL ADDRESS..." autocomplete="email">
+                                <input class="@error('email') is-invalid @enderror" id="email" name="email" type="email" placeholder="EMAIL ADDRESS..." autocomplete="email" value="{{old('email')}}">
                             </div>
                             <div class="form-input password-input">
-                                <input id="password" name="password" type="text" placeholder="PASSWORD...">
+                                <input class="@error('password') is-invalid @enderror" id="password" name="password" type="text" placeholder="PASSWORD...">
                             </div>
                             <input class="bold button-black" type="submit" value="LOGIN">
                         </form>
-                        <a class="pw-reset-link" href="#">Forgot your password?</a>
+                        <p><a class="pw-reset-link" href="#">Forgot your password?</a></p>
+                        <p class="error-container">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </p>
                     </div>
                     <div class="signup-island-container bg-yellow">
                         <h3 class="tc-white">ACCOUNT SETUP</h3>
@@ -109,10 +121,12 @@
                 <div class="right-islands">
                     <div class="quote-island">
                         <div class="logo-circle">
-                            <img src="/assets/images/circle-logo.png" alt="">
+                            <img src="/assets/images/circle-logo.png" alt="Impact Express Wholesale Ltd">
                         </div>
                         <div class="quote-body bg-white">
-
+                            <div class="quote-content">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>

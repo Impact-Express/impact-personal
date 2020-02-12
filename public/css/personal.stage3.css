@@ -2,6 +2,10 @@ input[type=text] {
   padding-left: 10px;
 }
 
+input[type=email] {
+  padding-left: 10px;
+}
+
 .island-container {
   width: 100%;
   justify-content: space-between;
@@ -145,5 +149,14 @@ input[type=text] {
 
 .back {
   margin-right: 15px;
+}
+
+.error-container {
+  margin-left: 10%;
+}
+
+.quote-content {
+  margin-top: 120px;
+  padding: 50px;
 }
 

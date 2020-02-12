@@ -30,7 +30,7 @@ class PersonalBookingController extends Controller
 
         // validate request
         $validator = Validator::make($request->all(), [
-            'from' => 'required|string|in:UK',
+            'from' => 'required|string|in:UK,GB',
             'toCountryCode' => [
                 'required',
                  Rule::in(Country::getCodes()),
@@ -58,17 +58,35 @@ class PersonalBookingController extends Controller
             Country::where('code', $request->toCountryCode)->first()->zone
         );
 
+        $bookingData = [
+            'fromCountryCode' => request('from'),
+            'fromCountry' => Country::where('code', request('from'))->first()->name,
+            'fromPostcode' => request('postcode'),
+            'toCountryCode' => request('toCountryCode'),
+            'toCountry' => Country::where('code', request('toCountryCode'))->first()->name,
+            'quantity' => request('quantity'),
+            'weight' => request('weight'),
+            'length' => request('length'),
+            'height' => request('height'),
+            'price' => $price
+        ];
+
+        session()->flash('bookingData', json_encode($bookingData));
+
         return view('customer.personal.stage2', compact('price'));
     }
 
     public function stage3() {
+        session()->reflash();
         if (Auth::check()) {
             return redirect(route('stage4'));
         }
-        return view('customer.personal.stage3');
+        $bookingData = json_decode(session('bookingData'));
+        return view('customer.personal.stage3', compact('bookingData'));
     }
 
     public function stage4() {
+        dd(session());
         return view('customer.personal.stage4');
     }
 

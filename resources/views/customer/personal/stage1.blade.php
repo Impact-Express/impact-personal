@@ -44,7 +44,7 @@
                         <li class="form-row row-1">
                             <div class="form-input from-input">
                                 <label for="from">FROM:</label>
-                                <input id="from" name="from" type="text" value="UK" readonly>
+                                <input id="from" name="from" type="text" value="GB" readonly>
                             </div>
                             <div class="form-input to-input">
                                 <label for="to">TO:</label>

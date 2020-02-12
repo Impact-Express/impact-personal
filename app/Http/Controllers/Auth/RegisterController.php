@@ -72,6 +72,7 @@ class RegisterController extends Controller
     }
 
     protected function redirectTo() {
+        session()->reflash();
         if (back()->getTargetUrl() == 'http://personal/3') {
             return '/4';
         }

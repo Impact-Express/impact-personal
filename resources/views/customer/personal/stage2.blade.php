@@ -39,7 +39,6 @@
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="quote-container bg-yellow">
             <div class="quote-box">
@@ -47,7 +46,7 @@
                     <img class="carrier-logo" src="assets/images/hermes-parcelshop.png" alt="Hermes Logo">
                 </div>
                 <div class="service-name-container">
-                    <p class="service-name">Hermes ParcelShop Pickup <a id="info" href="{{route('locateHermesParcelShop')}}" target="_blank"><i class="fas fa-info-circle"></i></a></p>
+                    <p class="service-name">Hermes ParcelShop Pickup <a id="info" href="{{route('locateHermesParcelShop')}}" target="_blank"><i class="fas fa-info-circle"></i></a> <i class="fas fa-print"></i></p>
                     <p class="delivery-estimate">Delivery in 3 to 5 days</p>
                 </div>
                 <div class="price-container">
@@ -56,7 +55,6 @@
                 <div class="button-container">
                     <form action="{{route('stage3')}}" method="post">
                         @csrf
-                        
                         <input class="button-black" type="submit" value="Book Now">
                     </form>
                 </div>
