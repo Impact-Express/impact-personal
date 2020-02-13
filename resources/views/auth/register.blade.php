@@ -1,7 +1,7 @@
 @extends('layouts.customer.personal.master')
 
 @section('content')
-<div class="container">
+<div class="container bg-yellow">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
