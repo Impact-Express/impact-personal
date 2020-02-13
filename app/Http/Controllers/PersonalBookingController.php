@@ -13,18 +13,12 @@ class PersonalBookingController extends Controller
 {
     public function stage1() {
 
+        session()->forget('bookingData');
+
         // Get countries for dropdown selector
         $countries = Country::all();
         return view('customer.personal.stage1', compact('countries'));
     }
-
-    // public function stage1submit(Request $request) {
-
-    //     // validate request
-    //     // Get price from database for UK to destination country.
-
-    //     dd('flibble');
-    // }
 
     public function stage2(Request $request) {
 
@@ -72,29 +66,30 @@ class PersonalBookingController extends Controller
             'price' => $price
         ];
 
-        // session()->flash('bookingData', json_encode($bookingData));
-
-        session()->put($bookingData);
-        dd(session());
+        session()->put(['bookingData' => $bookingData]);
+        
         return view('customer.personal.stage2', compact('price'));
     }
 
     public function stage3() {
 
-        $bookingData = json_decode(session('bookingData'));
-
-
+        $bookingData = session('bookingData');
 
         if (Auth::check()) {
             return redirect(route('stage4'));
         }
-        $bookingData = json_decode(session('bookingData'));
         
         return view('customer.personal.stage3', compact('bookingData'));
     }
 
     public function stage4() {
-        dd(session());
+        
+        if (session('bookingData') === null) {
+            dd('blob');
+        }
+
+        $bookingData = session('bookingData');
+
         return view('customer.personal.stage4');
     }
 

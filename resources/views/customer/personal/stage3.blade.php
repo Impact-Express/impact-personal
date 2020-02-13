@@ -125,14 +125,14 @@
                         </div>
                         <div class="quote-body bg-white">
                             <div class="quote-content">
-                                <div><span class="bold">From: </span>{{$bookingData->fromCountry}}</div>
-                                <div><span class="bold">To: </span>{{$bookingData->toCountry}}</div>
-                                <div><span class="bold">Quantity: </span>{{$bookingData->quantity}}</div>
-                                <div><span class="bold">Weight: </span>{{$bookingData->weight}}</div>
-                                <div><span class="bold">Length: </span>{{$bookingData->length}}</div>
-                                <div><span class="bold">Width: </span>{{$bookingData->width}}</div>
-                                <div><span class="bold">Height: </span>{{$bookingData->height}}</div>
-                                <div><span class="bold">Price: </span>{{$bookingData->price}}</div>
+                                <div><span class="bold">From: </span>{{$bookingData['fromCountry']}}</div>
+                                <div><span class="bold">To: </span>{{$bookingData['toCountry']}}</div>
+                                <div><span class="bold">Quantity: </span>{{$bookingData['quantity']}}</div>
+                                <div><span class="bold">Weight: </span>{{$bookingData['weight']}}</div>
+                                <div><span class="bold">Length: </span>{{$bookingData['length']}}</div>
+                                <div><span class="bold">Width: </span>{{$bookingData['width']}}</div>
+                                <div><span class="bold">Height: </span>{{$bookingData['height']}}</div>
+                                <div><span class="bold">Price: </span>{{$bookingData['price']}}</div>
                             </div>
                         </div>
                     </div>
