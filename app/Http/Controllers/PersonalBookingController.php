@@ -67,21 +67,29 @@ class PersonalBookingController extends Controller
             'quantity' => request('quantity'),
             'weight' => request('weight'),
             'length' => request('length'),
+            'width' => request('width'),
             'height' => request('height'),
             'price' => $price
         ];
 
-        session()->flash('bookingData', json_encode($bookingData));
+        // session()->flash('bookingData', json_encode($bookingData));
 
+        session()->put($bookingData);
+        dd(session());
         return view('customer.personal.stage2', compact('price'));
     }
 
     public function stage3() {
-        session()->reflash();
+
+        $bookingData = json_decode(session('bookingData'));
+
+
+
         if (Auth::check()) {
             return redirect(route('stage4'));
         }
         $bookingData = json_decode(session('bookingData'));
+        
         return view('customer.personal.stage3', compact('bookingData'));
     }
 

@@ -40,7 +40,6 @@ class LoginController extends Controller
 
     protected function redirectTo() {
         if (back()->getTargetUrl() == 'http://personal/3') {
-            session()->reflash();
             return '/4';
         }
     }
