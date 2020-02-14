@@ -45,21 +45,21 @@
                         <form class="login-form" action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="form-input email-input">
-                                <input class="@error('email') is-invalid @enderror" id="email" name="email" type="email" placeholder="EMAIL ADDRESS..." autocomplete="email" value="{{old('email')}}">
+                                <input class="@error('login-email') is-invalid @enderror" id="login-email" name="login-email" type="email" placeholder="EMAIL ADDRESS..." autocomplete="email" value="{{old('login-email')}}">
                             </div>
                             <div class="form-input password-input">
-                                <input class="@error('password') is-invalid @enderror" id="password" name="password" type="text" placeholder="PASSWORD...">
+                                <input class="@error('login-password') is-invalid @enderror" id="login-password" name="login-password" type="text" placeholder="PASSWORD...">
                             </div>
                             <input class="bold button-black" type="submit" value="LOGIN">
                         </form>
                         <p><a class="pw-reset-link" href="#">Forgot your password?</a></p>
                         <p class="error-container">
-                            @error('email')
+                            @error('login-email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            @error('password')
+                            @error('login-password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -68,38 +68,74 @@
                     </div>
                     <div class="signup-island-container bg-yellow">
                         <h3 class="tc-white">ACCOUNT SETUP</h3>
-                        <form class="signup-form" action="#" method="POST">
+                        <form action="{{route('register')}}" method="POST">
+                            @csrf
                             <ul class="form-rows">
                                 <li class="form-row row-1">
                                     <div class="form-input title-input">
-                                        <input type="text">
+                                        <input class="@error('title') is-invalid @enderror" type="text" name="title">
                                     </div>
+                                    @error('title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     <div class="form-input firstname-input">
-                                        <input type="text" placeholder="FIRST NAME...">
+                                        <input class="@error('firstName') is-invalid @enderror" type="text" name="firstName" placeholder="FIRST NAME..." value="{{old('firstName')}}">
                                     </div>
+                                    @error('firstName')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     <div class="form-input lastname-input">
-                                        <input type="text" placeholder="LAST NAME...">
+                                        <input class=" @error('lastName') is-invalid @enderror" type="text" name="lastName" placeholder="LAST NAME..." value="{{old('lastName')}}">
                                     </div>
+                                    @error('lastName')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </li>
                                 <li class="form-row row-2">
                                     <div class="form-input su-email-input">
-                                        <input type="text" placeholder="EMAIL ADDRESS...">
+                                        <input class=" @error('email') is-invalid @enderror" type="text" name="email" placeholder="EMAIL ADDRESS..." value="{{old('email')}}">
                                     </div>
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     <div class="form-input phone-input">
-                                        <input type="text" placeholder="PHONE NO...">
+                                        <input class=" @error('phone') is-invalid @enderror" type="text" name="phone" placeholder="PHONE NO..." value="{{old('phone')}}">
                                     </div>
+                                    @error('phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </li>
                                 <li class="form-row row-3">
                                     <div class="form-input su-password-input">
-                                        <input type="text" placeholder="ENTER A PASSWORD...">
+                                        <input class=" @error('password') is-invalid @enderror" type="text" name="password" placeholder="ENTER A PASSWORD...">
                                     </div>
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     <div class="form-input password-confirm-input">
-                                        <input type="text" placeholder="CONFIRM PASSWORD...">
+                                        <input class=" @error('password_confirmation') is-invalid @enderror" type="text" name="password_confirmation" placeholder="CONFIRM PASSWORD...">
                                     </div>
+                                    @error('password_confirmation')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </li>
                                 <li class="form-row row-4">
                                     <div class="form-input address-input">
-                                        <input type="text" placeholder="ENTER A POSTCODE TO FIND ADDRESS...">
+                                        <input type="text" name="address" placeholder="ENTER A POSTCODE TO FIND ADDRESS..." value="{{old('address')}}">
                                     </div>
                                     <input class="bold button-grey" type="submit" value="FIND ADDRESS">
                                 </li>
@@ -111,8 +147,7 @@
                                     </label>
                                 </li>
                                 <li class="form-row row-6">
-                                    <input class="back bold button-grey" type="submit" value="BACK TO QUOTE">
-                                    <input class="cont bold button-black" type="submit" value="CONTINUE">
+                                    <input class="cont bold button-black" type="submit" value="REGISTER">
                                 </li>
                             </ul>
                         </form>
@@ -132,7 +167,7 @@
                                 <div><span class="bold">Length: </span>{{$bookingData['length']}}</div>
                                 <div><span class="bold">Width: </span>{{$bookingData['width']}}</div>
                                 <div><span class="bold">Height: </span>{{$bookingData['height']}}</div>
-                                <div><span class="bold">Price: </span>{{$bookingData['price']}}</div>
+                                <div><span class="bold">Price: </span>£{{money_format('%n',$bookingData['price'])}}</div>
                             </div>
                         </div>
                     </div>

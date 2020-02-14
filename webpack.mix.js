@@ -18,4 +18,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/personal.stage3.scss', 'public/css')
     .sass('resources/sass/personal.stage4.scss', 'public/css')
     .sass('resources/sass/personal.stage5.scss', 'public/css')
-    .sass('resources/sass/hermesparcelshop.scss', 'public/css');
+    .sass('resources/sass/hermesparcelshop.scss', 'public/css')
+    .sass('resources/sass/register.scss', 'public/css');
