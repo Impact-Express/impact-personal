@@ -55,7 +55,11 @@ class LoginController extends Controller
 
         if (Auth::attempt(['email' => $credentials['login-email'], 'password' => $credentials['login-password']])) {
             // Authentication passed...
-            return redirect()->intended('stage4');
+            return redirect('/4');
+        } else {
+            $loginError = 'Login failed';
+            session()->flash('loginError', $loginError);
+            return back();
         }
     }
 }

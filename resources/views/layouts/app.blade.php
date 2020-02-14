@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('styles')
-    <style>input.is-invalid {border: 2px solid red !important;}</style>
+    <style>.is-invalid {border: 2px solid red !important;}.invalid-feedback {color: red;}</style>
 </head>
 <body>
     @yield('master')

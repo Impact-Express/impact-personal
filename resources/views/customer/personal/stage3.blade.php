@@ -11,11 +11,11 @@
             </p>
             <div class="progress">
                 <div class="stage-border tick">
-                    <div class="stage-number"><i class="fas fa-check"></i></div>    
+                    <div class="stage-number"><i class="fas fa-check"></i></div>
                 </div>
                 <div class="stage-line"></div>
                 <div class="stage-border tick">
-                    <div class="stage-number"><i class="fas fa-check"></i></div>    
+                    <div class="stage-number"><i class="fas fa-check"></i></div>
                 </div>
                 <div class="stage-line"></div>
                 <div class="stage-border">
@@ -54,16 +54,11 @@
                     </form>
                     <p><a class="pw-reset-link" href="#">Forgot your password?</a></p>
                     <p class="error-container">
-                        @error('login-email')
+                        @if(Session::get('loginError') !== null)
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong>{{ Session::get('loginError') }}</strong>
                             </span>
-                        @enderror
-                        @error('login-password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        @endif
                     </p>
                 </div>
                 <div class="signup-island-container bg-yellow">
