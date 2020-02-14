@@ -2,6 +2,8 @@
 
 Auth::routes();
 
+Route::post('/stage3login', 'Auth\LoginController@loginFromStep3')->name('login-from-stage-3');
+
 Route::get('/', 'PersonalBookingController@stage1')->name('stage1');
 Route::post('/', function() {abort(404);});
 
