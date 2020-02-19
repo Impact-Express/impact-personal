@@ -41,16 +41,95 @@
         <div class="island-container">
             <div class="left-islands">
                 <div class="address-island bg-yellow">
-                    <h4 class="tc-white">DELIVERY DETAILS</h4>
+                    <form action="{{route('register')}}" method="POST">
+                        @csrf
+                        <ul class="form-rows">
+                            <li class="form-row row-0">
+                                <h4 class="tc-white">DELIVERY DETAILS</h4>
+                            </li>
+                            <li class="form-row row-1">
+                                <div class="form-input consignee-name-input">
+                                    <input class="@error('consignee-name') is-invalid @enderror" type="text" name="consignee-name" placeholder="NAME...">
+                                </div>                                
+                            </li>
+                            <li class="form-row row-2">
+                                <div class="form-input consignee-address-line-1-input">
+                                    <input class=" @error('consignee-address-line-1') is-invalid @enderror" type="text" name="consignee-address-line-1" placeholder="ADDRESS LINE 1...">
+                                </div>
+                            </li>
+                            <li class="form-row row-3">
+                                <div class="form-input consignee-address-line-2-input">
+                                    <input class=" @error('consignee-address-line-2') is-invalid @enderror" type="text" name="consignee-address-line-2" placeholder="ADDRESS LINE 2...">
+                                </div>
+                            </li>
+                            <li class="form-row row-4">
+                                <div class="form-input consignee-address-line-3-input">
+                                    <input class=" @error('consignee-address-line-3') is-invalid @enderror" type="text" name="consignee-address-line-3" placeholder="ADDRESS LINE 3...">
+                                </div>
+                            </li>
+                            <li class="form-row row-5">
+                                <div class="form-input consignee-city-input">
+                                    <input class=" @error('consignee-city') is-invalid @enderror" type="text" name="consignee-city" placeholder="CITY...">
+                                </div>
+                            </li>
+                            <li class="form-row row-6">
+                                <div class="form-input consignee-country-input">
+                                    <input class=" @error('consignee-country') is-invalid @enderror" type="text" name="consignee-country" placeholder="COUNTRY...">
+                                </div>
+                            </li>
+                            <li class="form-row row-7">
+                                <div class="form-input consignee-postcode-input">
+                                    <input class=" @error('consignee-postcode') is-invalid @enderror" type="text" name="consignee-postcode" placeholder="POSTCODE...">
+                                </div>
+                            </li>
+                            <li class="form-row row-8">
+                                <div class="form-input consignee-phone-input">
+                                    <input class=" @error('consignee-phone') is-invalid @enderror" type="text" name="consignee-phone" placeholder="PHONE NO...">
+                                </div>
+                            </li>
+                            <li class="form-row row-9">
+                                <div class="form-input consignee-address-line-3-input">
+                                    <input class=" @error('consignee-address-line-3') is-invalid @enderror" type="text" name="consignee-address-line-3" placeholder="ADDRESS LINE 3...">
+                                </div>
+                            </li>
+                            <li class="form-row row-10">
+                                <h4 class="tc-white">CONTENTS</h4>
+                            </li>
+                            <li class="form-row row-11">
+                                <div class="form-input contents-description-input">
+                                    <input class=" @error('contents-description') is-invalid @enderror" type="text" name="contents-description" placeholder="DESCRIPTION...">
+                                </div>
+                            </li>
+                            <li class="form-row row-12">
+                                <div class="form-input contents-value-input">
+                                    <input class=" @error('contents-value') is-invalid @enderror" type="text" name="contents-value" placeholder="VALUE...">
+                                </div>
+                            </li>
+                        
+                            <li class="form-row row-6">
+                                <input class="cont bold button-black" type="submit" value="PROCEED">
+                            </li>
+                        </ul>
+                    </form>
+
                 </div>
             </div>
             <div class="right-islands">
                 <div class="quote-island">
                     <div class="logo-circle">
-                        <img src="images/circle-logo.png" alt="">
+                        <img src="/assets/images/circle-logo.png" alt="Impact Express Wholesale Ltd">
                     </div>
                     <div class="quote-body bg-white">
-dfadsfds    
+                        <div class="quote-content">
+                            <div><span class="bold">From: </span>{{$bookingData['fromCountry']}}</div>
+                            <div><span class="bold">To: </span>{{$bookingData['toCountry']}}</div>
+                            <div><span class="bold">Quantity: </span>{{$bookingData['quantity']}}</div>
+                            <div><span class="bold">Weight: </span>{{$bookingData['weight']}}</div>
+                            <div><span class="bold">Length: </span>{{$bookingData['length']}}</div>
+                            <div><span class="bold">Width: </span>{{$bookingData['width']}}</div>
+                            <div><span class="bold">Height: </span>{{$bookingData['height']}}</div>
+                            <div><span class="bold">Price: </span>£{{money_format('%n',$bookingData['price'])}}</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,19 +139,25 @@ dfadsfds
 <style>
 
 .address-island {
+    display: flex;
     width: 100%;
     margin-bottom: 30px;
     padding: 50px;
-
-    height: 500px;
 }
 .address-island h4 {
     margin-top: 0;
 }
-.payment-island {
-    width: 100%;
-    height: 500px;
+
+.row-1 {
+    margin-top: 0;
 }
+.row-10 {
+    margin-top: 50px;
+}
+.row-11 {
+    margin-top: 0;
+}
+
 </style>
 @endsection
 
