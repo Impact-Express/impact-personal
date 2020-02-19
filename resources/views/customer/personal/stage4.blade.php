@@ -41,7 +41,7 @@
         <div class="island-container">
             <div class="left-islands">
                 <div class="address-island bg-yellow">
-                    <form action="{{route('register')}}" method="POST">
+                    <form action="{{route('stage5')}}" method="POST">
                         @csrf
                         <ul class="form-rows">
                             <li class="form-row row-0">
@@ -87,11 +87,6 @@
                                     <input class=" @error('consignee-phone') is-invalid @enderror" type="text" name="consignee-phone" placeholder="PHONE NO...">
                                 </div>
                             </li>
-                            <li class="form-row row-9">
-                                <div class="form-input consignee-address-line-3-input">
-                                    <input class=" @error('consignee-address-line-3') is-invalid @enderror" type="text" name="consignee-address-line-3" placeholder="ADDRESS LINE 3...">
-                                </div>
-                            </li>
                             <li class="form-row row-10">
                                 <h4 class="tc-white">CONTENTS</h4>
                             </li>
@@ -106,7 +101,7 @@
                                 </div>
                             </li>
                         
-                            <li class="form-row row-6">
+                            <li class="form-row row-13">
                                 <input class="cont bold button-black" type="submit" value="PROCEED">
                             </li>
                         </ul>
@@ -138,25 +133,7 @@
 </main>
 <style>
 
-.address-island {
-    display: flex;
-    width: 100%;
-    margin-bottom: 30px;
-    padding: 50px;
-}
-.address-island h4 {
-    margin-top: 0;
-}
 
-.row-1 {
-    margin-top: 0;
-}
-.row-10 {
-    margin-top: 50px;
-}
-.row-11 {
-    margin-top: 0;
-}
 
 </style>
 @endsection

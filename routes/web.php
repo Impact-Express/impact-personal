@@ -18,7 +18,7 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/4', 'PersonalBookingController@stage4')->name('stage4');
     
-    Route::get('/5', 'PersonalBookingController@stage5')->name('stage5');
+    Route::post('/5', 'PersonalBookingController@stage5')->name('stage5');
 
 });
 

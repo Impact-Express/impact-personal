@@ -2,6 +2,10 @@ input[type=text] {
   padding-left: 10px;
 }
 
+input[type=email] {
+  padding-left: 10px;
+}
+
 .island-container {
   width: 100%;
   justify-content: space-between;
@@ -41,5 +45,43 @@ input[type=text] {
 .quote-stage-5 {
   padding-bottom: 30px;
   margin-bottom: 30px;
+}
+
+form {
+  width: 100%;
+}
+
+.form-rows {
+  padding-left: 0px;
+  width: 100%;
+}
+
+.form-row {
+  margin-top: 25px;
+}
+
+.form-input {
+  width: 100%;
+}
+
+.error-container {
+  margin-left: 10%;
+}
+
+.quote-content {
+  margin-top: 120px;
+  padding: 50px;
+}
+
+.payment-island {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 4%;
+}
+
+.payment-container {
+  width: 70%;
+  padding: 15px;
 }
 

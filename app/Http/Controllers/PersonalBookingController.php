@@ -93,7 +93,17 @@ class PersonalBookingController extends Controller
         return view('customer.personal.stage4',compact('bookingData'));
     }
 
-    public function stage5() {
-        return view('customer.personal.stage5');
+    public function stage5(Request $request) {
+        // dd($request->all());
+
+        // Create shipment in database here
+
+        $bookingData = session('bookingData');
+
+        return view('customer.personal.stage5', compact('bookingData'));
+    }
+
+    public function processPayment(Request $request) {
+
     }
 }
