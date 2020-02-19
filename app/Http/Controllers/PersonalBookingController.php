@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Country;
+use App\Models\Shipment;
 use App\Services\Pricing;
+use App\Services\Weighting;
 use Auth;
 
 class PersonalBookingController extends Controller
@@ -94,11 +96,45 @@ class PersonalBookingController extends Controller
     }
 
     public function stage5(Request $request) {
-        // dd($request->all());
-
-        // Create shipment in database here
+        
+        //Validate request
 
         $bookingData = session('bookingData');
+
+        dd($request->all(), $bookingData);
+
+        // Create shipment in database here
+        $user = auth()->user();
+        Shipment::create([
+            'user_id' =>
+            'parcel_reference' => 'SOME_REF', // TODO
+            'shipper' => 'Impact Express Wholesale Ltd',
+            'shipper_address_line_1' =>  'Unit 13 Blackthorn Crescent',
+            'shipper_address_line_2' => 'Poyle',
+            'shipper_city' => 'Slough',
+            'shipper_zip' => 'SL30QR',
+            'shipper_countryy_iso_code' => 'GB',
+            'true_shipper_contact_name' => $user->getFullName(),
+            'true_shipper_contact_tel' => $user->phone,
+            'consignee' => $request['consignee-name'],
+            'consignee_address_line_1' => $request['consignee-address-line-1'],
+            'consignee_address_line_2' => $request['consignee-address-line-2'],
+            'consignee_address_line_3' => $request['consignee-address-line-3'],
+            'consignee_city' => $request['consignee-city'],
+            'consignee_country_iso_code' => $request['consignee-country'],
+            'consignee_zip' => $request['consignee-postcode'],
+            'consignee_contact_name' => $request['consignee-name'],
+            'consignee_contact_tel' => $request['consignee-phone'],
+            'contents' => $request['contents-description'],
+            'value' => $request['contents-value'],
+            'pieces' => $bookingData['quantity'],
+            'dead_weight' => $bookingData['weight'],
+            'volumetric_weight' => Weighting::calculateVolumetricWeight($bookingData['length'], $bookingData['width'], $bookingData['height']),
+            'service_code' => 'exp'
+        ]);
+
+        
+        
 
         return view('customer.personal.stage5', compact('bookingData'));
     }

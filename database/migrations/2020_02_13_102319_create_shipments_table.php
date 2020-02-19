@@ -15,6 +15,8 @@ class CreateShipmentsTable extends Migration
     {
         Schema::create('shipments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->decimal('price');
             $table->string('parcel_reference');
             $table->string('shipper');
             $table->string('shipper_address_1');
