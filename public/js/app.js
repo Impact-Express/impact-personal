@@ -37101,6 +37101,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/hermesparcelshop.scss":
 /*!**********************************************!*\
   !*** ./resources/sass/hermesparcelshop.scss ***!
@@ -37190,13 +37201,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ }),
 
 /***/ 0:
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/personal.master.scss ./resources/sass/personal.stage1.scss ./resources/sass/personal.stage2.scss ./resources/sass/personal.stage3.scss ./resources/sass/personal.stage4.scss ./resources/sass/personal.stage5.scss ./resources/sass/hermesparcelshop.scss ./resources/sass/register.scss ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/personal.master.scss ./resources/sass/personal.stage1.scss ./resources/sass/personal.stage2.scss ./resources/sass/personal.stage3.scss ./resources/sass/personal.stage4.scss ./resources/sass/personal.stage5.scss ./resources/sass/hermesparcelshop.scss ./resources/sass/register.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /var/www/impact-personal/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /var/www/impact-personal/resources/sass/app.scss */"./resources/sass/app.scss");
 __webpack_require__(/*! /var/www/impact-personal/resources/sass/personal.master.scss */"./resources/sass/personal.master.scss");
 __webpack_require__(/*! /var/www/impact-personal/resources/sass/personal.stage1.scss */"./resources/sass/personal.stage1.scss");
 __webpack_require__(/*! /var/www/impact-personal/resources/sass/personal.stage2.scss */"./resources/sass/personal.stage2.scss");

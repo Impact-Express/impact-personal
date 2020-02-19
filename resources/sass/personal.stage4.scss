@@ -1,0 +1,131 @@
+input[type=text] {
+    padding-left: 10px;
+}
+input[type=email] {
+    padding-left: 10px;
+}
+.island-container {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+}
+.left-islands {
+    width: 70%;
+}
+.right-islands {
+    width: 28%;
+}
+.quote-island {
+    width: 100%;
+    background: #e2e2e2;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+}
+.logo-circle {
+    position: absolute;
+    z-index: 2;
+}
+.quote-body {
+    height: 500px;
+    width: 100%;
+    position: absolute;
+    top: 100px;
+    z-index: 1;
+}
+.quote-stage-3 {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+.login-island-container {
+    width: 100%;
+    /* height: 200px; */
+    margin-bottom: 30px;
+    padding: 30px;
+}
+.login-island-container h3 {
+    margin-left: 100px;
+    margin-top: 0;
+}
+.login-form {
+    display: flex;
+    margin-left: 100px;
+    margin-bottom: 3px;
+}
+.email-input {
+    width: 32%;
+    margin-right: 30px;
+}
+.password-input {
+    width: 32%;
+    margin-right: 30px;
+}
+.pw-reset-link {
+    margin-left: 50%;
+}
+.signup-island-container {
+    width: 100%;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.signup-island-container h3 {
+    margin-left: 100px;
+}
+.signup-form {
+    display: flex;
+    margin-left: 100px;
+    margin-bottom: 3px;
+}
+.form-rows {
+    padding-left: 0px;
+    width: 90%;
+}
+.form-row {
+    margin-top: 25px;
+}
+.title-input {
+    margin-right: 15px;
+    width: 15%;
+}
+.firstname-input {
+    margin-right: 15px;
+    width: 40%;
+}
+.lastname-input {
+    margin-right: 15px;
+    width: 40%;
+}
+.su-email-input {
+    margin-right: 15px;
+    width: 56.6%;
+}
+.phone-input {
+    width: 39.6%;
+}
+.su-password-input {
+    margin-right: 15px;
+    width: 48%;
+}
+.password-confirm-input {
+    width: 48%;
+}
+.address-input {
+    margin-right: 15px;
+    width: 66.6%;
+}
+.row-6 {
+    display: flex;
+    justify-content: flex-start;
+}
+.back {
+    margin-right:15px;
+}
+.error-container {
+    margin-left: 10%;
+}
+.quote-content {
+    // background-color: yellowgreen;
+    margin-top: 120px;
+    padding: 50px;
+}

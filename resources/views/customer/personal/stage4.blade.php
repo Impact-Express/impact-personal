@@ -43,9 +43,6 @@
                 <div class="address-island bg-yellow">
                     <h4 class="tc-white">DELIVERY DETAILS</h4>
                 </div>
-                <div class="payment-island bg-yellow">
-                    
-                </div>
             </div>
             <div class="right-islands">
                 <div class="quote-island">
@@ -53,7 +50,7 @@
                         <img src="images/circle-logo.png" alt="">
                     </div>
                     <div class="quote-body bg-white">
-
+dfadsfds    
                     </div>
                 </div>
             </div>

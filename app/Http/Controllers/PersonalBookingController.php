@@ -90,7 +90,7 @@ class PersonalBookingController extends Controller
 
         $bookingData = session('bookingData');
 
-        return view('customer.personal.stage4');
+        return view('customer.personal.stage4',compact('bookingData'));
     }
 
     public function stage5() {
