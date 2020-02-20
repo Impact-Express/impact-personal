@@ -20,7 +20,7 @@ class Pricing
             ['weight', '<', $applicableWeight+0.5]
         ])->first()->amount;
 
-        $price = $tariffPrice * $quantity;
+        $price = $tariffPrice; // * $quantity;
         
         $price = $price + self::getHermesBackToImpactPrice();
 

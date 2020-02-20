@@ -24,3 +24,7 @@ Route::middleware(['auth'])->group(function() {
 
 
 Route::get('/hermesparcelshop', 'PagesController@locateHermesParcelShop')->name('locateHermesParcelShop');
+
+
+Route::get('/test', 'PersonalBookingController@ProcessPayment');
+Route::post('/test', 'PersonalBookingController@ProcessPayment');

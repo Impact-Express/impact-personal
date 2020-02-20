@@ -157,7 +157,7 @@
                         <div class="quote-content">
                             <div><span class="bold">From: </span>{{$bookingData['fromCountry']}}</div>
                             <div><span class="bold">To: </span>{{$bookingData['toCountry']}}</div>
-                            <div><span class="bold">Quantity: </span>{{$bookingData['quantity']}}</div>
+                            
                             <div><span class="bold">Weight: </span>{{$bookingData['weight']}}</div>
                             <div><span class="bold">Length: </span>{{$bookingData['length']}}</div>
                             <div><span class="bold">Width: </span>{{$bookingData['width']}}</div>

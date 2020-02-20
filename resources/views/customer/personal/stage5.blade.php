@@ -55,7 +55,7 @@
                             <div class="quote-content">
                                 <div><span class="bold">From: </span>{{$bookingData['fromCountry']}}</div>
                                 <div><span class="bold">To: </span>{{$bookingData['toCountry']}}</div>
-                                <div><span class="bold">Quantity: </span>{{$bookingData['quantity']}}</div>
+                                
                                 <div><span class="bold">Weight: </span>{{$bookingData['weight']}}</div>
                                 <div><span class="bold">Length: </span>{{$bookingData['length']}}</div>
                                 <div><span class="bold">Width: </span>{{$bookingData['width']}}</div>
@@ -82,18 +82,22 @@
 @endsection
 
 @section('scripts')
-<script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
-<!-- <script>paypal.Buttons().render('.payment-container');</script> -->
+<script src="https://www.paypal.com/sdk/js?client-id=AT6a_xObvt5xnaglu3k4mjKxhQqW2_2S4xUlxKXh0ztGEgWdXFC9PKpKgzlJS_cVRbpPAk7OQMwbWU9Q&currency=GBP"></script>
 <script>
-    paypal.Buttons({  createOrder: function(data, actions) {
-    return actions.order.create({      
-        purchase_units: [{ amount: { value: {{$bookingData['price']}} } }],      
-        application_context: {        
-            shipping_preference: 'NO_SHIPPING'
-      }
-
-    });
-  },  onApprove: function(data, actions) {}
-}).render('.payment-container');
+    paypal.Buttons({  createOrder: function() {
+        return fetch('/api/test', {
+            method: 'post',
+            headers: {
+            'content-type': 'application/json'
+            }
+        }).then(function(res) {
+            alert(res);
+            return res.json();
+        }).then(function(data) {
+            return data.id; // Use the same key name for order ID on the client and server
+        });
+        },
+        onApprove: function(data, actions) {}
+    }).render('.payment-container');
 </script>
 @endsection

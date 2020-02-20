@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\Shipment;
 use App\Services\Pricing;
 use App\Services\Weighting;
+use App\Services\PayPal\PayPalCreateOrder;
 use Auth;
 
 class PersonalBookingController extends Controller
@@ -32,7 +33,7 @@ class PersonalBookingController extends Controller
                  Rule::in(Country::getCodes()),
             ],
             'postcode' => 'required|string',
-            'quantity' => 'required|numeric',
+            // 'quantity' => 'required|numeric',
             'weight' => 'required|numeric',
             'length' => 'required|numeric',
             'height' => 'required|numeric'
@@ -60,7 +61,7 @@ class PersonalBookingController extends Controller
             'fromPostcode' => request('postcode'),
             'toCountryCode' => request('toCountryCode'),
             'toCountry' => Country::where('code', request('toCountryCode'))->first()->name,
-            'quantity' => request('quantity'),
+            // 'quantity' => request('quantity'),
             'weight' => request('weight'),
             'length' => request('length'),
             'width' => request('width'),
@@ -101,25 +102,27 @@ class PersonalBookingController extends Controller
 
         $bookingData = session('bookingData');
 
-        dd($request->all(), $bookingData);
+        // dd($request->all(), $bookingData);
 
         // Create shipment in database here
         $user = auth()->user();
-        Shipment::create([
-            'user_id' =>
-            'parcel_reference' => 'SOME_REF', // TODO
+
+        $shipment = Shipment::create([
+            'user_id' => $user->id,
+            'shipment_reference' => Shipment::generateReference(),
+            'price' => $bookingData['price'],
             'shipper' => 'Impact Express Wholesale Ltd',
-            'shipper_address_line_1' =>  'Unit 13 Blackthorn Crescent',
-            'shipper_address_line_2' => 'Poyle',
+            'shipper_address_1' =>  'Unit 13 Blackthorn Crescent',
+            'shipper_address_2' => 'Poyle',
             'shipper_city' => 'Slough',
             'shipper_zip' => 'SL30QR',
-            'shipper_countryy_iso_code' => 'GB',
+            'shipper_country_iso_code' => 'GB',
             'true_shipper_contact_name' => $user->getFullName(),
             'true_shipper_contact_tel' => $user->phone,
             'consignee' => $request['consignee-name'],
-            'consignee_address_line_1' => $request['consignee-address-line-1'],
-            'consignee_address_line_2' => $request['consignee-address-line-2'],
-            'consignee_address_line_3' => $request['consignee-address-line-3'],
+            'consignee_address_1' => $request['consignee-address-line-1'],
+            'consignee_address_2' => $request['consignee-address-line-2'],
+            'consignee_address_3' => $request['consignee-address-line-3'],
             'consignee_city' => $request['consignee-city'],
             'consignee_country_iso_code' => $request['consignee-country'],
             'consignee_zip' => $request['consignee-postcode'],
@@ -127,19 +130,17 @@ class PersonalBookingController extends Controller
             'consignee_contact_tel' => $request['consignee-phone'],
             'contents' => $request['contents-description'],
             'value' => $request['contents-value'],
-            'pieces' => $bookingData['quantity'],
+            'pieces' => 1,
             'dead_weight' => $bookingData['weight'],
             'volumetric_weight' => Weighting::calculateVolumetricWeight($bookingData['length'], $bookingData['width'], $bookingData['height']),
             'service_code' => 'exp'
         ]);
 
-        
-        
-
         return view('customer.personal.stage5', compact('bookingData'));
     }
 
     public function processPayment(Request $request) {
-
+        dd(PayPalCreateOrder::createOrder()->result);
+        return json_encode(PayPalCreateOrder::createOrder()->result);
     }
 }
