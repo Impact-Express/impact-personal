@@ -85,19 +85,24 @@
 <script src="https://www.paypal.com/sdk/js?client-id=AT6a_xObvt5xnaglu3k4mjKxhQqW2_2S4xUlxKXh0ztGEgWdXFC9PKpKgzlJS_cVRbpPAk7OQMwbWU9Q&currency=GBP"></script>
 <script>
     paypal.Buttons({  createOrder: function() {
-        return fetch('/api/test', {
+        return fetch('/api/createOrder', {
             method: 'post',
             headers: {
             'content-type': 'application/json'
             }
         }).then(function(res) {
-            alert(res);
             return res.json();
         }).then(function(data) {
-            return data.id; // Use the same key name for order ID on the client and server
+            return data.id;
         });
         },
-        onApprove: function(data, actions) {}
+        onApprove: function(data, actions) {
+            // This function captures the funds from the transaction.
+      return actions.order.capture().then(function(details) {
+        // This function shows a transaction success message to your buyer.
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+        }
     }).render('.payment-container');
 </script>
 @endsection

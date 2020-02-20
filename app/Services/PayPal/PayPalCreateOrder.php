@@ -40,10 +40,13 @@ class PayPalCreateOrder
         return array(
             'intent' => 'CAPTURE',
             'application_context' => 
+            
                 array(
+                    'shipping_preference' => 'NO_SHIPPING',
                     'return_url' => 'http://personal/',
                     'return_url' => 'http://personal/'
                 ),
+            
             'purchase_units' => 
                 array(
                     0 => 
@@ -56,5 +59,9 @@ class PayPalCreateOrder
                         )
                 )
         );
+    }
+
+    public static function capturePayment($debug=false) {
+
     }
 }

@@ -9,7 +9,6 @@ use App\Models\Country;
 use App\Models\Shipment;
 use App\Services\Pricing;
 use App\Services\Weighting;
-use App\Services\PayPal\PayPalCreateOrder;
 use Auth;
 
 class PersonalBookingController extends Controller
@@ -137,10 +136,5 @@ class PersonalBookingController extends Controller
         ]);
 
         return view('customer.personal.stage5', compact('bookingData'));
-    }
-
-    public function processPayment(Request $request) {
-        dd(PayPalCreateOrder::createOrder()->result);
-        return json_encode(PayPalCreateOrder::createOrder()->result);
     }
 }
