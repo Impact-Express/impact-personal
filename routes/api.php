@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/createOrder', 'PaymentController@createOrder');
 Route::post('/createOrder', 'PaymentController@createOrder');
+
+Route::get('/capturePayment', 'PaymentController@capturePayment');
+Route::post('/capturePayment', 'PaymentController@capturePayment');

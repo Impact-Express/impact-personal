@@ -32,6 +32,7 @@ class PayPalCreateOrder
             print '</pre>';
             
         }
+        dd($response);
         return $response;
     }
 
@@ -61,7 +62,7 @@ class PayPalCreateOrder
         );
     }
 
-    public static function capturePayment($debug=false) {
-
+    public static function capturePayment() {
+        
     }
 }

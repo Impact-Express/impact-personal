@@ -84,24 +84,34 @@
 @section('scripts')
 <script src="https://www.paypal.com/sdk/js?client-id=AT6a_xObvt5xnaglu3k4mjKxhQqW2_2S4xUlxKXh0ztGEgWdXFC9PKpKgzlJS_cVRbpPAk7OQMwbWU9Q&currency=GBP"></script>
 <script>
-    paypal.Buttons({  createOrder: function() {
-        return fetch('/api/createOrder', {
-            method: 'post',
-            headers: {
-            'content-type': 'application/json'
-            }
-        }).then(function(res) {
-            return res.json();
-        }).then(function(data) {
-            return data.id;
-        });
+    paypal.Buttons({  
+        createOrder: function() {
+            return fetch('/api/createOrder', {
+                method: 'post',
+                headers: {
+                    'content-type': 'application/json'
+                }
+            }).then(function(res) {
+                // console.log(res);
+                return res.json();
+            }).then(function(data) {
+                return data.id;
+            });
         },
         onApprove: function(data, actions) {
-            // This function captures the funds from the transaction.
-      return actions.order.capture().then(function(details) {
-        // This function shows a transaction success message to your buyer.
-        alert('Transaction completed by ' + details.payer.name.given_name);
-      });
+            return actions.order.capture().then(function(details) {
+                alert('Transaction completed by ' + details.payer.name.given_name);
+                
+                return fetch('/api/capturePayment', {
+                    method: 'post',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        orderID: data.orderID
+                    })
+                });
+            });
         }
     }).render('.payment-container');
 </script>

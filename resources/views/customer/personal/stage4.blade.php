@@ -49,42 +49,42 @@
                             </li>
                             <li class="form-row row-1">
                                 <div class="form-input consignee-name-input">
-                                    <input class="@error('consignee-name') is-invalid @enderror" type="text" name="consignee-name" placeholder="NAME...">
+                                    <input class="@error('consignee-name') is-invalid @enderror" type="text" name="consignee-name" placeholder="NAME..." value="qwe">
                                 </div>                                
                             </li>
                             <li class="form-row row-2">
                                 <div class="form-input consignee-address-line-1-input">
-                                    <input class=" @error('consignee-address-line-1') is-invalid @enderror" type="text" name="consignee-address-line-1" placeholder="ADDRESS LINE 1...">
+                                    <input class=" @error('consignee-address-line-1') is-invalid @enderror" type="text" name="consignee-address-line-1" placeholder="ADDRESS LINE 1..." value="qwe">
                                 </div>
                             </li>
                             <li class="form-row row-3">
                                 <div class="form-input consignee-address-line-2-input">
-                                    <input class=" @error('consignee-address-line-2') is-invalid @enderror" type="text" name="consignee-address-line-2" placeholder="ADDRESS LINE 2...">
+                                    <input class=" @error('consignee-address-line-2') is-invalid @enderror" type="text" name="consignee-address-line-2" placeholder="ADDRESS LINE 2..." value="qwe">
                                 </div>
                             </li>
                             <li class="form-row row-4">
                                 <div class="form-input consignee-address-line-3-input">
-                                    <input class=" @error('consignee-address-line-3') is-invalid @enderror" type="text" name="consignee-address-line-3" placeholder="ADDRESS LINE 3...">
+                                    <input class=" @error('consignee-address-line-3') is-invalid @enderror" type="text" name="consignee-address-line-3" placeholder="ADDRESS LINE 3..." value="qwe">
                                 </div>
                             </li>
                             <li class="form-row row-5">
                                 <div class="form-input consignee-city-input">
-                                    <input class=" @error('consignee-city') is-invalid @enderror" type="text" name="consignee-city" placeholder="CITY...">
+                                    <input class=" @error('consignee-city') is-invalid @enderror" type="text" name="consignee-city" placeholder="CITY..." value="qwe">
                                 </div>
                             </li>
                             <li class="form-row row-6">
                                 <div class="form-input consignee-country-input">
-                                    <input class=" @error('consignee-country') is-invalid @enderror" type="text" name="consignee-country" placeholder="COUNTRY...">
+                                    <input class=" @error('consignee-country') is-invalid @enderror" type="text" name="consignee-country" placeholder="COUNTRY..." value="qwe">
                                 </div>
                             </li>
                             <li class="form-row row-7">
                                 <div class="form-input consignee-postcode-input">
-                                    <input class=" @error('consignee-postcode') is-invalid @enderror" type="text" name="consignee-postcode" placeholder="POSTCODE...">
+                                    <input class=" @error('consignee-postcode') is-invalid @enderror" type="text" name="consignee-postcode" placeholder="POSTCODE..." value="qwe">
                                 </div>
                             </li>
                             <li class="form-row row-8">
                                 <div class="form-input consignee-phone-input">
-                                    <input class=" @error('consignee-phone') is-invalid @enderror" type="text" name="consignee-phone" placeholder="PHONE NO...">
+                                    <input class=" @error('consignee-phone') is-invalid @enderror" type="text" name="consignee-phone" placeholder="PHONE NO..." value="qwe">
                                 </div>
                             </li>
                             <li class="form-row row-10">
@@ -92,12 +92,12 @@
                             </li>
                             <li class="form-row row-11">
                                 <div class="form-input contents-description-input">
-                                    <input class=" @error('contents-description') is-invalid @enderror" type="text" name="contents-description" placeholder="DESCRIPTION...">
+                                    <input class=" @error('contents-description') is-invalid @enderror" type="text" name="contents-description" placeholder="DESCRIPTION..." value="qwe">
                                 </div>
                             </li>
                             <li class="form-row row-12">
                                 <div class="form-input contents-value-input">
-                                    <input class=" @error('contents-value') is-invalid @enderror" type="text" name="contents-value" placeholder="VALUE...">
+                                    <input class=" @error('contents-value') is-invalid @enderror" type="text" name="contents-value" placeholder="VALUE..." value="qwe">
                                 </div>
                             </li>
                         
