@@ -11,6 +11,9 @@ use App\Services\Pricing;
 use App\Services\Weighting;
 use Auth;
 
+// for debug only
+use App\Models\Payment;
+
 class PersonalBookingController extends Controller
 {
     public function stage1() {

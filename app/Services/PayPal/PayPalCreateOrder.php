@@ -30,9 +30,7 @@ class PayPalCreateOrder
             }
             print json_encode($response->result, JSON_PRETTY_PRINT);
             print '</pre>';
-            
         }
-        dd($response);
         return $response;
     }
 
@@ -40,14 +38,12 @@ class PayPalCreateOrder
     {
         return array(
             'intent' => 'CAPTURE',
-            'application_context' => 
-            
+            'application_context' =>
                 array(
                     'shipping_preference' => 'NO_SHIPPING',
                     'return_url' => 'http://personal/',
                     'return_url' => 'http://personal/'
                 ),
-            
             'purchase_units' => 
                 array(
                     0 => 
