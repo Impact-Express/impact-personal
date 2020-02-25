@@ -16,7 +16,6 @@ class PayPalCreateOrder
         // Make call to set up transaction
         $client = PayPalClient::client();
         $response = $client->execute($request);
-        
         return $response;
     }
 

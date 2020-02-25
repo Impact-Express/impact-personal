@@ -118,4 +118,3 @@
     }).render('.payment-container');
 </script>
 @endsection
-

@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Storage;
 class PaymentController extends Controller
 {
     public function createOrder() {
-        // dd(PayPalCreateOrder::createOrder()->result);
-        return json_encode(PayPalCreateOrder::createOrder()->result);
+        $response = PayPalCreateOrder::createOrder();
+        Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
+        return json_encode($response->result);
     }
 
     public function capturePayment(Request $request) {
@@ -23,7 +24,7 @@ class PaymentController extends Controller
 
         $response = PayPalCapturePayment::getOrder($ppOrderId);
 
-        Storage::put('file.txt', json_encode($response->result, JSON_PRETTY_PRINT));
+        Storage::put('file2.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
         $p = new Payment;
         $p->user_id = 1;
