@@ -24,5 +24,7 @@ class PaymentController extends Controller
         $p->shipment_id = 1;
         $p->amount->2.51;
         $p->save();
+
+        return redirect('/hermesparcelshop');
     }
 }

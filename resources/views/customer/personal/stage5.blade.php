@@ -92,7 +92,6 @@
                     'content-type': 'application/json'
                 }
             }).then(function(res) {
-                // console.log(res);
                 return res.json();
             }).then(function(data) {
                 return data.id;
@@ -100,8 +99,7 @@
         },
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
-                alert('Transaction completed by ' + details.payer.name.given_name);
-                
+                // alert('Transaction completed by ' + details.payer.name.given_name);
                 return fetch('/api/capturePayment', {
                     method: 'post',
                     headers: {
