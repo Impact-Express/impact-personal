@@ -16,21 +16,7 @@ class PayPalCreateOrder
         // Make call to set up transaction
         $client = PayPalClient::client();
         $response = $client->execute($request);
-        if ($debug)
-        {
-            $x = [];
-            $x['StatusCode'] = $response->statusCode;
-            $x['Status'] = $response->result->status;
-            $x['Order ID'] = $response->result->id;
-            $x['Intent'] = $response->result->intent;
-            print '<pre>';
-            print_r($x);
-            foreach ($response->result->links as $link) {
-                print "\t{$link->rel}: {$link->href}\tCall type: {$link->method}\n";
-            }
-            print json_encode($response->result, JSON_PRETTY_PRINT);
-            print '</pre>';
-        }
+        
         return $response;
     }
 
@@ -56,9 +42,5 @@ class PayPalCreateOrder
                         )
                 )
         );
-    }
-
-    public static function capturePayment() {
-        
     }
 }

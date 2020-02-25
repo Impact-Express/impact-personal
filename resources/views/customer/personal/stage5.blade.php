@@ -86,11 +86,14 @@
 <script>
     paypal.Buttons({  
         createOrder: function() {
-            return fetch('/api/createOrder', {
+            return fetch('/createOrder', {
                 method: 'post',
                 headers: {
                     'content-type': 'application/json'
-                }
+                },
+                body: JSON.stringify({
+                    _token: "{{ csrf_token() }}"
+                })
             }).then(function(res) {
                 return res.json();
             }).then(function(data) {
@@ -100,12 +103,13 @@
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
                 // alert('Transaction completed by ' + details.payer.name.given_name);
-                return fetch('/api/capturePayment', {
+                return fetch('/capturePayment', {
                     method: 'post',
                     headers: {
                         'content-type': 'application/json'
                     },
                     body: JSON.stringify({
+                        _token: "{{ csrf_token() }}",
                         orderID: data.orderID
                     })
                 });
@@ -114,3 +118,4 @@
     }).render('.payment-container');
 </script>
 @endsection
+

@@ -28,3 +28,6 @@ Route::get('/hermesparcelshop', 'PagesController@locateHermesParcelShop')->name(
 
 Route::get('/createOrder', 'PaymentController@createOrder');
 Route::post('/createOrder', 'PaymentController@createOrder');
+
+Route::get('/capturePayment', 'PaymentController@capturePayment');
+Route::post('/capturePayment', 'PaymentController@capturePayment');
