@@ -7,11 +7,11 @@ use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 
 class PayPalCreateOrder
 {
-    public static function createOrder($debug=false)
+    public static function createOrder($value, $debug=false)
     {
         $request = new OrdersCreateRequest();
         $request->prefer('return=representation');
-        $request->body = self::buildRequestBody();
+        $request->body = self::buildRequestBody($value);
 
         // Make call to set up transaction
         $client = PayPalClient::client();
@@ -19,7 +19,8 @@ class PayPalCreateOrder
         return $response;
     }
 
-    private static function buildRequestBody()
+
+    private static function buildRequestBody($value)
     {
         return array(
             'intent' => 'CAPTURE',
@@ -27,16 +28,16 @@ class PayPalCreateOrder
                 array(
                     'shipping_preference' => 'NO_SHIPPING',
                     'return_url' => 'http://personal/',
-                    'return_url' => 'http://personal/'
+                    'cancel_url' => 'http://personal/'
                 ),
-            'purchase_units' => 
+            'purchase_units' =>
                 array(
-                    0 => 
+                    0 =>
                         array(
-                            'amount' => 
+                            'amount' =>
                                 array(
                                     'currency_code' => 'GBP',
-                                    'value' => '2.50'
+                                    'value' => $value
                                 )
                         )
                 )

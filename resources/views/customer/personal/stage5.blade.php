@@ -112,6 +112,12 @@
                         _token: "{{ csrf_token() }}",
                         orderID: data.orderID
                     })
+                }).then(function(res) {
+                    return res.json();
+                }).then(function(details) {
+                    if (details.error === 'INSTRUMENT_DECLINED') {
+                        return actions.restart();
+                    }
                 });
             });
         }

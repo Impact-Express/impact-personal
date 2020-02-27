@@ -63,10 +63,10 @@
                             </div>
                         </li>
                         <li class="form-row row-2">
-                            <div class="form-input quantity-input">
+                            <!-- <div class="form-input quantity-input">
                                 <label for="quantity">QUANTITY:</label>
                                 <input id="quantity" name="quantity" type="text" value="2">
-                            </div>
+                            </div> -->
                             <div class="form-input weight-input">
                                 <label for="weight">WEIGHT:</label>
                                 <input id="weight" name="weight" type="text" value="10">

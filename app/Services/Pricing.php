@@ -10,7 +10,7 @@ class Pricing
 
     protected static $hermesBackToImpact = 4.20;
 
-    public static function getPrice(array $dims, int $quantity, float $parcelWeight, int $destinationCountryZone) : float {
+    public static function getPrice(array $dims, float $parcelWeight, int $destinationCountryZone) : float {
         
         $applicableWeight = Weighting::calculateApplicableWeight($dims['length'], $dims['width'], $dims['height'], $parcelWeight);
 
@@ -29,7 +29,7 @@ class Pricing
         return $price;
     }
 
-    protected static function getHermesBackToImpactPrice() {
+    protected static function getHermesBackToImpactPrice() : float {
         return self::$hermesBackToImpact;
     }
 }

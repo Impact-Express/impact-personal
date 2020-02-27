@@ -35,7 +35,6 @@ class PersonalBookingController extends Controller
                  Rule::in(Country::getCodes()),
             ],
             'postcode' => 'required|string',
-            // 'quantity' => 'required|numeric',
             'weight' => 'required|numeric',
             'length' => 'required|numeric',
             'height' => 'required|numeric'
@@ -52,7 +51,6 @@ class PersonalBookingController extends Controller
                 'width' => $request->width,
                 'height' => $request->height
             ],
-            $request->quantity,
             $request->weight,
             Country::where('code', $request->toCountryCode)->first()->zone
         );
@@ -63,7 +61,6 @@ class PersonalBookingController extends Controller
             'fromPostcode' => request('postcode'),
             'toCountryCode' => request('toCountryCode'),
             'toCountry' => Country::where('code', request('toCountryCode'))->first()->name,
-            // 'quantity' => request('quantity'),
             'weight' => request('weight'),
             'length' => request('length'),
             'width' => request('width'),
@@ -109,7 +106,7 @@ class PersonalBookingController extends Controller
         // Create shipment in database here
         $user = auth()->user();
 
-        $shipment = Shipment::create([
+        $shipmentData = [
             'user_id' => $user->id,
             'shipment_reference' => Shipment::generateReference(),
             'price' => $bookingData['price'],
@@ -136,7 +133,9 @@ class PersonalBookingController extends Controller
             'dead_weight' => $bookingData['weight'],
             'volumetric_weight' => Weighting::calculateVolumetricWeight($bookingData['length'], $bookingData['width'], $bookingData['height']),
             'service_code' => 'exp'
-        ]);
+        ];
+
+        $shipment = Shipment::create($shipmentData);
 
         return view('customer.personal.stage5', compact('bookingData'));
     }
