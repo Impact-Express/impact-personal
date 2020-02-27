@@ -259,11 +259,32 @@ insert  into `migrations`(`id`,`migration`,`batch`) values
 (3,'2019_08_19_000000_create_failed_jobs_table',1),
 (4,'2020_02_11_105115_create_remote_areas_table',1),
 (5,'2020_02_11_113101_create_tariffs_table',1),
-(6,'2020_02_11_120110_create_countries_table',1);
+(6,'2020_02_11_120110_create_countries_table',1),
+(7,'2020_02_13_102319_create_shipments_table',1);
 
 /*Data for the table `password_resets` */
 
+/*Data for the table `payments` */
+
+insert  into `payments`(`id`,`user_id`,`paypal_order_id`,`shipment_id`,`amount`,`created_at`,`updated_at`) values 
+(4,1,'blob',1,2.51000000,'2020-02-25','2020-02-25'),
+(6,1,'334042884N051950D',1,2.51000000,'2020-02-25','2020-02-25'),
+(7,1,'77C07548AT805823E',1,2.51000000,'2020-02-25','2020-02-25'),
+(8,1,'4BX48869EV128772P',1,2.51000000,'2020-02-25','2020-02-25'),
+(9,1,'88G13868D03958745',1,2.51000000,'2020-02-26','2020-02-26'),
+(10,1,'4DV58054H3395535Y',1,2.51000000,'2020-02-26','2020-02-26'),
+(11,1,'5PY79587BL8712604',1,2.51000000,'2020-02-26','2020-02-26'),
+(12,12,'1TJ7744916330162K',1,2.50000000,'2020-02-27','2020-02-27');
+
 /*Data for the table `remote_areas` */
+
+/*Data for the table `shipments` */
+
+insert  into `shipments`(`id`,`user_id`,`price`,`shipment_reference`,`shipper`,`shipper_address_1`,`shipper_address_2`,`shipper_address_3`,`shipper_city`,`shipper_zip`,`shipper_country_iso_code`,`true_shipper_contact_name`,`true_shipper_contact_tel`,`consignee`,`consignee_address_1`,`consignee_address_2`,`consignee_address_3`,`consignee_city`,`consignee_zip`,`consignee_country_iso_code`,`consignee_contact_name`,`consignee_contact_tel`,`contents`,`value`,`pieces`,`dead_weight`,`volumetric_weight`,`service_code`,`created_at`,`updated_at`) values 
+(140,12,64.86,'IE57549039','Impact Express Wholesale Ltd','Unit 13 Blackthorn Crescent','Poyle',NULL,'Slough','SL30QR','GB','Mr Steve Stevens','07941494033','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','1','10','0.2','exp','2020-02-27 12:12:49','2020-02-27 12:12:49'),
+(141,12,64.86,'IE46291840','Impact Express Wholesale Ltd','Unit 13 Blackthorn Crescent','Poyle',NULL,'Slough','SL30QR','GB','Mr Steve Stevens','07941494033','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','1','10','0.2','exp','2020-02-27 12:14:37','2020-02-27 12:14:37'),
+(142,12,39.81,'IE98221944','Impact Express Wholesale Ltd','Unit 13 Blackthorn Crescent','Poyle',NULL,'Slough','SL30QR','GB','Mr Steve Stevens','07941494033','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','1','10','0.2','exp','2020-02-27 12:15:35','2020-02-27 12:15:35'),
+(143,12,35.15,'IE74168046','Impact Express Wholesale Ltd','Unit 13 Blackthorn Crescent','Poyle',NULL,'Slough','SL30QR','GB','Mr Steve Stevens','07941494033','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','qwe','1','10','0.2','exp','2020-02-27 13:42:25','2020-02-27 13:42:25');
 
 /*Data for the table `tariffs` */
 
@@ -571,8 +592,8 @@ insert  into `tariffs`(`id`,`weight`,`zone`,`documents`,`amount`,`created_at`,`u
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`) values 
-(1,'Richard','richard@example.com',NULL,'$2y$10$3xpkix1nhIwm0UtYxTdhpO6tJcLDb1JAKLPkniGYgnT2mw5OY8AgK',NULL,'2020-02-12 13:58:51','2020-02-12 13:58:51');
+insert  into `users`(`id`,`title`,`firstName`,`lastName`,`phone`,`email`,`email_verified_at`,`password`,`remember_token`,`created_at`,`updated_at`) values 
+(12,'Mr','Steve','Stevens','07941494033','steve@example.com',NULL,'$2y$10$ZyoUe1FHQcK3OaO/3TMl0ubkfSY03iLqbtVhZEz6LkeaKcakb0LAu',NULL,'2020-02-20 10:22:00','2020-02-20 10:22:00');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
