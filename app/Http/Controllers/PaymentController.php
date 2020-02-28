@@ -21,8 +21,7 @@ class PaymentController extends Controller
         $response = PayPalCreateOrder::createOrder(session('bookingData')['price']);
 Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
-// Storage::put('file3.txt', auth()->id());
-
+        session()->put(['transactionId' => $response->result->id]);
 
 
         return json_encode($response->result);
@@ -34,7 +33,9 @@ Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
     public function capturePayment(Request $request) {
 
-        if (!auth()->check()) {
+        $transactionId = session('transactionId');
+
+        if (!auth()->check() || !isset($transactionId)) {
             return json_encode(['you are' => 'not logged in']);
         }
 
@@ -42,15 +43,13 @@ Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
         $response = PayPalCapturePayment::getOrder($ppOrderId);
 
+        if(session('transactionId') != $response->result->id) {
+            return json_encode(['wot u' => 'playin at?']);
+        }
+
 Storage::put('file2.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
-        // $p = new Payment;
-        // $p->user_id = auth()->id();
-        // $p->paypal_order_id = $ppOrderId;
-        // $p->shipment_id = 1;
-        // $p->amount = 2.5;//$response->result->amount->value;
-        // $p->save();
-
+        
         return json_encode($response->result, JSON_PRETTY_PRINT);
         // return redirect('/hermesparcelshop');
     }

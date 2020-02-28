@@ -135,7 +135,9 @@ class PersonalBookingController extends Controller
             'service_code' => 'exp'
         ];
 
-        $shipment = Shipment::create($shipmentData);
+
+        session()->put(['shipmentDate' => $shipmentData]);
+        // $shipment = Shipment::create($shipmentData);
 
         return view('customer.personal.stage5', compact('bookingData'));
     }

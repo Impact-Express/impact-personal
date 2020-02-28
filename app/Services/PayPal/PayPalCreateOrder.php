@@ -37,7 +37,7 @@ class PayPalCreateOrder
                             'amount' =>
                                 array(
                                     'currency_code' => 'GBP',
-                                    'value' => $value
+                                    'value' => round($value, 2)
                                 )
                         )
                 )
