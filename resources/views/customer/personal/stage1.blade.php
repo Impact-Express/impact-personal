@@ -91,8 +91,8 @@
                             <label class="cb-container">
                                 <input type="checkbox" name="terms">
                                 <span class="checkmark"></span>
-                                Terms and conditions blah blah blah
-                                </label>
+                            </label>
+                            <span class="bold terms-text">I agree to the terms and conditions which can be found <a href="#">here</a>.</span>
                         </li>
                         <li class="form-row row-5">
                             <input class="bold" type="submit" value="CONTINUE QUOTE">

@@ -68,12 +68,6 @@
             </div>
         </div>
     </main>
-<style>
-
-
-
-
-</style>
 @endsection
 
 @section('styles')
@@ -119,6 +113,8 @@
                         return actions.restart();
                     }
                 });
+            }).then(function() {
+                window.location.replace('http://personal/');
             });
         }
     }).render('.payment-container');

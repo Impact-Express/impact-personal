@@ -97,13 +97,27 @@ class PersonalBookingController extends Controller
 
     public function stage5(Request $request) {
         
-        //Validate request
+        dd($request);
+        // Validate request
+        $validator = Validator::make($request->all(), [
+            'consignee-name' => 'required|string',
+            'consignee-address-line-1' => 'required|string',
+            'consignee-address-line-2' => 'string',
+            'consignee-address-line-3' => 'string',
+            'consignee-city' => 'required|string',
+            'consignee-country' => 'required|string',
+            'consignee-postcode' => 'required|string',
+            'consignee-phone' => 'required|string',
+            'contents-description' => 'required|string',
+            'contents-value' => 'required|string|numeric',
+        ]);
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors($validator);
+        }
+
+
 
         $bookingData = session('bookingData');
-
-        // dd($request->all(), $bookingData);
-
-        // Create shipment in database here
         $user = auth()->user();
 
         $shipmentData = [
