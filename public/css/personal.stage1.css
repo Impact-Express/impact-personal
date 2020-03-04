@@ -1,28 +1,44 @@
 .parcel-form-container {
   margin: 100px;
-  padding-left: 50px;
+  padding: 0 5%;
+}
+
+.row-1 {
+  display: flex;
+  justify-content: space-between;
 }
 
 .row-1 input {
-  width: 350px;
+  width: 100%;
   margin: 10px 30px 10px 0;
   padding-left: 10px;
 }
 
 .row-1 select {
-  width: 350px;
+  width: 100%;
   margin: 10px 30px 10px 0;
   padding-left: 10px;
 }
 
+.row-1 .form-input {
+  width: 28%;
+  margin: 10px 30px 10px 0;
+}
+
 .row-2 {
+  display: flex;
   margin-top: 50px;
+  justify-content: space-between;
 }
 
 .row-2 input {
-  width: 184px;
+  width: 100%;
   margin-top: 10px;
   padding-left: 10px;
+}
+
+.row-2-right {
+  display: flex;
 }
 
 .quantity-input {

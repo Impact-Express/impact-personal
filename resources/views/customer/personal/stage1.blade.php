@@ -63,26 +63,28 @@
                             </div>
                         </li>
                         <li class="form-row row-2">
-                            <!-- <div class="form-input quantity-input">
-                                <label for="quantity">QUANTITY:</label>
-                                <input id="quantity" name="quantity" type="text" value="2">
-                            </div> -->
-                            <div class="form-input weight-input">
-                                <label for="weight">WEIGHT:</label>
-                                <input id="weight" name="weight" type="text" value="10">
+                            <div class="row-2-left">
+                                <div class="form-input weight-input">
+                                    <label for="weight">WEIGHT:</label>
+                                    <input id="weight" name="weight" type="text" value="10">
+                                </div>
                             </div>
-                            <div class="form-input dim-input length-input">
-                                <label for="length">LENGTH:</label>
-                                <input id="length" name="length" type="text" value="10">
+                            
+                            <div class="row-2-right">
+                                <div class="form-input dim-input length-input">
+                                    <label for="length">LENGTH:</label>
+                                    <input id="length" name="length" type="text" value="10">
+                                </div>
+                                <div class="form-input dim-input width-input">
+                                    <label for="width">WIDTH:</label>
+                                    <input id="width" name="width" type="text" value="10">
+                                </div>
+                                <div class="form-input dim-input height-input">
+                                    <label for="height">HEIGHT:</label>
+                                    <input id="height" name="height" type="text" value="10">
+                                </div>
                             </div>
-                            <div class="form-input dim-input width-input">
-                                <label for="width">WIDTH:</label>
-                                <input id="width" name="width" type="text" value="10">
-                            </div>
-                            <div class="form-input dim-input height-input">
-                                <label for="height">HEIGHT:</label>
-                                <input id="height" name="height" type="text" value="10">
-                            </div>
+                            
                         </li>
                         <li class="form-row row-3">
                             <span class="bold"><i class="fas fa-plus"></i>&nbsp;WANT TO SEND ADDITIONAL PACKAGES:</span>&nbsp;&nbsp;<a class="business-link bold" href="#">SET UP A BUSINESS ACCOUNT</a>
