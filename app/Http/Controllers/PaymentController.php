@@ -31,6 +31,8 @@ Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
 
 
+
+    
     public function capturePayment(Request $request) {
 
         $paypalOrderIdCheck = session('paypalOrderIdCheck');

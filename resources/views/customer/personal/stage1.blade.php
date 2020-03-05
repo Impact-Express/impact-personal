@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-input to-input">
                                 <label for="to">TO:</label>
-                                <select id="to" name="toCountryCode" type="text">
+                                <select class="@error('toCountryCode') is-invalid @enderror" id="to" name="toCountryCode" type="text">
                                     <option>Select a country...</option>
                                     @foreach ($countries as $country)
                                         @if ($country->zone != 0)
@@ -56,32 +56,63 @@
                                         @endif
                                     @endforeach
                                 </select>
+                                @error('toCountryCode')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-input postcode-input">
                                 <label for="postcode">YOUR POSTCODE (UK):</label>
-                                <input id="postcode" name="postcode" type="text" value="SL09BU">
+                                <input class="@error('postcode') is-invalid @enderror" id="postcode" name="postcode" type="text" value="SL09BU">
+                                @error('postcode')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </li>
                         <li class="form-row row-2">
+                            
                             <div class="row-2-left">
                                 <div class="form-input weight-input">
                                     <label for="weight">WEIGHT:</label>
-                                    <input id="weight" name="weight" type="text" value="10">
+                                    <input class="@error('weight') is-invalid @enderror" id="weight" name="weight" type="text" value="10">
                                 </div>
+                                @error('weight')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             
                             <div class="row-2-right">
                                 <div class="form-input dim-input length-input">
                                     <label for="length">LENGTH:</label>
-                                    <input id="length" name="length" type="text" value="10">
+                                    <input class="@error('length') is-invalid @enderror" id="length" name="length" type="text" value="10">
+                                    @error('length')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-input dim-input width-input">
                                     <label for="width">WIDTH:</label>
-                                    <input id="width" name="width" type="text" value="10">
+                                    <input class="@error('width') is-invalid @enderror" id="width" name="width" type="text" value="10">
+                                    @error('width')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-input dim-input height-input">
                                     <label for="height">HEIGHT:</label>
-                                    <input id="height" name="height" type="text" value="10">
+                                    <input class="@error('height') is-invalid @enderror" id="height" name="height" type="text" value="10">
+                                    @error('height')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             

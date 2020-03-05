@@ -37,6 +37,7 @@ class PersonalBookingController extends Controller
             'postcode' => 'required|string',
             'weight' => 'required|numeric',
             'length' => 'required|numeric',
+            'width' => 'required|numeric',
             'height' => 'required|numeric'
         ]);
 
@@ -97,7 +98,7 @@ class PersonalBookingController extends Controller
 
     public function stage5(Request $request) {
         
-        dd($request);
+        // dd($request);
         // Validate request
         $validator = Validator::make($request->all(), [
             'consignee-name' => 'required|string',
