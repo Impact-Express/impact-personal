@@ -38,7 +38,8 @@ class PersonalBookingController extends Controller
             'weight' => 'required|numeric',
             'length' => 'required|numeric',
             'width' => 'required|numeric',
-            'height' => 'required|numeric'
+            'height' => 'required|numeric',
+            'terms' => 'required'
         ]);
 
         if ($validator->fails()) {

@@ -127,6 +127,11 @@
                             </label>
                             <span class="bold terms-text">I agree to the terms and conditions which can be found <a href="#">here</a>.</span>
                         </li>
+                        @error('terms')
+                            <p class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </p>
+                        @enderror
                         <li class="form-row row-5">
                             <input class="bold" type="submit" value="CONTINUE QUOTE">
                         </li>

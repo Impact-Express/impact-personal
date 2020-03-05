@@ -50,41 +50,81 @@
                             <li class="form-row row-1">
                                 <div class="form-input consignee-name-input">
                                     <input class="@error('consignee-name') is-invalid @enderror" type="text" name="consignee-name" placeholder="NAME..." value="qwe">
+                                    @error('consignee-name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>                                
                             </li>
                             <li class="form-row row-2">
                                 <div class="form-input consignee-address-line-1-input">
                                     <input class=" @error('consignee-address-line-1') is-invalid @enderror" type="text" name="consignee-address-line-1" placeholder="ADDRESS LINE 1..." value="qwe">
+                                    @error('consignee-address-line-1')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
                             <li class="form-row row-3">
                                 <div class="form-input consignee-address-line-2-input">
                                     <input class=" @error('consignee-address-line-2') is-invalid @enderror" type="text" name="consignee-address-line-2" placeholder="ADDRESS LINE 2..." value="qwe">
+                                    @error('consignee-address-line-2')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
                             <li class="form-row row-4">
                                 <div class="form-input consignee-address-line-3-input">
                                     <input class=" @error('consignee-address-line-3') is-invalid @enderror" type="text" name="consignee-address-line-3" placeholder="ADDRESS LINE 3..." value="qwe">
+                                    @error('consignee-address-line-3')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
                             <li class="form-row row-5">
                                 <div class="form-input consignee-city-input">
                                     <input class=" @error('consignee-city') is-invalid @enderror" type="text" name="consignee-city" placeholder="CITY..." value="qwe">
+                                    @error('consignee-city')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
                             <li class="form-row row-6">
                                 <div class="form-input consignee-country-input">
                                     <input class=" @error('consignee-country') is-invalid @enderror" type="text" name="consignee-country" placeholder="COUNTRY..." value="qwe">
+                                    @error('consignee-country')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
                             <li class="form-row row-7">
                                 <div class="form-input consignee-postcode-input">
                                     <input class=" @error('consignee-postcode') is-invalid @enderror" type="text" name="consignee-postcode" placeholder="POSTCODE..." value="qwe">
+                                    @error('consignee-postcode')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
                             <li class="form-row row-8">
                                 <div class="form-input consignee-phone-input">
                                     <input class=" @error('consignee-phone') is-invalid @enderror" type="text" name="consignee-phone" placeholder="PHONE NO..." value="qwe">
+                                    @error('consignee-phone')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
                             <li class="form-row row-10">
@@ -93,11 +133,21 @@
                             <li class="form-row row-11">
                                 <div class="form-input contents-description-input">
                                     <input class=" @error('contents-description') is-invalid @enderror" type="text" name="contents-description" placeholder="DESCRIPTION..." value="qwe">
+                                    @error('contents-description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
                             <li class="form-row row-12">
                                 <div class="form-input contents-value-input">
                                     <input class=" @error('contents-value') is-invalid @enderror" type="text" name="contents-value" placeholder="VALUE..." value="qwe">
+                                    @error('contents-value')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </li>
                         
