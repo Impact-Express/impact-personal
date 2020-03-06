@@ -51,6 +51,8 @@ Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
 Storage::put('file2.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
+Storage::put('file3.txt', $response->result->id);
+
         
         return json_encode($response->result, JSON_PRETTY_PRINT);
         // return redirect('/hermesparcelshop');
