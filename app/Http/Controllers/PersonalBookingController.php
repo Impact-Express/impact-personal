@@ -157,4 +157,9 @@ class PersonalBookingController extends Controller
 
         return view('customer.personal.stage5', compact('bookingData'));
     }
+
+    public function complete() {
+
+        return view('customer.personal.complete');
+    }
 }

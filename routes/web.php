@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function() {
     
     Route::post('/5', 'PersonalBookingController@stage5')->name('stage5');
 
+    Route::get('/confirmation', 'PersonalBookingController@complete')->name('complete');
 });
 
 
@@ -31,3 +32,4 @@ Route::post('/createOrder', 'PaymentController@createOrder');
 
 Route::get('/capturePayment', 'PaymentController@capturePayment');
 Route::post('/capturePayment', 'PaymentController@capturePayment');
+

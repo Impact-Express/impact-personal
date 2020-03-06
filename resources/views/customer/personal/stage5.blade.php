@@ -55,7 +55,6 @@
                             <div class="quote-content">
                                 <div><span class="bold">From: </span>{{$bookingData['fromCountry']}}</div>
                                 <div><span class="bold">To: </span>{{$bookingData['toCountry']}}</div>
-                                
                                 <div><span class="bold">Weight: </span>{{$bookingData['weight']}}</div>
                                 <div><span class="bold">Length: </span>{{$bookingData['length']}}</div>
                                 <div><span class="bold">Width: </span>{{$bookingData['width']}}</div>
@@ -109,12 +108,14 @@
                 }).then(function(res) {
                     return res.json();
                 }).then(function(details) {
+                    console.log("error");
+                    console.log(details);
                     if (details.error === 'INSTRUMENT_DECLINED') {
                         return actions.restart();
                     }
                 });
             }).then(function() {
-                window.location.replace('http://personal/');
+                // window.location.replace("{{route('complete')}}");
             });
         }
     }).render('.payment-container');
