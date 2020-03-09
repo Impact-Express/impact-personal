@@ -94,28 +94,23 @@
             });
         },
         onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                // alert('Transaction completed by ' + details.payer.name.given_name);
-                return fetch('/capturePayment', {
-                    method: 'post',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        _token: "{{ csrf_token() }}",
-                        orderID: data.orderID
-                    })
-                }).then(function(res) {
-                    return res.json();
-                }).then(function(details) {
-                    console.log("error");
-                    console.log(details);
-                    if (details.error === 'INSTRUMENT_DECLINED') {
-                        return actions.restart();
-                    }
-                });
-            }).then(function() {
-                // window.location.replace("{{route('complete')}}");
+            return fetch('/capturePayment', {
+                method: 'post',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    _token: "{{ csrf_token() }}",
+                    orderID: data.orderID
+                })
+            }).then(function(res) {
+                return res.json();
+            }).then(function(details) {
+                console.log("error");
+                console.log(details);
+                if (details.error === 'INSTRUMENT_DECLINED') {
+                    return actions.restart();
+                }
             });
         }
     }).render('.payment-container');
