@@ -90,10 +90,12 @@
             }).then(function(res) {
                 return res.json();
             }).then(function(data) {
+                console.log("data1",data);
                 return data.id;
             });
         },
         onApprove: function(data, actions) {
+            console.log("data2",data);
             return fetch('/capturePayment', {
                 method: 'post',
                 headers: {
