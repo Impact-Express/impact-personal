@@ -112,6 +112,7 @@
                 if (details.error === "INSTRUMENT_DECLINED") {
                     return actions.restart();
                 }
+                window.location.replace("{{route('complete')}}");
             });
         }
     }).render(".payment-container");

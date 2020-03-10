@@ -19,20 +19,13 @@ class PaymentController extends Controller
         }
 
         $response = PayPalCreateOrder::createOrder(session('bookingData')['price']);
-Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
         session()->put(['paypalOrderIdCheck' => $response->result->id]);
-
 
         return json_encode($response->result);
     }
 
 
-
-
-
-
-    
     public function capturePayment(Request $request) {
 
         $paypalOrderIdCheck = session('paypalOrderIdCheck');
@@ -48,13 +41,10 @@ Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
         if(session('paypalOrderIdCheck') != $response->result->id) {
             return json_encode(['wot u' => 'playin at?']);
         }
-
-Storage::put('file2.txt', json_encode($response->result, JSON_PRETTY_PRINT));
-
-Storage::put('file3.txt', $response->result->id);
-
         
-        return json_encode($response->result, JSON_PRETTY_PRINT);
-        // return redirect('/hermesparcelshop');
+        return json_encode($response->result);
     }
 }
+
+
+// Storage::put('file2.txt', json_encode($response->result, JSON_PRETTY_PRINT));

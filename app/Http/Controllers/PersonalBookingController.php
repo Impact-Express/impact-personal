@@ -19,6 +19,8 @@ class PersonalBookingController extends Controller
     public function stage1() {
 
         session()->forget('bookingData');
+        session()->forget('shipmentDate');
+        session()->forget('paypalOrderIdCheck');
 
         // Get countries for dropdown selector
         $countries = Country::all();
@@ -160,6 +162,18 @@ class PersonalBookingController extends Controller
     }
 
     public function complete() {
+
+        dd(session()->all());
+
+        // Create shipment
+        // Create payment
+        // Mark payment as complete
+ 
+        // Create shipment
+        // Book Hermes
+        // Save label image to database
+        // Send booking to impact via api
+
 
         return view('customer.personal.complete');
     }
