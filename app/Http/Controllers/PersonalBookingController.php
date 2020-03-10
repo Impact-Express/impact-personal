@@ -118,7 +118,6 @@ class PersonalBookingController extends Controller
         }
 
 
-
         $bookingData = session('bookingData');
         $user = auth()->user();
 

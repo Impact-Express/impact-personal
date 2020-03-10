@@ -46,7 +46,7 @@
                     <img class="carrier-logo" src="assets/images/hermes-parcelshop.png" alt="Hermes Logo">
                 </div>
                 <div class="service-name-container">
-                    <p class="service-name">Hermes ParcelShop Pickup <a id="info" href="{{route('locateHermesParcelShop')}}" target="_blank"><i class="fas fa-info-circle"></i></a> <i class="fas fa-print"></i></p>
+                    <p class="service-name">Hermes ParcelShop Pickup <a id="info" href="{{route('locateHermesParcelShop')}}" target="_blank"><i id="info-logo" class="fas fa-info-circle"></i></a> <i id="printer-logo" class="fas fa-print"></i></p>
                     <p class="delivery-estimate">Delivery in 3 to 5 days</p>
                 </div>
                 <div class="price-container">
@@ -67,4 +67,8 @@
 @section('styles')
 @parent
 <link href="{{ asset('css/personal.stage2.css') }}" rel="stylesheet">
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/tooltip.js') }}" defer></script>
 @endsection
