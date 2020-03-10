@@ -2,6 +2,18 @@
 
 return [
 
+    /**
+     * Hermes sandbox config
+     */
+    'hermes_sandpit_username' => env('HERMES_SANDPIT_USERNAME'),
+    'hermes_sandpit_password' => env('HERMES_SANDPIT_PASSWORD'),
+
+    /**
+     * Hermes sandbox config
+     */
+    'paypal_sandbox_client_id' => env('PAYPAL_SANDBOX_CLIENT_ID'),
+    'paypal_sandbox_client_secret' => env('PAYPAL_SANDBOX_CLIENT_SECRET'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

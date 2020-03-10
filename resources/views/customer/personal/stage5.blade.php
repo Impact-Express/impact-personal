@@ -75,14 +75,14 @@
 @endsection
 
 @section('scripts')
-<script src="https://www.paypal.com/sdk/js?client-id=AT6a_xObvt5xnaglu3k4mjKxhQqW2_2S4xUlxKXh0ztGEgWdXFC9PKpKgzlJS_cVRbpPAk7OQMwbWU9Q&currency=GBP"></script>
+<script src="https://www.paypal.com/sdk/js?client-id={{$paypalClientId}}&currency=GBP"></script>
 <script>
     paypal.Buttons({  
         createOrder: function() {
-            return fetch('/createOrder', {
-                method: 'post',
+            return fetch("{{route('paypal-create')}}", {
+                method: "post",
                 headers: {
-                    'content-type': 'application/json'
+                    "content-type": "application/json"
                 },
                 body: JSON.stringify({
                     _token: "{{ csrf_token() }}"
@@ -96,10 +96,10 @@
         },
         onApprove: function(data, actions) {
             console.log("data2",data);
-            return fetch('/capturePayment', {
+            return fetch("{{route('paypal-capture')}}", {
                 method: 'post',
                 headers: {
-                    'content-type': 'application/json'
+                    "content-type": "application/json"
                 },
                 body: JSON.stringify({
                     _token: "{{ csrf_token() }}",
@@ -108,13 +108,12 @@
             }).then(function(res) {
                 return res.json();
             }).then(function(details) {
-                console.log("error");
-                console.log(details);
-                if (details.error === 'INSTRUMENT_DECLINED') {
+                console.log("data3",details);
+                if (details.error === "INSTRUMENT_DECLINED") {
                     return actions.restart();
                 }
             });
         }
-    }).render('.payment-container');
+    }).render(".payment-container");
 </script>
 @endsection

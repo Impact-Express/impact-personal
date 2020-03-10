@@ -28,8 +28,8 @@ class PayPalClient
         /**
          * TODO: Add to .env and add logic to select function based on environment
          */
-        $clientId = 'AT6a_xObvt5xnaglu3k4mjKxhQqW2_2S4xUlxKXh0ztGEgWdXFC9PKpKgzlJS_cVRbpPAk7OQMwbWU9Q';
-        $clientSecret = 'EA-HSaAfVuil6faGKRPed4_JPp-J3_mHoaoHhwgyMgycqq0G-KofBwUQ_FFKOcZdhDxOCQZh4x0oeLMZ';
+        $clientId = config('app.paypal_sandbox_client_id');
+        $clientSecret = config('app.paypal_sandbox_client_secret');
 
         return new SandboxEnvironment($clientId, $clientSecret);
     }

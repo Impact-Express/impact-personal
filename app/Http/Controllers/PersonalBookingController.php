@@ -155,7 +155,9 @@ class PersonalBookingController extends Controller
         session()->put(['shipmentDate' => $shipmentData]);
         // $shipment = Shipment::create($shipmentData);
 
-        return view('customer.personal.stage5', compact('bookingData'));
+        $paypalClientId = config('app.paypal_sandbox_client_id');
+
+        return view('customer.personal.stage5', compact('bookingData', 'paypalClientId'));
     }
 
     public function complete() {
