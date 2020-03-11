@@ -7,6 +7,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Country;
 use App\Models\Shipment;
+use App\Models\Label;
 use App\Services\Pricing;
 use App\Services\Weighting;
 use App\Services\Carriers\HERMES\HermesParcelShopBackToImpact;
@@ -195,9 +196,15 @@ class PersonalBookingController extends Controller
         $hermes->buildRequestBody($shipmentDetailsForHermes);
         $response = $hermes->send();
 
-        dd($response);
 
         // Save label image to database
+        Label::create([
+            'user_id' => auth()->user()->id,
+            'shipment_id' => $shipment->id,
+            'carrier' => 'Hermes',
+            'image' => $response->routingResponseEntries->routingResponseEntry->outboundCarriers->labelImage
+        ]);
+
         // Send booking to impact via api
 
         // Send confirmation email with label
