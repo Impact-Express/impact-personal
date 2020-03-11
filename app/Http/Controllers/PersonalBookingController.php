@@ -153,7 +153,7 @@ class PersonalBookingController extends Controller
         ];
 
 
-        session()->put(['shipmentDate' => $shipmentData]);
+        session()->put(['shipmentData' => $shipmentData]);
         // $shipment = Shipment::create($shipmentData);
 
         $paypalClientId = config('app.paypal_sandbox_client_id');
@@ -164,6 +164,8 @@ class PersonalBookingController extends Controller
     public function complete() {
 
         dd(session()->all());
+        $bookingData = session('bookingData');
+        $shipmentData = session('shipmentData');
 
         // Create shipment
         // Create payment

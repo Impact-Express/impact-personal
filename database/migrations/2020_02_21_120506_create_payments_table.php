@@ -17,6 +17,11 @@ class CreatePaymentsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->string('paypal_order_id');
+            $table->string('paypal_payer_id');
+            $table->string('paypal_payer_given_name');
+            $table->string('paypal_payer_surname');
+            $table->string('paypal_payer_email_address');
+            $table->string('paypal_merchant_id');
             $table->integer('shipment_id');
             $table->decimal('amount');
             $table->timestamps();
