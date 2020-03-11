@@ -15,6 +15,10 @@ class CreateLabelsTable extends Migration
     {
         Schema::create('labels', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->integer('shipment_id');
+            $table->string('carrier');
+            $table->text('image');
             $table->timestamps();
         });
     }

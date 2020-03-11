@@ -40,6 +40,8 @@ Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
         $response = PayPalCapturePayment::getOrder($ppOrderId);
 
+        session()->put(['paypalResponse' => $response->result]);
+
 Storage::put('file2.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
         if (session('paypalOrderIdCheck') != $response->result->id) {

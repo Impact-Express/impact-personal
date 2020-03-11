@@ -12,6 +12,10 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^2.0",
+        "guzzlehttp/guzzle-services": "^1.1",
+        "league/csv": "^9.1",
+        "ext-json": "*",
+        "ext-simplexml": "*",
         "paypal/paypal-checkout-sdk": "1.0.1"
     },
     "require-dev": {

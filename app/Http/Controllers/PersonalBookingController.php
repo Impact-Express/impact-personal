@@ -9,6 +9,7 @@ use App\Models\Country;
 use App\Models\Shipment;
 use App\Services\Pricing;
 use App\Services\Weighting;
+use App\Services\Carriers\HERMES\HermesParcelShopBackToImpact;
 use Auth;
 
 // for debug only
@@ -154,7 +155,6 @@ class PersonalBookingController extends Controller
 
 
         session()->put(['shipmentData' => $shipmentData]);
-        // $shipment = Shipment::create($shipmentData);
 
         $paypalClientId = config('app.paypal_sandbox_client_id');
 
@@ -163,19 +163,44 @@ class PersonalBookingController extends Controller
 
     public function complete() {
 
-        dd(session()->all());
+        // dd(session()->all());
         $bookingData = session('bookingData');
         $shipmentData = session('shipmentData');
+        $paypalResponse = session('paypalResponse');
+
+
+        if ($paypalResponse->status !== 'APPROVED') {
+            dd('declined');
+        }
 
         // Create shipment
+        $shipment = Shipment::create($shipmentData);
         // Create payment
-        // Mark payment as complete
+        $payment = Payment::create([
+            'user_id' => auth()->user()->id,
+            'status' => $paypalResponse->status,
+            'paypal_order_id' => $paypalResponse->id,
+            'paypal_payer_id' => $paypalResponse->payer->payer_id,
+            'paypal_payer_given_name' => $paypalResponse->payer->name->given_name,
+            'paypal_payer_surname' => $paypalResponse->payer->name->surname,
+            'paypal_payer_email_address' => $paypalResponse->payer->email_address,
+            'paypal_merchant_id' => $paypalResponse->purchase_units[0]->payee->merchant_id,
+            'shipment_id' => $shipment->id,
+            'amount' => $paypalResponse->purchase_units[0]->amount->value,
+        ]);
  
-        // Create shipment
         // Book Hermes
+        $shipmentDetailsForHermes = [];
+        $hermes = new HermesParcelShopBackToImpact();
+        $hermes->buildRequestBody($shipmentDetailsForHermes);
+        $response = $hermes->send();
+
+        dd($response);
+
         // Save label image to database
         // Send booking to impact via api
 
+        // Send confirmation email with label
 
         return view('customer.personal.complete');
     }

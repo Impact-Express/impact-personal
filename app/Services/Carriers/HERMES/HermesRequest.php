@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Carriers\HERMES;
+namespace App\Services\Carriers\HERMES;
 
 use Illuminate\Database\Eloquent\Model;
 use GuzzleHttp\Client;

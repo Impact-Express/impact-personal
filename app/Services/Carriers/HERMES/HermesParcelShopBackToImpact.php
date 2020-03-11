@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Carriers\HERMES;
+namespace App\Services\Carriers\HERMES;
 
 use Carbon\Carbon;
 
-class HermesRouteDeliveryCreatePreadviceAndLabel extends HermesRequest
+class HermesParcelShopBackToImpact extends HermesRequest
 {
     public function __construct() {
         $this->service = 'ROUTE_DELIVERY_CREATE_PREADVICE_AND_LABEL';
