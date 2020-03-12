@@ -14,6 +14,13 @@ return [
     'paypal_sandbox_client_id' => env('PAYPAL_SANDBOX_CLIENT_ID'),
     'paypal_sandbox_client_secret' => env('PAYPAL_SANDBOX_CLIENT_SECRET'),
 
+    /**
+     * Impact API config
+     */
+    'impact_username' => env('IMPACT_USERNAME'),
+    'impact_account_number' => env('IMPACT_ACCOUNT_NUMBER'),
+    'impact_api_token' => env('IMPACT_API_TOKEN'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name

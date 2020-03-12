@@ -10,6 +10,7 @@ use App\Models\Shipment;
 use App\Models\Label;
 use App\Services\Pricing;
 use App\Services\Weighting;
+use App\Services\ImpactAPI\ImpactUploadManifest;
 use App\Services\Carriers\HERMES\HermesParcelShopBackToImpact;
 use Auth;
 
@@ -196,7 +197,6 @@ class PersonalBookingController extends Controller
         $hermes->buildRequestBody($shipmentDetailsForHermes);
         $response = $hermes->send();
 
-
         // Save label image to database
         Label::create([
             'user_id' => auth()->user()->id,
@@ -206,6 +206,11 @@ class PersonalBookingController extends Controller
         ]);
 
         // Send booking to impact via api
+        $impact = new ImpactUploadManifest();
+        $impact->buildRequestBody();
+        $response = $impact->send();
+        
+dd('here',$response);
 
         // Send confirmation email with label
 
