@@ -11,14 +11,16 @@ class BookingConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $name;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($customerName)
     {
-        //
+        $this->name = $customerName;
     }
 
     /**
@@ -28,6 +30,6 @@ class BookingConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from("orders@impactexpress.co.uk")->view('emails.bookingConfirmation');
     }
 }
