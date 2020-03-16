@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookingConfirmation;
 use App\Models\Country;
 use App\Models\Shipment;
 use App\Models\Label;
@@ -155,7 +157,6 @@ class PersonalBookingController extends Controller
             'service_code' => 'exp'
         ];
 
-
         session()->put(['shipmentData' => $shipmentData]);
 
         $paypalClientId = config('app.paypal_sandbox_client_id');
@@ -169,7 +170,6 @@ class PersonalBookingController extends Controller
         $bookingData = session('bookingData');
         $shipmentData = session('shipmentData');
         $paypalResponse = session('paypalResponse');
-
 
         if ($paypalResponse->status !== 'APPROVED') {
             dd('declined');
@@ -209,10 +209,12 @@ class PersonalBookingController extends Controller
         $impact = new ImpactUploadManifest();
         $impact->buildRequestBody();
         $response = $impact->send();
-        
-dd('here',$response);
+
+        // dd($response);
 
         // Send confirmation email with label
+        $customerName = auth()->user()->firstName.' '.auth()->user()->lastName;
+        Mail::to(auth()->user()->email)->send(new BookingConfirmation($customerName));
 
         return view('customer.personal.complete');
     }
