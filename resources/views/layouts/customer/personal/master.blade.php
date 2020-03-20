@@ -58,6 +58,17 @@
     </ul>
 </nav>
     @yield('content')
+<!-- #main-footer -->
+<!-- <footer id="main-footer">
+    
+    
+
+</footer> -->
+
+
+
+
+
 @endsection
 
 @section('styles')

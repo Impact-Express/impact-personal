@@ -190,6 +190,7 @@ a:hover {
     display:none;
 }
 
+// Begin media query
 @media (min-width: 768px) {
     
     .mobile-nav {
@@ -204,8 +205,9 @@ a:hover {
 
 @media (min-width: 992px) {
     body {
-        background:#2D3332;
-        /* background: #e5e5e5; */
+        // background:#2D3332;
+        //  background: #e5e5e5;
+        background: black;
     }
     .container {
         max-width: 1500px;
@@ -345,6 +347,7 @@ a:hover {
     }
     .form-rows {
         list-style-type: none;
+        margin-block-end: 0;
     }
     .form-row {
         display: flex;
@@ -442,4 +445,19 @@ a:hover {
     .terms-text {
         padding-top: 3px;
     }
+
+    // Main Footer
+    #main-footer {
+        margin-top: 30px;
+        background:#2D3332;
+        height:300px;
+        display: flex;
+    }
+    #main-footer-content {
+
+    }
+
+
+
+// End media query
 }

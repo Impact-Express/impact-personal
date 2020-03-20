@@ -230,8 +230,7 @@ a:hover {
 
 @media (min-width: 992px) {
   body {
-    background: #2D3332;
-    /* background: #e5e5e5; */
+    background: black;
   }
 
   .container {
@@ -393,6 +392,8 @@ a:hover {
 
   .form-rows {
     list-style-type: none;
+    -webkit-margin-after: 0;
+            margin-block-end: 0;
   }
 
   .form-row {
@@ -500,6 +501,13 @@ a:hover {
 
   .terms-text {
     padding-top: 3px;
+  }
+
+  #main-footer {
+    margin-top: 30px;
+    background: #2D3332;
+    height: 300px;
+    display: flex;
   }
 }
 

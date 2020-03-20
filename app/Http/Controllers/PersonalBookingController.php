@@ -195,14 +195,17 @@ class PersonalBookingController extends Controller
         $shipmentDetailsForHermes = [];
         $hermes = new HermesParcelShopBackToImpact();
         $hermes->buildRequestBody($shipmentDetailsForHermes);
-        $response = $hermes->send();
+        // $response = $hermes->send();
+
+        $fakeLabel = $hermes->getFakeLabel();
 
         // Save label image to database
         Label::create([
             'user_id' => auth()->user()->id,
             'shipment_id' => $shipment->id,
             'carrier' => 'Hermes',
-            'image' => $response->routingResponseEntries->routingResponseEntry->outboundCarriers->labelImage
+            // 'image' => $response->routingResponseEntries->routingResponseEntry->outboundCarriers->labelImage
+            'image' => $fakeLabel,
         ]);
 
         // Send booking to impact via api
