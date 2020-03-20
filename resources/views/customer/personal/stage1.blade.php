@@ -78,18 +78,23 @@
                                 <div class="form-input weight-input">
                                     <label for="weight">WEIGHT:</label>
                                     <input class="@error('weight') is-invalid @enderror" id="weight" name="weight" type="text" value="10">
+                                    <div class="unit-tag">
+                                        <span class="unit-text">kg</span>
+                                    </div>
+                                    @error('weight')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                @error('weight')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
-                            
                             <div class="row-2-right">
                                 <div class="form-input dim-input length-input">
                                     <label for="length">LENGTH:</label>
                                     <input class="@error('length') is-invalid @enderror" id="length" name="length" type="text" value="10">
+                                    <div class="unit-tag">
+                                        <span class="unit-text">cm</span>
+                                    </div>
                                     @error('length')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -99,6 +104,9 @@
                                 <div class="form-input dim-input width-input">
                                     <label for="width">WIDTH:</label>
                                     <input class="@error('width') is-invalid @enderror" id="width" name="width" type="text" value="10">
+                                    <div class="unit-tag">
+                                        <span class="unit-text">cm</span>
+                                    </div>
                                     @error('width')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -108,6 +116,9 @@
                                 <div class="form-input dim-input height-input">
                                     <label for="height">HEIGHT:</label>
                                     <input class="@error('height') is-invalid @enderror" id="height" name="height" type="text" value="10">
+                                    <div class="unit-tag">
+                                        <span class="unit-text">cm</span>
+                                    </div>
                                     @error('height')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
