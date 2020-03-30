@@ -47,6 +47,12 @@ class PersonalBookingController extends Controller
             'width' => 'required|numeric',
             'height' => 'required|numeric',
             'terms' => 'required'
+        ],[
+            'weight.numeric' => 'The weight must be a number.',
+            'length.numeric' => 'The weight must be a number.',
+            'width.numeric' => 'The weight must be a number.',
+            'height.numeric' => 'The weight must be a number.',
+            'terms.required' => 'Please read and accept out terms and conditions.',
         ]);
 
         if ($validator->fails()) {
@@ -177,6 +183,7 @@ class PersonalBookingController extends Controller
 
         // Create shipment
         $shipment = Shipment::create($shipmentData);
+        
         // Create payment
         $payment = Payment::create([
             'user_id' => auth()->user()->id,
@@ -203,7 +210,7 @@ class PersonalBookingController extends Controller
         Label::create([
             'user_id' => auth()->user()->id,
             'shipment_id' => $shipment->id,
-            'carrier' => 'Hermes',
+            'carrier' => 'Hermes', // Maaaaagic nuuuumbers, blah blah blah blah suuuuck it (to the tune of Magic Moments)
             // 'image' => $response->routingResponseEntries->routingResponseEntry->outboundCarriers->labelImage
             'image' => $fakeLabel,
         ]);
