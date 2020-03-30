@@ -21,6 +21,9 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/5', 'PersonalBookingController@stage5')->name('stage5');
 
     Route::get('/confirmation', 'PersonalBookingController@complete')->name('complete');
+
+
+    Route::get('/account', 'AccountsController@index')->name('account');
 });
 
 

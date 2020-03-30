@@ -12,4 +12,11 @@ class Shipment extends Model
     public static function generateReference() {
         return 'IE'.rand(10,99).rand(10,99).rand(10,99).rand(10,99);
     }
+
+    /**
+     * Relationships
+     */
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -45,4 +45,12 @@ class User extends Authenticatable
     public function getFullName() {
         return $this->title.' '.$this->firstName.' '.$this->lastName;
     }
+
+
+    /**
+     * Relationships
+     */
+    public function shipments() {
+        return $this->hasMany(Shipment::class);
+    }
 }
