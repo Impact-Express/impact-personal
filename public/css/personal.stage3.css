@@ -85,10 +85,6 @@ input[type=email] {
   margin-bottom: 30px;
 }
 
-.signup-island-container h3 {
-  margin-left: 100px;
-}
-
 .signup-form {
   display: flex;
   margin-left: 100px;

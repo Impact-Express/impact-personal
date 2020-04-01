@@ -68,7 +68,7 @@
                         <ul class="form-rows">
                             <li class="form-row row-1">
                                 <div class="form-input title-input">
-                                    <input class="@error('title') is-invalid @enderror" type="text" name="title">
+                                    <input class="@error('title') is-invalid @enderror" type="text" name="title" placeholder="TITLE...">
                                 </div>
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -138,8 +138,8 @@
                                 <label class="cb-container">
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
-                                    Terms and conditions blah blah blah
                                 </label>
+                                <span class="bold terms-text">I agree to the terms and conditions which can be found <a href="#">here</a>.</span>
                             </li>
                             <li class="form-row row-6">
                                 <input class="cont bold button-black" type="submit" value="REGISTER">
