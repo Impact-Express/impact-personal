@@ -68,8 +68,18 @@
                         <ul class="form-rows">
                             <li class="form-row row-1">
                                 <div class="form-input title-input">
-                                    <input class="@error('title') is-invalid @enderror" type="text" name="title" placeholder="TITLE...">
+                                    <select style="color:grey;" class="bg-white @error('title') is-invalid @enderror" type="text" name="title">
+                                        <option class="title-option" value="">TITLE...</option>
+                                        <option class="title-option" value="Mr">Mr</option>
+                                        <option class="title-option" value="Miss">Miss</option>
+                                        <option class="title-option" value="Mrs">Mrs</option>
+                                    </select>
                                 </div>
+                                <style>
+                                    .title-option {
+                                        color: black;
+                                    }
+                                </style>
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
