@@ -15,6 +15,7 @@ use App\Services\Weighting;
 use App\Services\ImpactAPI\ImpactUploadManifest;
 use App\Services\Carriers\HERMES\HermesParcelShopBackToImpact;
 use Auth;
+use App\Services\Carriers\HERMES\HermesShipmentDetails;
 
 // for debug only
 use App\Models\Payment;
@@ -92,6 +93,10 @@ class PersonalBookingController extends Controller
 
         $bookingData = session('bookingData');
 
+        if (!$bookingData) {
+            return redirect(route('stage1'));
+        }
+
         if (Auth::check()) {
             return redirect(route('stage4'));
         }
@@ -100,12 +105,12 @@ class PersonalBookingController extends Controller
     }
 
     public function stage4() {
-        
-        if (session('bookingData') === null) {
-            dd('blob');
-        }
 
         $bookingData = session('bookingData');
+
+        if (!$bookingData) {
+            return redirect(route('stage1'));
+        }
 
         return view('customer.personal.stage4',compact('bookingData'));
     }
@@ -177,6 +182,8 @@ class PersonalBookingController extends Controller
         $shipmentData = session('shipmentData');
         $paypalResponse = session('paypalResponse');
 
+// dd($bookingData, $shipmentData, $paypalResponse);
+
         if ($paypalResponse->status !== 'APPROVED') {
             dd('declined');
         }
@@ -199,25 +206,45 @@ class PersonalBookingController extends Controller
         ]);
  
         // Book Hermes
-        $shipmentDetailsForHermes = [];
-        $hermes = new HermesParcelShopBackToImpact();
-        $hermes->buildRequestBody($shipmentDetailsForHermes);
-        // $response = $hermes->send();
+        $hermesShipmentDetails = new HermesShipmentDetails([
+            'lastName' => 'Impact Express Ltd',
+            'houseNo' => 13,
+            'streetName' => 'Blackthorne Crescent',
+            'city' => 'Slough',
+            'countryCode' => 'GB',
+            'postCode' => 'SL3 0QR',
+            'workPhoneNo' => '01753683700',
+            'ref' => $shipment->shipment_reference,
+            'weight',
+            'length',
+            'width',
+            'depth',
+            'girth',
+            'combinedDimention',
+            'volume',
+            'currency',
+            'value',
+            
+        ]);
 
-        $fakeLabel = $hermes->getFakeLabel();
+        $hermes = new HermesParcelShopBackToImpact();
+        $hermes->buildRequestBody($hermesShipmentDetails);
+        $hermesResponse = $hermes->send();
+
+        // $fakeLabel = $hermes->getFakeLabel();
 
         // Save label image to database
         Label::create([
             'user_id' => auth()->user()->id,
             'shipment_id' => $shipment->id,
             'carrier' => 'Hermes', // Maaaaagic nuuuumbers, blah blah blah blah suuuuck it (to the tune of Magic Moments)
-            // 'image' => $response->routingResponseEntries->routingResponseEntry->outboundCarriers->labelImage
-            'image' => $fakeLabel,
+            'image' => $hermesResponse->routingResponseEntries->routingResponseEntry->outboundCarriers->labelImage
+            // 'image' => $fakeLabel,
         ]);
 
         // Send booking to impact via api
         $impact = new ImpactUploadManifest();
-        $impact->buildRequestBody();
+        $impact->buildRequestBody($shipmentData);
         $response = $impact->send();
 
         // dd($response);

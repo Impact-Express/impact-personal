@@ -25,7 +25,7 @@ abstract class ImpactRequest
 		$this->service = 'UPLOAD_MANIFEST';
 	}
 
-	abstract public function buildRequestBody();
+	abstract public function buildRequestBody($shipmentData);
 
 	public function send()
 	{
