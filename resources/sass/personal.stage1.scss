@@ -1,96 +1,140 @@
-.form-input {
-    position: relative;
-    display: flex;
-}
-.unit-tag {
-    position: absolute;
-    /* background: red; */
-    right: 10px;
-    bottom: 12px;
-}
-.unit-text {
-    font-size: 25px;
-}
-.form-input input {
-    font-size: 25px;
+.quote-stage-1 {
+    padding:0 5px;
 }
 #to {
-    font-size: 25px;
     background: white;
-}
-.parcel-form-container {
-    margin: 100px 100px 0 100px;
-    padding: 0 5%;
-}
-.row-1 {
-    display: flex;
-    justify-content: space-between;
-    // padding: 0 5%;
-}
-.row-1 input {
-    // width: 350px;
-    width: 100%;
-    margin: 10px 30px 10px 0;
-    padding-left: 10px;
-}
-.row-1 select {
-    // width: 350px;
-    width: 100%;
-    margin: 10px 30px 10px 0;
-    padding-left: 10px;
-}
-.row-1 .form-input {
-    width: 28%;
-    margin: 10px 30px 10px 0;
-}
-.row-2 {
-    display: flex;
-    margin-top: 50px;
-    justify-content: space-between;
-}
-.row-2 input {
-    width: 100%;
-    margin-top: 10px;
-    padding-left: 10px;
 }
 
-.row-2-right {
-    display: flex;
+@media (max-width: 991px) {
+    .form-rows {
+        padding-left: 0;
+    }
+    .form-input input {
+        margin-top:5px;
+        margin-bottom:5px;
+    }
+    .row-3 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .business-link {
+        background: white;
+        padding: 10px;
+        border-radius: 30px;
+        line-height: 3;
+    }
+    .row-5 input {
+        color: white;
+        background: black;
+        border: none;
+        padding: 13px 20px 10px 20px;
+        margin-bottom: 50px;
+        margin-top: 20px;
+        letter-spacing: 1px;
+    }
+    
+    .terms-text {
+        margin-left: 35px;
+        line-height: 23px;
+    }
 }
-.quantity-input {
-    margin-right: 30px;
-}
-.weight-input {
-    margin-right: 80px;
-}
-.dim-input {
-    margin-right: 30px;
-}
-.row-3 {
-    margin-top: 50px;
-}
-.row-3 span {
-    padding-top: 20px;
-}
-.row-4 {
-    margin-top: 50px;
-}
-.row-5 {
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-}
-.row-5 input {
-    color: white;
-    background: black;
-    border: none;
-    padding: 20px 50px 20px 50px;
-    margin-bottom: 50px;
-    letter-spacing: 1px;
-    cursor:pointer;
-}
-.business-link {
-    background: white;
-    padding: 20px;
-    border-radius: 30px;
+
+@media (min-width: 992px) {
+    .form-input {
+        position: relative;
+        display: flex;
+    }
+    .unit-tag {
+        position: absolute;
+        right: 10px;
+        bottom: 12px;
+    }
+    .unit-text {
+        font-size: 25px;
+    }
+    .form-input input {
+        font-size: 25px;
+    }
+    #to {
+        font-size: 25px;
+    }
+    .row-1 {
+        display: flex;
+        justify-content: space-between;
+        // padding: 0 5%;
+    }
+    .row-1 input {
+        // width: 350px;
+        width: 100%;
+        margin: 10px 30px 10px 0;
+        padding-left: 10px;
+    }
+    .row-1 select {
+        // width: 350px;
+        width: 100%;
+        margin: 10px 30px 10px 0;
+        padding-left: 10px;
+    }
+    .row-1 .form-input {
+        width: 28%;
+        margin: 10px 30px 10px 0;
+    }
+    .row-2 {
+        display: flex;
+        margin-top: 50px;
+        justify-content: space-between;
+    }
+    .row-2 input {
+        width: 100%;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+    
+    .row-2-right {
+        display: flex;
+    }
+    .quantity-input {
+        margin-right: 30px;
+    }
+    .weight-input {
+        margin-right: 80px;
+    }
+    .dim-input {
+        margin-right: 30px;
+    }
+    .row-3 {
+        margin-top: 50px;
+    }
+    .row-3 span {
+        padding-top: 20px;
+    }
+    .row-4 {
+        margin-top: 50px;
+    }
+    .row-5 {
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+    .row-5 input {
+        padding: 20px 50px 20px 50px;
+        letter-spacing: 1px;
+        cursor:pointer;
+        color: white;
+        background: black;
+        border: none;
+        margin-bottom: 50px;
+        margin-top: 20px;
+        
+    }
+    .business-link {
+        padding: 20px;
+        background: white;
+        border-radius: 30px;
+    }
+    
+    .parcel-form-container {
+        margin: 100px 100px 0 100px;
+        padding: 0 5%;
+    }
 }

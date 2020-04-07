@@ -129,7 +129,7 @@
                             
                         </li>
                         <li class="form-row row-3">
-                            <span class="bold"><i class="fas fa-plus"></i>&nbsp;WANT TO SEND ADDITIONAL PACKAGES:</span>&nbsp;&nbsp;<a class="business-link bold" href="#">SET UP A BUSINESS ACCOUNT</a>
+                            <span class="bold"><i class="fas fa-plus"></i>&nbsp;WANT TO SEND ADDITIONAL PACKAGES? </span>&nbsp;&nbsp;<br><a class="business-link bold" href="#">GET A BUSINESS ACCOUNT</a>
                         </li>
                         <li class="form-row row-4">
                             <label class="cb-container">
