@@ -42,7 +42,7 @@
                 <div class="left-islands">
                     <div class="payment-island bg-yellow">
                         <div class="payment-container bg-white">
-                            
+                            Blah blah payment blah
                         </div>
                     </div>
                 </div>

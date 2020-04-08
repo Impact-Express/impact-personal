@@ -4,67 +4,81 @@ input[type=text] {
 input[type=email] {
     padding-left: 10px;
 }
-.island-container {
-    width: 100%;
-    justify-content: space-between;
-    display: flex;
+@media (max-width: 991px) {
+    .quote-island {
+        display: none;
+    }
+    .payment-island {
+        padding: 20px;
+        margin-top: 20px;
+    }
+    .payment-container {
+        padding: 10px;
+    }
 }
-.left-islands {
-    width: 70%;
-}
-.right-islands {
-    width: 28%;
-}
-.quote-island {
-    width: 100%;
-    background: #e2e2e2;
-    position: relative;
-    z-index: 0;
-    display: flex;
-    justify-content: center;
-}
-.logo-circle {
-    position: absolute;
-    z-index: 2;
-}
-.quote-body {
-    height: 500px;
-    width: 100%;
-    position: absolute;
-    top: 100px;
-    z-index: 1;
-}
-.quote-stage-5 {
-    padding-bottom: 30px;
-    margin-bottom: 30px;
-}
-form {
-    width: 100%;
-}
-.form-rows {
-    padding-left: 0px;
-    width: 100%;
-}
-.form-row {
-    margin-top: 25px;
-}
-.form-input {
-    width: 100%;
-}
-.error-container {
-    margin-left: 10%;
-}
-.quote-content {
-    margin-top: 120px;
-    padding: 50px;
-}
-.payment-island {
-    width: 100%;
-    display:flex;
-    justify-content: center;
-    padding: 4%;
-}
-.payment-container {
-    width: 70%;
-    padding: 15px;
+@media (min-width: 992px) {
+    .island-container {
+        width: 100%;
+        justify-content: space-between;
+        display: flex;
+    }
+    .left-islands {
+        width: 70%;
+    }
+    .right-islands {
+        width: 28%;
+    }
+    .quote-island {
+        width: 100%;
+        background: #e2e2e2;
+        position: relative;
+        z-index: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .logo-circle {
+        position: absolute;
+        z-index: 2;
+    }
+    .quote-body {
+        height: 500px;
+        width: 100%;
+        position: absolute;
+        top: 100px;
+        z-index: 1;
+    }
+    .quote-stage-5 {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
+    form {
+        width: 100%;
+    }
+    .form-rows {
+        padding-left: 0px;
+        width: 100%;
+    }
+    .form-row {
+        margin-top: 25px;
+    }
+    .form-input {
+        width: 100%;
+    }
+    .error-container {
+        margin-left: 10%;
+    }
+    .quote-content {
+        margin-top: 120px;
+        padding: 50px;
+    }
+    .payment-island {
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        padding: 4%;
+    }
+    .payment-container {
+        width: 70%;
+        padding: 15px;
+    }
 }
