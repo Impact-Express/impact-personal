@@ -1,29 +1,63 @@
-.quote-stage-2 {
-    padding-bottom: 30px;
-    margin-bottom: 30px;
+
+@media (max-width: 991px) {
+    .quote-stage-2 {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
+    .quote-container {
+        width: 100%;
+        padding: 30px 5%;
+        margin-bottom: 30px;
+    }
+    .quote-box {
+        background-color: whitesmoke;
+        // display: flex;
+        // justify-content: space-between;
+        // align-items: center;
+        padding: 2% 4%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .carrier-logo {
+        height: 100px;
+    }
+    .service-name {
+        font-size: 20px;
+    }
+    .delivery-estimate {
+        font-size: 15px;
+    }
+    .price {
+        font-size: 20px;
+    }
 }
-.quote-container {
-    width: 100%;
-    padding: 100px 15%;
-    margin-bottom: 30px;
-}
-.quote-box {
-    background-color: whitesmoke;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2% 4%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.carrier-logo {
-    height: 100px;
-}
-.service-name {
-    font-size: 20px;
-}
-.delivery-estimate {
-    font-size: 15px;
-}
-.price {
-    font-size: 20px;
+@media (min-width: 992px) {
+    .quote-stage-2 {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
+    .quote-container {
+        width: 100%;
+        padding: 100px 15%;
+        margin-bottom: 30px;
+    }
+    .quote-box {
+        background-color: whitesmoke;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2% 4%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .carrier-logo {
+        height: 100px;
+    }
+    .service-name {
+        font-size: 20px;
+    }
+    .delivery-estimate {
+        font-size: 15px;
+    }
+    .price {
+        font-size: 20px;
+    }
 }
