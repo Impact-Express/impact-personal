@@ -11,9 +11,22 @@
     padding-left: 0;
   }
 
+  .form-input {
+    margin-bottom: 20px;
+  }
+
   .form-input input {
     margin-top: 5px;
     margin-bottom: 5px;
+    font-size: 25px;
+    width: 100%;
+  }
+
+  .form-input select {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 25px;
+    width: 100%;
   }
 
   .row-3 {

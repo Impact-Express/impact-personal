@@ -32,7 +32,7 @@
             </div>
             <div class="stage-text">
                 <p>PACKAGE DETAILS</p>
-                <p>PRICE & DELIVETY<br>OPTIONS</p>
+                <p>PRICE & DELIVERY<br>OPTIONS</p>
                 <p>SETUP ACCOUNT<br>OR LOGIN</p>
                 <p>ADDRESS DETAILS</p>
                 <p>PAYMENT OPTIONS</p>
