@@ -4,11 +4,12 @@
     "/css/personal.master.css": "/css/personal.master.css",
     "/css/personal.stage1.css": "/css/personal.stage1.css",
     "/css/personal.stage2.css": "/css/personal.stage2.css",
+    "/css/personal.stage3.css": "/css/personal.stage3.css",
     "/css/personal.stage4.css": "/css/personal.stage4.css",
     "/css/personal.stage5.css": "/css/personal.stage5.css",
     "/css/hermesparcelshop.css": "/css/hermesparcelshop.css",
     "/css/register.css": "/css/register.css",
+    "/css/login.css": "/css/login.css",
     "/css/complete.css": "/css/complete.css",
-    "/js/tooltip.js": "/js/tooltip.js",
-    "/css/personal.stage3.css": "/css/personal.stage3.css"
+    "/js/tooltip.js": "/js/tooltip.js"
 }

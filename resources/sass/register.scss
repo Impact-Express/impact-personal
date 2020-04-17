@@ -4,7 +4,9 @@
 }
 .register-form-container {
     width: 80%;
-    margin-left: 15%;
+    // margin-left: 15%;
+    margin-bottom: 30px;
+
 }
 input[type=text] {
     padding-left: 10px;
@@ -12,6 +14,7 @@ input[type=text] {
 input[type=email] {
     padding-left: 10px;
 }
+
 .island-container {
     width: 100%;
     justify-content: space-between;

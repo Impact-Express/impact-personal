@@ -22,4 +22,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/personal.stage5.scss', 'public/css')
     .sass('resources/sass/hermesparcelshop.scss', 'public/css')
     .sass('resources/sass/register.scss', 'public/css')
+    .sass('resources/sass/login.scss', 'public/css')
     .sass('resources/sass/complete.scss', 'public/css');
