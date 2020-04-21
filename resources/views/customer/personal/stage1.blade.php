@@ -73,7 +73,6 @@
                             </div>
                         </li>
                         <li class="form-row row-2">
-                            
                             <div class="row-2-left">
                                 <div class="form-input weight-input">
                                     <label for="weight">WEIGHT:</label>
@@ -126,7 +125,6 @@
                                     @enderror
                                 </div>
                             </div>
-                            
                         </li>
                         <li class="form-row row-3">
                             <span class="bold"><i class="fas fa-plus"></i>&nbsp;WANT TO SEND ADDITIONAL PACKAGES? </span>&nbsp;&nbsp;<br><a class="business-link bold" href="#">GET A BUSINESS ACCOUNT</a>
