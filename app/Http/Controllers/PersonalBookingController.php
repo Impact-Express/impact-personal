@@ -142,7 +142,7 @@ class PersonalBookingController extends Controller
         $shipmentData = [
             'user_id' => $user->id,
             'shipment_reference' => Shipment::generateReference(),
-            'price' => $bookingData['price'],
+            'price' => round($bookingData['price']*100,0),
             'shipper' => 'Impact Express Wholesale Ltd',
             'shipper_address_1' =>  'Unit 13 Blackthorn Crescent',
             'shipper_address_2' => 'Poyle',
@@ -161,10 +161,13 @@ class PersonalBookingController extends Controller
             'consignee_contact_name' => $request['consignee-name'],
             'consignee_contact_tel' => $request['consignee-phone'],
             'contents' => $request['contents-description'],
-            'value' => $request['contents-value'],
+            'value' => round($request['contents-value']*100,0),
             'pieces' => 1,
-            'dead_weight' => $bookingData['weight'],
-            'volumetric_weight' => Weighting::calculateVolumetricWeight($bookingData['length'], $bookingData['width'], $bookingData['height']),
+            'length' => $bookingData['length'],
+            'width' => $bookingData['width'],
+            'height' => $bookingData['height'],
+            'dead_weight' => round($bookingData['weight']*1000, 0),
+            'volumetric_weight' => round(Weighting::calculateVolumetricWeight($bookingData['length'], $bookingData['width'], $bookingData['height'])*1000, 0),
             'service_code' => 'exp'
         ];
 
@@ -215,31 +218,30 @@ class PersonalBookingController extends Controller
             'postCode' => 'SL3 0QR',
             'workPhoneNo' => '01753683700',
             'ref' => $shipment->shipment_reference,
-            'weight',
-            'length',
-            'width',
-            'depth',
-            'girth',
-            'combinedDimention',
-            'volume',
-            'currency',
-            'value',
-            
+            'weight' => $shipment->dead_weight, 
+            'length' => $shipment->length,
+            'width' => $shipment->width,
+            'depth' => $shipment->height,
+            'girth' => 0,
+            'combinedDimention' => 0,
+            'volume' => 0,
+            'currency' => 'GBP',
+            'value' => $shipment->value,
         ]);
 
         $hermes = new HermesParcelShopBackToImpact();
         $hermes->buildRequestBody($hermesShipmentDetails);
         $hermesResponse = $hermes->send();
 
-        // $fakeLabel = $hermes->getFakeLabel();
+        $fakeLabel = $hermes->getFakeLabel();
 
         // Save label image to database
         Label::create([
             'user_id' => auth()->user()->id,
             'shipment_id' => $shipment->id,
             'carrier' => 'Hermes', // Maaaaagic nuuuumbers, blah blah blah blah suuuuck it (to the tune of Magic Moments)
-            'image' => $hermesResponse->routingResponseEntries->routingResponseEntry->outboundCarriers->labelImage
-            // 'image' => $fakeLabel,
+            // 'image' => $hermesResponse->routingResponseEntries->routingResponseEntry->outboundCarriers->labelImage
+            'image' => $fakeLabel,
         ]);
 
         // Send booking to impact via api

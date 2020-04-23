@@ -35,7 +35,7 @@ class HermesParcelShopBackToImpact extends HermesRequest
                             <countryCode>GB</countryCode>
                             <postCode>SL3 0QR</postCode>
                         </address>
-                        <workPhoneNo>01753683700</homePhoneNo>
+                        <homePhoneNo>01753683700</homePhoneNo>
                         <customerReference1>$details->ref</customerReference1>
                     </customer>
                     <parcel>
@@ -48,8 +48,6 @@ class HermesParcelShopBackToImpact extends HermesRequest
                         <volume>1000</volume>
                         <currency>GBP</currency>
                         <value>198</value>
-                        <numberOfParts>1</numberOfParts>
-                        <numberOfItems>1</numberOfItems>
                         <description>Parcel Desc</description>
                         <originOfParcel>GB</originOfParcel>
                     </parcel>
