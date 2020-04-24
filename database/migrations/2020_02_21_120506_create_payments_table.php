@@ -24,7 +24,7 @@ class CreatePaymentsTable extends Migration
             $table->string('paypal_payer_email_address');
             $table->string('paypal_merchant_id');
             $table->integer('shipment_id');
-            $table->decimal('amount');
+            $table->integer('amount');
             $table->timestamps();
         });
     }

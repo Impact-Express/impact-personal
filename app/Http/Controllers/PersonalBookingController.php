@@ -205,7 +205,7 @@ class PersonalBookingController extends Controller
             'paypal_payer_email_address' => $paypalResponse->payer->email_address,
             'paypal_merchant_id' => $paypalResponse->purchase_units[0]->payee->merchant_id,
             'shipment_id' => $shipment->id,
-            'amount' => $paypalResponse->purchase_units[0]->amount->value,
+            'amount' => round($paypalResponse->purchase_units[0]->amount->value*100,0),
         ]);
  
         // Book Hermes
