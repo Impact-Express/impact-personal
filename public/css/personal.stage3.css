@@ -99,6 +99,20 @@ input[type=email] {
     z-index: 1;
   }
 
+  .quote-content {
+    padding: 50px;
+    padding-top: 120px;
+    height: 100%;
+  }
+
+  .inner-quote-content {
+    height: 100%;
+    padding: 10px;
+    padding-top: 30px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
   .quote-stage-3 {
     padding-bottom: 30px;
     margin-bottom: 30px;
@@ -204,11 +218,6 @@ input[type=email] {
 
   .error-container {
     margin-left: 10%;
-  }
-
-  .quote-content {
-    margin-top: 120px;
-    padding: 50px;
   }
 }
 

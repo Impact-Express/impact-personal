@@ -5,7 +5,7 @@
         <div class="container">
             <div class="quote-stage-5 bg-yellow">
                 <div class="arrow-down"></div>
-                <h1 class="tc tc-white">personal <span class="bold">quote</span></h1>
+                <h1 class="tc tc-white"><span class="bold">Send a Parcel</span></h1>
                 <p class="tc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                 </p>
@@ -53,13 +53,16 @@
                         </div>
                         <div class="quote-body bg-white">
                             <div class="quote-content">
-                                <div><span class="bold">From: </span>{{$bookingData['fromCountry']}}</div>
-                                <div><span class="bold">To: </span>{{$bookingData['toCountry']}}</div>
-                                <div><span class="bold">Weight: </span>{{$bookingData['weight']}}</div>
-                                <div><span class="bold">Length: </span>{{$bookingData['length']}}</div>
-                                <div><span class="bold">Width: </span>{{$bookingData['width']}}</div>
-                                <div><span class="bold">Height: </span>{{$bookingData['height']}}</div>
-                                <div><span class="bold">Price: </span>£{{money_format('%n',$bookingData['price'])}}</div>
+                                <div class="inner-quote-content">
+                                    <div><span class="bold">From: </span>{{$bookingData['fromCountry']}}</div>
+                                    <div><span class="bold">To: </span>{{$bookingData['toCountry']}}</div>
+                                    
+                                    <div><span class="bold">Weight: </span>{{$bookingData['weight']}}kg</div>
+                                    <div><span class="bold">Length: </span>{{$bookingData['length']}}cm</div>
+                                    <div><span class="bold">Width: </span>{{$bookingData['width']}}cm</div>
+                                    <div><span class="bold">Height: </span>{{$bookingData['height']}}cm</div>
+                                    <div><span class="bold">Price: </span>£{{money_format('%n',$bookingData['price'])}}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
