@@ -5,7 +5,7 @@
     <img class="top-strip-img" src="/assets/images/dhl-strip-img.png" alt="DHL Authorised Service Partner">
 </div>
 <nav class="main-nav">
-    <a class="navbar-logo" href="#">
+    <a class="navbar-logo" href="{{route('stage1')}}">
         <img class="nav-logo-img" src="/assets/images/navbar-logo.png" alt="Impact Express Logo">
     </a>
     <div class="hamburger-container">
