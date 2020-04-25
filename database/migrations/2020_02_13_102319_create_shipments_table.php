@@ -16,7 +16,7 @@ class CreateShipmentsTable extends Migration
         Schema::create('shipments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->integer('price');
+            $table->integer('price'); // pence
             $table->string('shipment_reference');
             $table->string('shipper');
             $table->string('shipper_address_1');
@@ -42,8 +42,8 @@ class CreateShipmentsTable extends Migration
             $table->integer('length'); // cm
             $table->integer('width'); // cm
             $table->integer('height'); // cm
-            $table->integer('dead_weight');
-            $table->integer('volumetric_weight');
+            $table->integer('dead_weight'); // grams
+            $table->integer('volumetric_weight'); // grams
             $table->string('service_code')->default('exp');
             $table->timestamps();
         });

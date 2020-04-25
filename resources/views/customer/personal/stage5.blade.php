@@ -42,7 +42,20 @@
                 <div class="left-islands">
                     <div class="payment-island bg-yellow">
                         <div class="payment-container bg-white">
-                            Blah blah payment blah
+                            <h2>Booking Summary</h2>
+                            <h3>Destination</h3>
+                            <p>{{$shipmentData['consignee']}}</p>
+                            <p>{{$shipmentData['consignee_address_1']}}</p>
+                            <p>{{$shipmentData['consignee_address_2'] ?? ''}}</p>
+                            <p>{{$shipmentData['consignee_address_3'] ?? ''}}</p>
+                            <p>{{$shipmentData['consignee_city']}}</p>
+                            <p>{{$shipmentData['consignee_country_iso_code']}}</p>
+                            <p>{{$shipmentData['consignee_zip'] ?? ''}}</p>
+                            
+                            <h3>Contents</h3>
+                            <p>{{$shipmentData['contents']}}</p>
+                            <h3>Value</h3>
+                            <p>£{{money_format('%n', $shipmentData['value']/100)}}</p>
                         </div>
                     </div>
                 </div>
@@ -93,12 +106,12 @@
             }).then(function(res) {
                 return res.json();
             }).then(function(data) {
-                console.log("data1",data);
+                // console.log("data1",data);
                 return data.id;
             });
         },
         onApprove: function(data, actions) {
-            console.log("data2",data);
+            // console.log("data2",data);
             return fetch("{{route('paypal-capture')}}", {
                 method: 'post',
                 headers: {
@@ -111,7 +124,7 @@
             }).then(function(res) {
                 return res.json();
             }).then(function(details) {
-                console.log("data3",details);
+                // console.log("data3",details);
                 if (details.error === "INSTRUMENT_DECLINED") {
                     return actions.restart();
                 }

@@ -117,16 +117,15 @@ class PersonalBookingController extends Controller
 
     public function stage5(Request $request) {
         
-        // dd($request);
         // Validate request
         $validator = Validator::make($request->all(), [
             'consignee-name' => 'required|string',
             'consignee-address-line-1' => 'required|string',
-            'consignee-address-line-2' => 'string',
-            'consignee-address-line-3' => 'string',
+            // 'consignee-address-line-2' => 'string',
+            // 'consignee-address-line-3' => 'string',
             'consignee-city' => 'required|string',
             'consignee-country' => 'required|string',
-            'consignee-postcode' => 'required|string',
+            // 'consignee-postcode' => 'required|string',
             'consignee-phone' => 'required|string',
             'contents-description' => 'required|string',
             'contents-value' => 'required|string|numeric',
@@ -172,10 +171,10 @@ class PersonalBookingController extends Controller
         ];
 
         session()->put(['shipmentData' => $shipmentData]);
-
+// dd($shipmentData, $bookingData);
         $paypalClientId = config('app.paypal_sandbox_client_id');
 
-        return view('customer.personal.stage5', compact('bookingData', 'paypalClientId'));
+        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'paypalClientId'));
     }
 
     public function complete() {
@@ -245,9 +244,9 @@ class PersonalBookingController extends Controller
         ]);
 
         // Send booking to impact via api
-        $impact = new ImpactUploadManifest();
-        $impact->buildRequestBody($shipmentData);
-        $response = $impact->send();
+        // $impact = new ImpactUploadManifest();
+        // $impact->buildRequestBody($shipmentData);
+        // $response = $impact->send();
 
         // dd($response);
 
