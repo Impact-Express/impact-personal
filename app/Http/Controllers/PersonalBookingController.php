@@ -239,14 +239,13 @@ class PersonalBookingController extends Controller
             'user_id' => auth()->user()->id,
             'shipment_id' => $shipment->id,
             'carrier' => 'Hermes', // Maaaaagic nuuuumbers, blah blah blah blah suuuuck it (to the tune of Magic Moments)
-            // 'image' => $hermesResponse->routingResponseEntries->routingResponseEntry->outboundCarriers->labelImage
             'image' => $fakeLabel,
         ]);
 
         // Send booking to impact via api
-        // $impact = new ImpactUploadManifest();
-        // $impact->buildRequestBody($shipmentData);
-        // $response = $impact->send();
+        $impact = new ImpactUploadManifest();
+        $impact->buildRequestBody($shipmentData);
+        $response = $impact->send();
 
         // dd($response);
 

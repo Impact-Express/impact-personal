@@ -20,6 +20,14 @@ class ImpactUploadManifest extends ImpactRequest
     public function buildRequestBody($shipmentData)
     {
         $shipmentData = (object)$shipmentData;
+
+        // Optional fields
+        $shipperAddress2   = '"ShipperAddress2": "Poyle",';
+        $shipperAddress3   = '';
+        $consigneeAddress2 = $shipmentData->consignee_address_2 ? '"ConsigneeAddress2": "'.$shipmentData->consignee_address_2.'",' : '';
+        $consigneeAddress3 = $shipmentData->consignee_address_3 ? '"ConsigneeAddress3": "'.$shipmentData->consignee_address_3.'",' : '';
+        $consigneeZip      = $shipmentData->consignee_zip ? '"ConsigneeZip": "'.$shipmentData->consignee_zip.'",' : '';
+
         $this->requestBody = '
         {
             "ManifestUpload": {
@@ -33,7 +41,8 @@ class ImpactUploadManifest extends ImpactRequest
                         "ParcelReference": "'.$shipmentData->shipment_reference.'",
                         "Shipper": "Impact Express Wholesale Ltd",
                         "ShipperAddress1": "Unit 13 Blackthorn Crescent",
-                        "ShipperAddress2": "Poyle",
+                        '.$shipperAddress2.'
+                        '.$shipperAddress3.'
                         "ShipperCity": "Slough",
                         "ShipperZip": "SL30QR",
                         "ShipperCountryISOCode": "GB",
@@ -41,10 +50,10 @@ class ImpactUploadManifest extends ImpactRequest
                         "TrueShipperContactTel": "'.$shipmentData->true_shipper_contact_tel.'",
                         "Consignee": "'.$shipmentData->consignee.'",
                         "ConsigneeAddress1": "'.$shipmentData->consignee_address_1.'",
-                        "ConsigneeAddress2": "'.$shipmentData->consignee_address_2.'",
-                        "ConsigneeAddress3": "'.$shipmentData->consignee_address_3.'",
+                        '.$consigneeAddress2.'
+                        '.$consigneeAddress3.'
                         "ConsigneeCity": "'.$shipmentData->consignee_city.'",
-                        "ConsigneeZip": "'.$shipmentData->consignee_zip.'",
+                        '.$consigneeZip.'
                         "ConsigneeCountryISOCode": "'.$shipmentData->consignee_country_iso_code.'",
                         "ConsigneeContactName": "'.$shipmentData->consignee_contact_name.'",
                         "ConsigneeContactTel": "'.$shipmentData->consignee_contact_tel.'",
