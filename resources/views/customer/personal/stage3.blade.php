@@ -139,10 +139,7 @@
                                 @enderror
                             </li>
                             <li class="form-row row-4">
-                                <div class="form-input address-input">
-                                    <input type="text" name="address" placeholder="ENTER A POSTCODE TO FIND ADDRESS..." value="{{old('address')}}">
-                                </div>
-                                <input class="bold button-grey" type="submit" value="FIND ADDRESS">
+                                <div id="p-lookup"></div>
                             </li>
                             <li class="form-row row-5">
                                 <label class="cb-container">
@@ -155,6 +152,15 @@
                                 <input class="cont bold button-black" type="submit" value="REGISTER">
                             </li>
                         </ul>
+                        <input id="buildingNumber" type="hidden">
+                        <input id="line1" name="addressLine1" type="hidden">
+                        <input id="line2" name="addressLine2" type="hidden">
+                        <input id="line3" name="addressLine3" type="hidden">
+                        <input id="line4" name="addressLine4" type="hidden">
+                        <input id="locality" name="locality" type="hidden">
+                        <input id="town_or_city"  name="city" type="hidden">
+                        <input id="country" name="country" type="hidden">
+                        <input id="postcode" name="postcode" type="hidden">
                     </form>
                 </div>
             </div>
@@ -182,6 +188,29 @@
         </div>
     </div>
 </main>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://getaddress-cdn.azureedge.net/scripts/jquery.getAddress-3.0.2.min.js"></script>
+<script>
+
+$('#p-lookup').getAddress({
+    api_key:'wkn4y_4C3ku4UvSZpaMasA25478',
+    output_fields:{
+        building_name_or_number: '#buildingNumber',
+        line_1: '#line1',
+        line_2: '#line2',
+        line_3: '#line3',
+        line_4: '#line4',
+        locality: '#locality',
+        town_or_city: '#town_or_city',
+        country: '#country',
+        postcode: '#postcode'
+    },
+    button_class: "bold button-grey find-address-button",
+    input_class: "postcode-box",
+    dropdown_class: "address-dropdown"
+});
+
+</script>
 @endsection
 
 @section('styles')

@@ -7,7 +7,15 @@ input[type=email] {
   padding-left: 10px;
 }
 
+.address-dropdown {
+  margin-top: 20px;
+}
+
 @media (max-width: 991px) {
+  .postcode-box {
+    text-transform: uppercase;
+  }
+
   .quote-island {
     display: none;
   }
@@ -63,6 +71,17 @@ input[type=email] {
 }
 
 @media (min-width: 992px) {
+  #p-lookup {
+    width: 100%;
+  }
+
+  .postcode-box {
+    text-transform: uppercase;
+    width: 63.5%;
+    height: 50px;
+    margin-right: 15px;
+  }
+
   .island-container {
     width: 100%;
     justify-content: space-between;
@@ -218,6 +237,15 @@ input[type=email] {
 
   .error-container {
     margin-left: 10%;
+  }
+
+  .row-4 {
+    display: flex;
+  }
+
+  .address-dropdown {
+    height: 50px;
+    background: white;
   }
 }
 
