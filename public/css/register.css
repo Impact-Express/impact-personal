@@ -1,14 +1,5 @@
-.container {
-  display: flex;
-  justify-content: center;
-}
-
-.register-form-container {
-  width: 80%;
-  margin-bottom: 30px;
-}
-
-input[type=text] {
+input[type=text],
+select {
   padding-left: 10px;
 }
 
@@ -16,157 +7,257 @@ input[type=email] {
   padding-left: 10px;
 }
 
-.island-container {
-  width: 100%;
-  justify-content: space-between;
-  display: flex;
+.address-dropdown {
+  margin-top: 20px;
 }
 
-.left-islands {
-  width: 70%;
-}
-
-.right-islands {
-  width: 28%;
-}
-
-.quote-island {
-  width: 100%;
-  background: #e2e2e2;
-  position: relative;
-  z-index: 0;
+container {
   display: flex;
   justify-content: center;
 }
 
-.logo-circle {
-  position: absolute;
-  z-index: 2;
+.register-form-container {
+  width: 80%;
+  margin-left: 14%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.quote-body {
-  height: 500px;
-  width: 100%;
-  position: absolute;
-  top: 100px;
-  z-index: 1;
+@media (max-width: 991px) {
+  .postcode-box {
+    text-transform: uppercase;
+  }
+
+  .quote-island {
+    display: none;
+  }
+
+  .login-island-container {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 30px;
+  }
+
+  .signup-island-container {
+    width: 100%;
+    padding: 5px 30px 30px 30px;
+    margin-bottom: 30px;
+  }
+
+  input[type=text],
+  select {
+    width: 100%;
+    height: 34px;
+  }
+
+  input[type=email] {
+    width: 100%;
+    height: 34px;
+  }
+
+  input,
+  select {
+    margin-bottom: 20px;
+  }
+
+  .form-rows {
+    padding: 0px;
+  }
+
+  .row-6 {
+    padding-top: 20px;
+  }
+
+  .back {
+    margin-right: 15px;
+  }
+
+  .error-container {
+    margin-left: 10%;
+  }
+
+  .terms-text {
+    margin-left: 35px;
+    line-height: 23px;
+  }
 }
 
-.quote-stage-3 {
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-}
+@media (min-width: 992px) {
+  #p-lookup {
+    width: 100%;
+  }
 
-.login-island-container {
-  width: 100%;
-  /* height: 200px; */
-  margin-bottom: 30px;
-  padding: 30px;
-}
+  .postcode-box {
+    text-transform: uppercase;
+    width: 63.5%;
+    height: 50px;
+    margin-right: 15px;
+  }
 
-.login-island-container h3 {
-  margin-left: 100px;
-  margin-top: 0;
-}
+  .island-container {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+  }
 
-.login-form {
-  display: flex;
-  margin-left: 100px;
-  margin-bottom: 3px;
-}
+  .left-islands {
+    width: 70%;
+  }
 
-.email-input {
-  width: 32%;
-  margin-right: 30px;
-}
+  .right-islands {
+    width: 28%;
+  }
 
-.password-input {
-  width: 32%;
-  margin-right: 30px;
-}
+  .quote-island {
+    width: 100%;
+    background: #e2e2e2;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+  }
 
-.pw-reset-link {
-  margin-left: 50%;
-}
+  .logo-circle {
+    position: absolute;
+    z-index: 2;
+  }
 
-.signup-island-container {
-  width: 100%;
-  padding: 30px;
-  margin-bottom: 30px;
-}
+  .quote-body {
+    height: 500px;
+    width: 100%;
+    position: absolute;
+    top: 100px;
+    z-index: 1;
+  }
 
-.signup-island-container h3 {
-  margin-left: 100px;
-}
+  .quote-content {
+    padding: 50px;
+    padding-top: 120px;
+    height: 100%;
+  }
 
-.signup-form {
-  display: flex;
-  margin-left: 100px;
-  margin-bottom: 3px;
-}
+  .inner-quote-content {
+    height: 100%;
+    padding: 10px;
+    padding-top: 30px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
 
-.form-rows {
-  padding-left: 0px;
-  width: 90%;
-}
+  .quote-stage-3 {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
 
-.form-row {
-  margin-top: 25px;
-}
+  .login-island-container {
+    width: 100%;
+    /* height: 200px; */
+    margin-bottom: 30px;
+    padding: 30px;
+  }
 
-.title-input {
-  margin-right: 15px;
-  width: 15%;
-}
+  .login-island-container h3 {
+    margin-top: 0;
+  }
 
-.firstname-input {
-  margin-right: 15px;
-  width: 40%;
-}
+  .login-form {
+    display: flex;
+    margin-bottom: 3px;
+  }
 
-.lastname-input {
-  margin-right: 15px;
-  width: 40%;
-}
+  .email-input {
+    width: 32%;
+    margin-right: 30px;
+  }
 
-.su-email-input {
-  margin-right: 15px;
-  width: 56.6%;
-}
+  .password-input {
+    width: 32%;
+    margin-right: 30px;
+  }
 
-.phone-input {
-  width: 39.6%;
-}
+  .pw-reset-link {
+    margin-left: 50%;
+  }
 
-.su-password-input {
-  margin-right: 15px;
-  width: 48%;
-}
+  .signup-island-container {
+    width: 100%;
+    padding: 30px;
+    margin-bottom: 30px;
+  }
 
-.password-confirm-input {
-  width: 48%;
-}
+  .signup-form {
+    display: flex;
+    margin-left: 100px;
+    margin-bottom: 3px;
+  }
 
-.address-input {
-  margin-right: 15px;
-  width: 66.6%;
-}
+  .form-rows {
+    padding-left: 0px;
+    width: 90%;
+  }
 
-.row-6 {
-  display: flex;
-  justify-content: flex-start;
-}
+  .form-row {
+    margin-top: 25px;
+  }
 
-.back {
-  margin-right: 15px;
-}
+  .title-input {
+    margin-right: 15px;
+    width: 15%;
+  }
 
-.error-container {
-  margin-left: 10%;
-}
+  .firstname-input {
+    margin-right: 15px;
+    width: 40%;
+  }
 
-.quote-content {
-  margin-top: 120px;
-  padding: 50px;
+  .lastname-input {
+    margin-right: 15px;
+    width: 40%;
+  }
+
+  .su-email-input {
+    margin-right: 15px;
+    width: 56.6%;
+  }
+
+  .phone-input {
+    width: 39.6%;
+  }
+
+  .su-password-input {
+    margin-right: 15px;
+    width: 48%;
+  }
+
+  .password-confirm-input {
+    width: 48%;
+  }
+
+  .address-input {
+    margin-right: 15px;
+    width: 66.6%;
+  }
+
+  .row-6 {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .back {
+    margin-right: 15px;
+  }
+
+  .error-container {
+    margin-left: 10%;
+  }
+
+  .row-4 {
+    display: flex;
+  }
+
+  .address-dropdown {
+    height: 50px;
+    background: white;
+  }
 }
 
