@@ -152,14 +152,13 @@
                                 <input class="cont bold button-black" type="submit" value="REGISTER">
                             </li>
                         </ul>
+                        <input id="buildingName" type="hidden">
                         <input id="buildingNumber" type="hidden">
                         <input id="line1" name="addressLine1" type="hidden">
                         <input id="line2" name="addressLine2" type="hidden">
                         <input id="line3" name="addressLine3" type="hidden">
-                        <input id="line4" name="addressLine4" type="hidden">
-                        <input id="locality" name="locality" type="hidden">
-                        <input id="town_or_city"  name="city" type="hidden">
-                        <input id="country" name="country" type="hidden">
+                        <input id="town"  name="city" type="hidden">
+                        <input id="country" name="countyISOcode" type="hidden" Value="GB">
                         <input id="postcode" name="postcode" type="hidden">
                     </form>
                 </div>
@@ -195,19 +194,19 @@
 $('#p-lookup').getAddress({
     api_key:'wkn4y_4C3ku4UvSZpaMasA25478',
     output_fields:{
-        building_name_or_number: '#buildingNumber',
+        building_name: '#buildingName',
+        building_number: '#buildingNumber',
         line_1: '#line1',
         line_2: '#line2',
         line_3: '#line3',
-        line_4: '#line4',
-        locality: '#locality',
-        town_or_city: '#town_or_city',
-        country: '#country',
+        post_town: '#town',
+        county: '#county',
         postcode: '#postcode'
     },
     button_class: "bold button-grey find-address-button",
     input_class: "postcode-box",
-    dropdown_class: "address-dropdown"
+    dropdown_class: "address-dropdown",
+    
 });
 
 </script>
