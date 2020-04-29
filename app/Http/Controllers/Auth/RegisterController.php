@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Country;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -74,6 +75,15 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'building_name' => $data['buildingName'],
+            'building_number' => $data['buildingNumber'],
+            'address_Line_1' => $data['addressLine1'],
+            'address_Line_2' => $data['addressLine2'],
+            'address_Line_3' => $data['addressLine3'],
+            'city' => $data['city'],
+            'county' => $data['county'],
+            'country_id' => Country::where('code', $data['countryISOcode'])->first()->code,
+            'postcode' => $data['postcode']
         ]);
     }
 

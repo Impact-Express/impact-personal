@@ -152,13 +152,14 @@
                                 <input class="cont bold button-black" type="submit" value="REGISTER">
                             </li>
                         </ul>
-                        <input id="buildingName" type="hidden">
-                        <input id="buildingNumber" type="hidden">
+                        <input id="buildingName" name="buildingName" type="hidden">
+                        <input id="buildingNumber" name="buildingNumber" type="hidden">
                         <input id="line1" name="addressLine1" type="hidden">
                         <input id="line2" name="addressLine2" type="hidden">
                         <input id="line3" name="addressLine3" type="hidden">
                         <input id="town"  name="city" type="hidden">
-                        <input id="country" name="countyISOcode" type="hidden" Value="GB">
+                        <input id="county"  name="county" type="hidden">
+                        <input id="country" name="countryISOcode" type="hidden" Value="GB">
                         <input id="postcode" name="postcode" type="hidden">
                     </form>
                 </div>
@@ -173,7 +174,6 @@
                             <div class="inner-quote-content">
                                 <div><span class="bold">From: </span>{{$bookingData['fromCountry']}}</div>
                                 <div><span class="bold">To: </span>{{$bookingData['toCountry']}}</div>
-                                
                                 <div><span class="bold">Weight: </span>{{$bookingData['weight']}}kg</div>
                                 <div><span class="bold">Length: </span>{{$bookingData['length']}}cm</div>
                                 <div><span class="bold">Width: </span>{{$bookingData['width']}}cm</div>
@@ -206,7 +206,7 @@ $('#p-lookup').getAddress({
     button_class: "bold button-grey find-address-button",
     input_class: "postcode-box",
     dropdown_class: "address-dropdown",
-    
+    // input_label: "ENTER A UK POSTCODE"
 });
 
 </script>
