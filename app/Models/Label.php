@@ -26,4 +26,9 @@ class Label extends Model
         'sort_level_4',
         'sort_level_5',
     ];
+
+
+    public function shipment() {
+        return $this->belongsTo(Shipment::class);
+    }
 }
