@@ -36,4 +36,4 @@ Route::post('/createOrder', 'PaymentController@createOrder')->name('paypal-creat
 // Route::get('/capturePayment', 'PaymentController@capturePayment');
 Route::post('/capturePayment', 'PaymentController@capturePayment')->name('paypal-capture');
 
-Route::get('label/{id}', 'LabelsController@showpdf')->name('get-label-pdf');
+Route::get('label/{shipment}', 'LabelsController@showpdf')->name('get-label-pdf');

@@ -9,7 +9,7 @@
             @forelse ($user->shipments as $shipment)
                 <li class="shipment-box">
                     {{$shipment->shipment_reference}}
-                    <a href="{{route('get-label-pdf', $shipment->id)}}">Label</a>
+                    <a href="{{route('get-label-pdf', $shipment->id)}}" target="_blank">Label</a>
                 </li>
             @empty
             You haven't sent any parcels yet!
