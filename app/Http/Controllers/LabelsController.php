@@ -16,13 +16,13 @@ class LabelsController extends Controller
         $label = $shipment->label;
         
         // This  $data array will be passed to our PDF blade template
-       $data = [
-        'title' => 'First PDF for Medium',
-        'heading' => 'Hello from 99Points.info',
-        'content' => "flibble"
-          ];
+        $data = [
+            'title' => 'First PDF for Medium',
+            'heading' => 'Hello from 99Points.info',
+            'content' => "flibble"
+        ];
       
-      $pdf = PDF::loadView('labels.hermesToImpact', $data);  
-      return $pdf->stream();
+        $pdf = PDF::loadView('labels.hermesToImpact', $data);  
+        return $pdf->stream();
     }
 }
