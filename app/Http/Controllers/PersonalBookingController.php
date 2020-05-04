@@ -265,7 +265,7 @@ class PersonalBookingController extends Controller
 
         // dd($response);
 
-        // Send confirmation email with label
+        // Send confirmation email with link to label
         $customerName = auth()->user()->firstName.' '.auth()->user()->lastName;
         Mail::to(auth()->user()->email)->send(new BookingConfirmation($customerName));
 
