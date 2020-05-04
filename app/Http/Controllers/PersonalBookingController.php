@@ -234,12 +234,28 @@ class PersonalBookingController extends Controller
 
         $fakeLabel = $hermes->getFakeLabel();
 
+        $hermesCarrierDetails = $hermesResponse->routingResponseEntries->routingResponseEntry->outboundCarriers->carrier1;
+
         // Save label image to database
         Label::create([
             'user_id' => auth()->user()->id,
             'shipment_id' => $shipment->id,
-            'carrier' => 'Hermes', // Maaaaagic nuuuumbers, blah blah blah blah suuuuck it (to the tune of Magic Moments)
+            'carrier' => 'Hermes', // I know, I'm a bad person
             'image' => $fakeLabel,
+            'barcode_carrier_id' => $hermesCarrierDetails->carrierId,
+            'barcode_carrier_name' => $hermesCarrierDetails->carrierName,
+            'carrier_logo_ref' => $hermesCarrierDetails->carrierLogoRef,
+            'delivery_method_desc' => $hermesCarrierDetails->deliveryMethodDesc,
+            'delivery_method_code' => $hermesCarrierDetails->deliveryMethodCode,
+            'barcode_number' => $hermesCarrierDetails->barcode1->barcodeNumber,
+            'barcode_length' => $hermesCarrierDetails->barcode1->barcodeLength,
+            'barcode_symbology' => $hermesCarrierDetails->barcode1->barcodeSymbology,
+            'barcode_display' => $hermesCarrierDetails->barcode1->barcodeDisplay,
+            'sort_level_1' => $hermesCarrierDetails->sortLevel1,
+            'sort_level_2' => $hermesCarrierDetails->sortLevel2,
+            'sort_level_3' => $hermesCarrierDetails->sortLevel3,
+            'sort_level_4' => $hermesCarrierDetails->sortLevel4,
+            'sort_level_5' => $hermesCarrierDetails->sortLevel5
         ]);
 
         // Send booking to impact via api
@@ -253,6 +269,10 @@ class PersonalBookingController extends Controller
         $customerName = auth()->user()->firstName.' '.auth()->user()->lastName;
         Mail::to(auth()->user()->email)->send(new BookingConfirmation($customerName));
 
-        return view('customer.personal.complete');
+        return redirect(route('confirmation'));
+    }
+
+    public function confirmation() {
+        return view('customer.personal.confirmation');
     }
 }

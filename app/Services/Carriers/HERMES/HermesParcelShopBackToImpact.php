@@ -7,7 +7,7 @@ use Carbon\Carbon;
 class HermesParcelShopBackToImpact extends HermesRequest
 {
     public function __construct() {
-        $this->service = 'ROUTE_DELIVERY_CREATE_PREADVICE_AND_LABEL';
+        $this->service = 'ROUTE_DELIVERY_CREATE_PREADVICE';
         parent::__construct();
     }
 
