@@ -6,6 +6,7 @@
 <body>
 
   <div class="label">
+    <!-- TOP SECTION -->
     <div class="top">
       <div class="top-left">
         <div class="top-left-top">
@@ -30,19 +31,53 @@
             <li>Beverly Hills</li>
             <li>90210 CA</li>
             <li>USA</li>
-            <li>Tel: 7896543234</li>
+            <li>Tel: 07896543234</li>
           </ul>
         </div>
       </div>
     </div>
+    <!-- BOTTOM SECTION -->
     <div class="bottom">
-    
+      <div class="bottom-top">
+        <div class="bottom-top-left">
+          <div class="ie-address">
+            <ul>
+              <li>Impact Express Wholesale Ltd</li>
+              <li>13 Blackthorne Crescent</li>
+              <li>Slough</li>
+              <li>SL3 0QR</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bottom-top-right">
+          <div class="bottom-top-right-left">
+            <ul>
+              <li>IE12345678</li>
+              <li>COU-PNET</li>
+              <li>04/05/2020</li>
+              <li><=1kg</li>
+            </ul>
+          </div>
+          <div class="bottom-top-right-right">
+            <ul>
+              <li class="box">81 BRAD</li>
+              <li>VAN 73</li>
+              <li>DROP 15</li>
+              <li>C-ROUND 5713</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-bottom">
+        
+      </div>
     </div>
   </div>
 
 <style>
    * {
     box-sizing: border-box;
+    font-family: Arial;
    }
    ul {
     list-style-type:none;
@@ -50,7 +85,7 @@
   }
   .label {
     width: 100%;
-    height: 40%;
+    height: 45%;
     border: 1px dashed black;
   }
   .top {
@@ -70,8 +105,8 @@
     padding-left:30px;
   }
   .top-right {
-    float:right;
     display:inline-block;
+    float:right;
     height:20%;
     width: 50%;
   }
@@ -87,12 +122,55 @@
     height: 20%;
     border-top: 2px solid black;
   }
-  
+  .bottom-top-left {
+    display:inline-block;
+    float:left;
+    width: 50%;
+  }
+  .bottom-top-right {
+    display:inline-block;
+    float:right;
+    width: 50%;
+    height:15%;
+  }
+  .bottom-top-right-left {
+    display:inline-block;
+    float:left;
+    height:15%;
+    width:40%;
+  }
+  .bottom-top-right-left ul {
+    padding:0;
+  }
+  .bottom-top-right-right {
+    display:inline-block;
+    float:right;
+    height:15%;
+    width:60%;
+  }
+  .bottom-top-right-right ul {
+    padding: 0;
+    font-size:20px;
+    font-weight: bold;
+  }
+  .box {
+    border: 1px solid block;
+    width:70%;
+    height:30px;
+    padding: 5px 0 0 10px;
+    margin-bottom: 10px;
+  }
+  .ie-address {
+    border: 1px solid black;
+    width: 300px;
+    margin: 20px 0 0 20px;
+  }
+  .ie-address ul {
+    padding: 5px;
+    margin:0;
+  }
 
 
-
-
-  
 </style>
 </body>
 
