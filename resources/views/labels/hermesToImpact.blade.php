@@ -5,7 +5,6 @@
  <title>Your Label</title>
 </head>
 <body>
-
   <div class="label">
     <!-- TOP SECTION -->
     <div class="top">
@@ -19,7 +18,7 @@
         </div>
         <div class="top-left-bottom">
           <div class="ie-barcode">
-            {!! DNS1D::getBarcodeHTML('6157173010108895', 'C128', 2, 60) !!}
+            {!! DNS1D::getBarcodeHTML('IE12345678', 'C128', 2, 60) !!}
             <span class="ie-barcode-number">IE12345678</span>
           </div>
         </div>
@@ -175,13 +174,13 @@
   .h-logo {
     position: absolute;
     height: 50px;
-    top:120px;
+    top:125px;
     left: 30px;
   }
   .ie-logo {
     position: absolute;
     height: 50px;
-    top:180px;
+    top:185px;
     left: 20px;
   }
   .h-barcode {
