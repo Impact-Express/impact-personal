@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
  <title>Your Label</title>
 </head>
 <body>
@@ -17,8 +18,8 @@
           </ul>
         </div>
         <div class="top-left-bottom">
-          <div class="barcode">
-            {!! DNS1D::getBarcodeHTML('6157173010108895', 'I25', 2, 60) !!}
+          <div class="ie-barcode">
+            {!! DNS1D::getBarcodeHTML('6157173010108895', 'C128', 2, 60) !!}
             <span class="ie-barcode-number">IE12345678</span>
           </div>
         </div>
@@ -69,7 +70,12 @@
         </div>
       </div>
       <div class="bottom-bottom">
-        
+        <img src="{{public_path().'/assets/images/hermes-label.jpg'}}" class="h-logo">
+        <img src="{{public_path().'/assets/images/navbar-logo.png'}}" class="ie-logo">
+        <div class="h-barcode">
+            {!! DNS1D::getBarcodeHTML('6157173010108895', 'I25', 2, 70) !!}
+            <span class="h-barcode-number">61-571-73-01010889-5</span>
+          </div>
       </div>
     </div>
   </div>
@@ -147,11 +153,41 @@
     float:right;
     height:15%;
     width:60%;
+    font-weight: bold;
   }
   .bottom-top-right-right ul {
     padding: 0;
     font-size:20px;
-    font-weight: bold;
+  }
+  .ie-address {
+    border: 1px solid black;
+    height:11%;
+    width:300px;
+    margin: auto;
+    margin-top: 20px;
+  }
+  .ie-address ul {
+    margin-top: 4px;
+  }
+  .bottom-bottom {
+    position: relative;
+  }
+  .h-logo {
+    position: absolute;
+    height: 50px;
+    top:120px;
+    left: 30px;
+  }
+  .ie-logo {
+    position: absolute;
+    height: 50px;
+    top:180px;
+    left: 20px;
+  }
+  .h-barcode {
+    position: absolute;
+    top: 150px;
+    left: 380px;
   }
   .box {
     border: 1px solid block;
@@ -160,18 +196,6 @@
     padding: 5px 0 0 10px;
     margin-bottom: 10px;
   }
-  .ie-address {
-    border: 1px solid black;
-    width: 300px;
-    margin: 20px 0 0 20px;
-  }
-  .ie-address ul {
-    padding: 5px;
-    margin:0;
-  }
-
-
 </style>
 </body>
-
 </html>
