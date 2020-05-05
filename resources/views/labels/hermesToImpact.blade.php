@@ -12,26 +12,26 @@
         <div class="top-left-top">
           <ul>
             <li>Package: 1 of 1</li>
-              <li>Contents: Sunglasses</li>
-            <li>Value: GBP 150.00</li>
+              <li>Contents: {{$shipment->contents}}</li>
+            <li>Value: GBP {{$shipment->value/100}}</li>
           </ul>
         </div>
         <div class="top-left-bottom">
           <div class="ie-barcode">
-            {!! DNS1D::getBarcodeHTML('IE12345678', 'C128', 2, 60) !!}
-            <span class="ie-barcode-number">IE12345678</span>
+            {!! DNS1D::getBarcodeHTML($shipment->shipment_reference, 'C128', 2, 60) !!}
+            <span class="ie-barcode-number">{{$shipment->shipment_reference}}</span>
           </div>
         </div>
       </div>
       <div class="top-right">
         <div class="cnee-address">
           <ul>
-            <li>Steve Stevens</li>
-            <li>123 The Street</li>
-            <li>Beverly Hills</li>
-            <li>90210 CA</li>
-            <li>USA</li>
-            <li>Tel: 07896543234</li>
+            <li>{{$shipment->consignee}}</li>
+            <li>{{$shipment->consignee_address_1}}</li>
+            <li>{{$shipment->consignee_city}}</li>
+            <li>{{$shipment->consignee_zip}}</li>
+            <li>{{$shipment->consignee_country_iso_code}}</li>
+            <li>Tel: {{$shipment->consignee_contact_tel}}</li>
           </ul>
         </div>
       </div>
@@ -52,18 +52,18 @@
         <div class="bottom-top-right">
           <div class="bottom-top-right-left">
             <ul>
-              <li>IE12345678</li>
-              <li>COU-PNET</li>
+              <li>{{$shipment->shipment_reference}}</li>
+              <li>{{$shipment->label->delivery_method_desc}}</li>
               <li>04/05/2020</li>
-              <li><=1kg</li>
+              <li>{{$shipment->dead_weight/1000}}kg</li>
             </ul>
           </div>
           <div class="bottom-top-right-right">
             <ul>
-              <li class="box">81 BRAD</li>
-              <li>VAN 73</li>
-              <li>DROP 15</li>
-              <li>C-ROUND 5713</li>
+              <li class="box">{{$shipment->label->sort_level_1}} {{$shipment->label->sort_level_2}}</li>
+              <li>{{$shipment->label->sort_level_3}}</li>
+              <li>{{$shipment->label->sort_level_4}}</li>
+              <li>{{$shipment->label->sort_level_5}}</li>
             </ul>
           </div>
         </div>

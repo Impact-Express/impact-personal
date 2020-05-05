@@ -13,15 +13,11 @@ class LabelsController extends Controller
         if ($shipment->user_id != auth()->id()) {
             abort(404);
         }
-        $label = $shipment->label;
-        
-        // This  $data array will be passed to our PDF blade template
+        // $label = $shipment->label;
         $data = [
-            'title' => 'First PDF for Medium',
-            'heading' => 'Hello from 99Points.info',
-            'content' => "flibble"
+            'shipment' => $shipment
         ];
-      
+
         $pdf = PDF::loadView('labels.hermesToImpact', $data);  
         return $pdf->stream();
     }
