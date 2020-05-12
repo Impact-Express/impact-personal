@@ -82,7 +82,32 @@
                 </div>
             </div>
         </div>
+        <div id="overlay" class="hidden">
+            <img id="loader" src="{{asset('assets/images/166s.gif')}}">
+        </div>
     </main>
+    <style>
+        #overlay{
+            opacity:0.8;
+            background-color:#ccc;
+            position:fixed;
+            width:100%;
+            height:100%;
+            top:0px;
+            left:0px;
+            z-index:1000;
+            /* display:flex; */
+        }
+        #loader {
+            margin:auto;
+        }
+        .hidden {
+            display:none;
+        }
+        .visible {
+            display:flex;
+        }
+    </style>
 @endsection
 
 @section('styles')
@@ -111,7 +136,11 @@
             });
         },
         onApprove: function(data, actions) {
-            // console.log("data2",data);
+            console.log("data2",data);
+            let ov = document.getElementById("overlay");
+            ov.classList.remove("hidden");
+            ov.classList.add("visible");
+
             return fetch("{{route('paypal-capture')}}", {
                 method: 'post',
                 headers: {
