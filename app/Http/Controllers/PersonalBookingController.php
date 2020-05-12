@@ -232,8 +232,6 @@ class PersonalBookingController extends Controller
         $hermes->buildRequestBody($hermesShipmentDetails);
         $hermesResponse = $hermes->send();
 
-        $fakeLabel = $hermes->getFakeLabel();
-
         $hermesCarrierDetails = $hermesResponse->routingResponseEntries->routingResponseEntry->outboundCarriers->carrier1;
 
         // Save label image to database
@@ -241,7 +239,7 @@ class PersonalBookingController extends Controller
             'user_id' => auth()->user()->id,
             'shipment_id' => $shipment->id,
             'carrier' => 'Hermes', // I know, I'm a bad person
-            'image' => $fakeLabel,
+            // 'image' => $fakeLabel,
             'barcode_carrier_id' => $hermesCarrierDetails->carrierId,
             'barcode_carrier_name' => $hermesCarrierDetails->carrierName,
             'carrier_logo_ref' => $hermesCarrierDetails->carrierLogoRef,
@@ -259,15 +257,13 @@ class PersonalBookingController extends Controller
         ]);
 
         // Send booking to impact via api
-        $impact = new ImpactUploadManifest();
-        $impact->buildRequestBody($shipmentData);
-        $response = $impact->send();
-
-        // dd($response);
+        // $impact = new ImpactUploadManifest();
+        // $impact->buildRequestBody($shipmentData);
+        // $response = $impact->send();
 
         // Send confirmation email with link to label
         $customerName = auth()->user()->firstName.' '.auth()->user()->lastName;
-        Mail::to(auth()->user()->email)->send(new BookingConfirmation($customerName));
+        Mail::to(auth()->user()->email)->send(new BookingConfirmation($customerName, $shipment->id));
 
         return redirect(route('confirmation'));
     }

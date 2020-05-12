@@ -12,15 +12,17 @@ class BookingConfirmation extends Mailable
     use Queueable, SerializesModels;
 
     public $name;
+    public $id;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($customerName)
+    public function __construct($customerName, $shipmentId)
     {
         $this->name = $customerName;
+        $this->id = $shipmentId;
     }
 
     /**
