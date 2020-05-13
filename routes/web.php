@@ -38,3 +38,5 @@ Route::post('/createOrder', 'PaymentController@createOrder')->name('paypal-creat
 
 // Route::get('/capturePayment', 'PaymentController@capturePayment');
 Route::post('/capturePayment', 'PaymentController@capturePayment')->name('paypal-capture');
+
+Route::get('/test', 'PagesController@test');
