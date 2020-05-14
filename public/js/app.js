@@ -37052,7 +37052,34 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+var App = function App() {
+  _classCallCheck(this, App);
+
+  this.mobileNav();
+};
+
+App.prototype.mobileNav = function () {
+  var hamburgerButton = document.querySelector('.hamburger-icon');
+  var mobileNav = document.querySelector('.mobile-nav');
+  var html = document.querySelector('body');
+
+  function openMobile() {
+    mobileNav.classList.add('open');
+  }
+
+  function closeMobile() {
+    mobileNav.classList.remove('open');
+  }
+
+  hamburgerButton.addEventListener('click', openMobile);
+  mobileNav.addEventListener('click', closeMobile);
+};
+
+new App();
 
 /***/ }),
 

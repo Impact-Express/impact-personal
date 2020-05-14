@@ -93,7 +93,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td align="left">
-                                                                                        <p>Thank you for booking your parcel with Impact Express. Your next step is to print your label, attach it to your parcel and drop it off at your nearest parcel shop.</p>
+                                                                                        <p>Thank you for booking your parcel with Impact Express. Your next step is to print your label, attach it to your parcel and drop it off at your nearest parcel shop.<br><br>If you have any questions please don't hesitate to call our customer service on 01753 683 700.</p>
                                                                                     <br>
                                                                                     </td>
                                                                                 </tr>

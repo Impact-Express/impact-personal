@@ -262,7 +262,7 @@ class PersonalBookingController extends Controller
         // $response = $impact->send();
 
         // Send confirmation email with link to label
-        $customerName = auth()->user()->firstName.' '.auth()->user()->lastName;
+        $customerName = auth()->user()->firstName;
         Mail::to(auth()->user()->email)->send(new BookingConfirmation($customerName, $shipment->id));
 
         return redirect(route('confirmation'));

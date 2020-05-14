@@ -166,9 +166,11 @@ a:hover {
 .mobile-nav-img {
     padding: 10px 20px 10px 20px;
     display: table-cell;
-    width: inherit;
     margin-left: -4px;
     white-space: nowrap;
+}
+.mobile-logo {
+    width: 95%;
 }
 .hamburger-container {
     display:inline-block;
