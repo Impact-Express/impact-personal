@@ -1,12 +1,24 @@
 @extends('layouts.customer.personal.master')
 
 @section('content')
+
 <main>
     <div class="container shipments-container bg-yellow">
         <ul>
-            <li class="tab"><a class="account" href="{{route('shipments')}}">My Shipments</a></li>
+            <li class="tab"><h2>My Shipments</h2></li>
             <li class="sep"></li>
-            <li class="tab"><h2>My Account</h2></li>
+            <li class="tab"><a class="account" href="{{route('account')}}">My Account</a></li>
+        </ul>
+        
+        <ul>
+            @forelse ($shipmentsByDate as $shipment)
+                <li class="shipment-box">
+                    {{$shipment->shipment_reference}}
+                    <a href="{{route('get-label-pdf', $shipment->id)}}" target="_blank">Label</a>
+                </li>
+            @empty
+            You haven't sent any parcels yet!
+            @endforelse
         </ul>
     </div>
 </main>
@@ -42,11 +54,12 @@
     .sep {
         border: 1px solid black;
         height:20px;
-        width:2px;
+        width:3px;
         background: black;
     }
     .account {
         text-decoration: underline;
     }
 </style>
+
 @endsection

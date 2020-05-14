@@ -155,6 +155,9 @@
             }).then(function(details) {
                 // console.log("data3",details);
                 if (details.error === "INSTRUMENT_DECLINED") {
+                    let ov = document.getElementById("overlay");
+                    ov.classList.remove("visible");
+                    ov.classList.add("hidden");
                     return actions.restart();
                 }
                 window.location.replace("{{route('complete')}}");

@@ -23,7 +23,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/complete', 'PersonalBookingController@complete')->name('complete');
     Route::get('/confirmation', 'PersonalBookingController@confirmation')->name('confirmation');
 
-
+    Route::get('/shipments', 'AccountsController@shipments')->name('shipments');
     Route::get('/account', 'AccountsController@index')->name('account');
 
     Route::get('label/{shipment}', 'LabelsController@showpdf')->name('get-label-pdf');
