@@ -37065,18 +37065,9 @@ var App = function App() {
 App.prototype.mobileNav = function () {
   var hamburgerButton = document.querySelector('.hamburger-icon');
   var mobileNav = document.querySelector('.mobile-nav');
-  var html = document.querySelector('body');
-
-  function openMobile() {
-    mobileNav.classList.add('open');
-  }
-
-  function closeMobile() {
-    mobileNav.classList.remove('open');
-  }
-
-  hamburgerButton.addEventListener('click', openMobile);
-  mobileNav.addEventListener('click', closeMobile);
+  hamburgerButton.addEventListener('click', function () {
+    mobileNav.classList.toggle('open');
+  });
 };
 
 new App();
