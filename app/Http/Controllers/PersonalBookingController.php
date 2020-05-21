@@ -116,7 +116,7 @@ class PersonalBookingController extends Controller
     }
 
     public function stage5(Request $request) {
-        
+
         // Validate request
         $validator = Validator::make($request->all(), [
             'consignee-name' => 'required|string',
@@ -136,6 +136,9 @@ class PersonalBookingController extends Controller
 
 
         $bookingData = session('bookingData');
+        if (!$bookingData) {
+            abort(404);
+        }
         $user = auth()->user();
 
         $shipmentData = [
@@ -180,6 +183,7 @@ class PersonalBookingController extends Controller
     public function complete() {
 
         // dd(session()->all());
+        $user = auth()->user();
         $bookingData = session('bookingData');
         $shipmentData = session('shipmentData');
         $paypalResponse = session('paypalResponse');
@@ -226,12 +230,17 @@ class PersonalBookingController extends Controller
             'volume' => 0,
             'currency' => 'GBP',
             'value' => $shipment->value,
+            'senderAddress1' => $user->address_line_1,
+            'senderAddress2' => $user->address_line_2,
+            'senderAddress3' => $user->city,
+            'senderAddress4' => $user->postcode,
         ]);
-
+// dd($hermesShipmentDetails);
+/*
         $hermes = new HermesParcelShopBackToImpact();
         $hermes->buildRequestBody($hermesShipmentDetails);
         $hermesResponse = $hermes->send();
-
+// dd($hermesResponse);
         $hermesCarrierDetails = $hermesResponse->routingResponseEntries->routingResponseEntry->outboundCarriers->carrier1;
 
         // Save label image to database
@@ -255,7 +264,7 @@ class PersonalBookingController extends Controller
             'sort_level_4' => $hermesCarrierDetails->sortLevel4,
             'sort_level_5' => $hermesCarrierDetails->sortLevel5
         ]);
-
+*/
         // Send booking to impact via api
         // $impact = new ImpactUploadManifest();
         // $impact->buildRequestBody($shipmentData);
@@ -264,6 +273,10 @@ class PersonalBookingController extends Controller
         // Send confirmation email with link to label
         $customerName = auth()->user()->firstName;
         Mail::to(auth()->user()->email)->send(new BookingConfirmation($customerName, $shipment->id));
+
+        session()->forget('bookingData');
+        session()->forget('shipmentDate');
+        session()->forget('paypalOrderIdCheck');
 
         return redirect(route('confirmation'));
     }

@@ -18,6 +18,7 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/4', 'PersonalBookingController@stage4')->name('stage4');
     
+    Route::get('/5', function() {abort(404);});
     Route::post('/5', 'PersonalBookingController@stage5')->name('stage5');
 
     Route::get('/complete', 'PersonalBookingController@complete')->name('complete');
@@ -25,6 +26,7 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/shipments', 'AccountsController@shipments')->name('shipments');
     Route::get('/account', 'AccountsController@index')->name('account');
+    Route::post('/account', 'AccountsController@update')->name('update-user');
 
     Route::get('label/{shipment}', 'LabelsController@showpdf')->name('get-label-pdf');
 });

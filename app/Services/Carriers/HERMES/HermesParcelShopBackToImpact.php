@@ -36,7 +36,7 @@ class HermesParcelShopBackToImpact extends HermesRequest
                             <postCode>SL3 0QR</postCode>
                         </address>
                         <homePhoneNo>01753683700</homePhoneNo>
-                        <customerReference1>$details->ref</customerReference1>
+                        <customerReference1>'.$details->ref.'</customerReference1>
                     </customer>
                     <parcel>
                         <weight>1098</weight>

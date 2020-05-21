@@ -1,7 +1,7 @@
 @extends('layouts.customer.personal.master')
 
 @section('content')
-<main>
+    <main>
         <div class="container">
             <div class="quote-stage-5 bg-yellow">
                 <div class="arrow-down"></div>

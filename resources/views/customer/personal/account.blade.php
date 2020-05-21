@@ -8,15 +8,15 @@
             <li class="sep"></li>
             <li class="tab"><h2>My Account</h2></li>
         </ul>
-        <form action="{{route('register')}}" method="POST">
+        <form action="{{route('update-user')}}" method="POST">
             @csrf
             <ul class="form-rows">
                 <li class="form-row">
-                    <select style="color:grey;" class="bg-white @error('title') is-invalid @enderror" type="text" name="title">
+                    <select class="bg-white @error('title') is-invalid @enderror" type="text" name="title">
                         <option class="title-option" value="">TITLE...</option>
-                        <option class="title-option" value="Mr">Mr</option>
-                        <option class="title-option" value="Miss">Miss</option>
-                        <option class="title-option" value="Mrs">Mrs</option>
+                        <option class="title-option" value="Mr" {{$user->title == 'Mr'? 'selected' : ''}}>Mr</option>
+                        <option class="title-option" value="Miss" {{$user->title == 'Miss'? 'selected' : ''}}>Miss</option>
+                        <option class="title-option" value="Mrs" {{$user->title == 'Mrs'? 'selected' : ''}}>Mrs</option>
                     </select>
                     @error('title')
                         <span class="invalid-feedback" role="alert">
@@ -25,15 +25,15 @@
                     @enderror
                 </li>
                 <li class="form-row">
-                    <input class="@error('firstName') is-invalid @enderror" type="text" name="firstName" placeholder="FIRST NAME..." value="{{old('firstName')}}">
+                    <input class="@error('firstName') is-invalid @enderror" type="text" name="firstName" placeholder="FIRST NAME..." value="{{$user->firstName}}">
                     @error('firstName')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                </li>    
+                </li>
                 <li class="form-row">
-                    <input class=" @error('lastName') is-invalid @enderror" type="text" name="lastName" placeholder="LAST NAME..." value="{{old('lastName')}}">
+                    <input class=" @error('lastName') is-invalid @enderror" type="text" name="lastName" placeholder="LAST NAME..." value="{{$user->lastName}}">
                     @error('lastName')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
                     @enderror
                 </li>
                 <li class="form-row">
-                    <input class=" @error('email') is-invalid @enderror" type="text" name="email" placeholder="EMAIL ADDRESS..." value="{{old('email')}}">
+                    <input class=" @error('email') is-invalid @enderror" type="email" name="email" placeholder="EMAIL ADDRESS..." value="{{$user->email}}">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -49,7 +49,7 @@
                     @enderror
                 </li>
                 <li class="form-row">
-                    <input class=" @error('phone') is-invalid @enderror" type="text" name="phone" placeholder="PHONE NO..." value="{{old('phone')}}">
+                    <input class=" @error('phone') is-invalid @enderror" type="text" name="phone" placeholder="PHONE NO..." value="{{$user->phone}}">
                     @error('phone')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -57,47 +57,31 @@
                     @enderror
                 </li>
                 <li class="form-row">
-                    <input class=" @error('password') is-invalid @enderror" type="text" name="password" placeholder="ENTER A PASSWORD...">
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <input id="buildingName" name="buildingName" type="text" placeholder="BUILDING NAME..." value="{{$user->building_name}}">
                 </li>
                 <li class="form-row">
-                    <input class=" @error('password_confirmation') is-invalid @enderror" type="text" name="password_confirmation" placeholder="CONFIRM PASSWORD...">
-                    @error('password_confirmation')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <input id="buildingNumber" name="buildingNumber" type="text" placeholder="BUILDING NUMBER..."  value="{{$user->building_number}}">
                 </li>
                 <li class="form-row">
-                    <input id="buildingName" name="buildingName" placeholder="BUILDING NAME...">
+                    <input id="line1" name="addressLine1" type="text" placeholder="ADDRESS LINE 1..." value="{{$user->address_line_1}}">
                 </li>
                 <li class="form-row">
-                    <input id="buildingNumber" name="buildingNumber" placeholder="BUILDING NUMBER...">
+                    <input id="line2" name="addressLine2" type="text" placeholder="ADDRESS LINE 2..." value="{{$user->address_line_2}}">
                 </li>
                 <li class="form-row">
-                    <input id="line1" name="addressLine1" placeholder="ADDRESS LINE 1...">
+                    <input id="line3" name="addressLine3" type="text" placeholder="ADDRESS LINE 3..." value="{{$user->address_line_3}}">
                 </li>
                 <li class="form-row">
-                    <input id="line2" name="addressLine2" placeholder="ADDRESS LINE 2...">
+                    <input id="town"  name="city" type="text" placeholder="CITY" value="{{$user->city}}">
                 </li>
                 <li class="form-row">
-                    <input id="line3" name="addressLine3" placeholder="ADDRESS LINE 3...">
+                    <input id="county"  name="county" type="text" placeholder="COUNTY" value="{{$user->county}}">
                 </li>
                 <li class="form-row">
-                    <input id="town"  name="city" placeholder="CITY">
+                    <input id="country" name="countryISOcode" type="text" Value="GB" placeholder="COUNTRY">
                 </li>
                 <li class="form-row">
-                    <input id="county"  name="county" placeholder="COUNTY">
-                </li>
-                <li class="form-row">
-                    <input id="country" name="countryISOcode" Value="GB" placeholder="COUNTRY">
-                </li>
-                <li class="form-row">
-                    <input id="postcode" name="postcode" placeholder="POSTCODE">
+                    <input id="postcode" name="postcode" type="text" placeholder="POSTCODE" value="{{$user->postcode}}">
                 </li>
                 <li class="form-row">
                     <input class="cont bold button-black" type="submit" value="SAVE">
@@ -148,4 +132,8 @@
         color: black;
     }
 </style>
+@endsection
+@section('styles')
+@parent
+<link href="{{ asset('css/personal.account.css') }}" rel="stylesheet">
 @endsection
