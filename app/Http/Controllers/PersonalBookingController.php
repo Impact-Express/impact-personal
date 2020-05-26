@@ -236,7 +236,7 @@ class PersonalBookingController extends Controller
             'senderAddress4' => $user->postcode,
         ]);
 // dd($hermesShipmentDetails);
-/*
+
         $hermes = new HermesParcelShopBackToImpact();
         $hermes->buildRequestBody($hermesShipmentDetails);
         $hermesResponse = $hermes->send();
@@ -264,11 +264,11 @@ class PersonalBookingController extends Controller
             'sort_level_4' => $hermesCarrierDetails->sortLevel4,
             'sort_level_5' => $hermesCarrierDetails->sortLevel5
         ]);
-*/
+
         // Send booking to impact via api
-        // $impact = new ImpactUploadManifest();
-        // $impact->buildRequestBody($shipmentData);
-        // $response = $impact->send();
+        $impact = new ImpactUploadManifest();
+        $impact->buildRequestBody($shipmentData);
+        $response = $impact->send();
 
         // Send confirmation email with link to label
         $customerName = auth()->user()->firstName;
