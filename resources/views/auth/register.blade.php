@@ -92,8 +92,8 @@
                     <input class="cont bold button-black" type="submit" value="REGISTER">
                 </li>
             </ul>
-            <input id="buildingName" name="buildingName" type="hidden">
-            <input id="buildingNumber" name="buildingNumber" type="hidden">
+            <!-- <input id="buildingName" name="buildingName" type="hidden"> -->
+            <!-- <input id="buildingNumber" name="buildingNumber" type="hidden"> -->
             <input id="line1" name="addressLine1" type="hidden">
             <input id="line2" name="addressLine2" type="hidden">
             <input id="line3" name="addressLine3" type="hidden">
@@ -111,8 +111,8 @@
 $('#p-lookup').getAddress({
     api_key:'wkn4y_4C3ku4UvSZpaMasA25478',
     output_fields:{
-        building_name: '#buildingName',
-        building_number: '#buildingNumber',
+        // building_name: '#buildingName',
+        // building_number: '#buildingNumber',
         line_1: '#line1',
         line_2: '#line2',
         line_3: '#line3',

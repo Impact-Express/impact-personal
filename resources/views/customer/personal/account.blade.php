@@ -56,12 +56,12 @@
                         </span>
                     @enderror
                 </li>
-                <li class="form-row">
+                <!-- <li class="form-row">
                     <input id="buildingName" name="buildingName" type="text" placeholder="BUILDING NAME..." value="{{$user->building_name}}">
                 </li>
                 <li class="form-row">
                     <input id="buildingNumber" name="buildingNumber" type="text" placeholder="BUILDING NUMBER..."  value="{{$user->building_number}}">
-                </li>
+                </li> -->
                 <li class="form-row">
                     <input id="line1" name="addressLine1" type="text" placeholder="ADDRESS LINE 1..." value="{{$user->address_line_1}}">
                 </li>
