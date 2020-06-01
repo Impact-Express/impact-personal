@@ -10,6 +10,10 @@ class PagesController extends Controller
         return view('pages.locatehermesparcelshop');
     }
 
+    public function error() {
+        return view('pages.error');
+    }
+
     public function test() {
 
         $name = "Richard";

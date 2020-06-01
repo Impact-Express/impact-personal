@@ -13,6 +13,7 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/tooltip.js', 'public/js')
+    .js('resources/js/modal.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/personal.master.scss', 'public/css')
     .sass('resources/sass/personal.account.scss', 'public/css')

@@ -10,7 +10,7 @@ try {
     // window.Popper = require('popper.js').default;
     // window.Tippy = require('tippy.js');
     window.$ = window.jQuery = require('jquery');
-
+    
     require('bootstrap');
 } catch (e) {}
 

@@ -61,5 +61,7 @@
         text-decoration: underline;
     }
 </style>
-
+@endsection
+@section('scripts')
+<script src="{{ asset('js/modal.js') }}" defer></script>
 @endsection

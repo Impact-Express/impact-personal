@@ -6,19 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 use App\Mail\BookingConfirmation;
 use App\Models\Country;
 use App\Models\Shipment;
 use App\Models\Label;
+use App\Models\Payment;
 use App\Services\Pricing;
 use App\Services\Weighting;
 use App\Services\ImpactAPI\ImpactUploadManifest;
 use App\Services\Carriers\HERMES\HermesParcelShopBackToImpact;
-use Auth;
 use App\Services\Carriers\HERMES\HermesShipmentDetails;
-
-// for debug only
-use App\Models\Payment;
 
 class PersonalBookingController extends Controller
 {
@@ -174,7 +172,7 @@ class PersonalBookingController extends Controller
         ];
 
         session()->put(['shipmentData' => $shipmentData]);
-// dd($shipmentData, $bookingData);
+
         $paypalClientId = config('app.paypal_sandbox_client_id');
 
         return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'paypalClientId'));
@@ -182,13 +180,11 @@ class PersonalBookingController extends Controller
 
     public function complete() {
 
-        // dd(session()->all());
         $user = auth()->user();
         $bookingData = session('bookingData');
         $shipmentData = session('shipmentData');
         $paypalResponse = session('paypalResponse');
 
-// dd($bookingData, $shipmentData, $paypalResponse);
 
         if ($paypalResponse->status !== 'APPROVED') {
             dd('declined');
@@ -235,12 +231,10 @@ class PersonalBookingController extends Controller
             'senderAddress3' => $user->city,
             'senderAddress4' => $user->postcode,
         ]);
-// dd($hermesShipmentDetails);
 
         $hermes = new HermesParcelShopBackToImpact();
         $hermes->buildRequestBody($hermesShipmentDetails);
         $hermesResponse = $hermes->send();
-// dd($hermesResponse);
         $hermesCarrierDetails = $hermesResponse->routingResponseEntries->routingResponseEntry->outboundCarriers->carrier1;
 
         // Save label image to database

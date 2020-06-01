@@ -31,6 +31,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('label/{shipment}', 'LabelsController@showpdf')->name('get-label-pdf');
 });
 
+Route::get('/error', 'PagesController@error')->name('error');
 
 Route::get('/hermesparcelshop', 'PagesController@locateHermesParcelShop')->name('locateHermesParcelShop');
 

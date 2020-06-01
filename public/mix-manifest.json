@@ -12,5 +12,6 @@
     "/css/register.css": "/css/register.css",
     "/css/login.css": "/css/login.css",
     "/css/complete.css": "/css/complete.css",
+    "/js/modal.js": "/js/modal.js",
     "/js/tooltip.js": "/js/tooltip.js"
 }
