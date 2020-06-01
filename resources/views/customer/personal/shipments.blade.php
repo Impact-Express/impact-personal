@@ -18,13 +18,11 @@
                 </li>
                 <!-- MODAL -->
                     <div id="modal-{{$shipment->shipment_reference}}" class="modal">
-
-                    <!-- Modal content -->
-                    <div class="modal-content">
-                    <span class="close" id='close-{{$shipment->shipment_reference}}'>&times;</span>
-                    <p>Some text in the Modal..</p>
-                    </div>
-
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close" id='close-{{$shipment->shipment_reference}}'>&times;</span>
+                            <p>{{$shipment->shipment_reference}}</p>
+                        </div>
                     </div>
                 <!-- END MODAL -->
             @empty
@@ -94,7 +92,7 @@
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
     }
 
     /* The Close Button */
