@@ -14,7 +14,7 @@
             @forelse ($shipmentsByDate as $shipment)
                 <li class="shipment-box">
                     <button class="modalBtn" id="details-{{$shipment->shipment_reference}}" data-ref="{{$shipment->shipment_reference}}">{{$shipment->shipment_reference}}</button>
-                    <a href="{{route('get-label-pdf', $shipment->id)}}" target="_blank">Label</a>
+                    <a href="{{route('get-label-pdf', $shipment->id)}}" target="_blank">Get Label</a>
                 </li>
                 <!-- MODAL -->
                     <div id="modal-{{$shipment->shipment_reference}}" class="modal">
@@ -22,6 +22,19 @@
                         <div class="modal-content">
                             <span class="close" id='close-{{$shipment->shipment_reference}}'>&times;</span>
                             <p>{{$shipment->shipment_reference}}</p>
+                            <p>{{$shipment->consignee}}</p>
+                            <p>{{$shipment->consignee_address_1}}</p>
+                            <p>{{$shipment->consignee_address_2}}</p>
+                            <p>{{$shipment->consignee_address_3}}</p>
+                            <p>{{$shipment->consignee_city}}</p>
+                            <p>{{$shipment->consignee_zip}}</p>
+                            <p>{{$shipment->consignee_country_iso_code}}</p>
+                            <p>{{$shipment->contents}}</p>
+                            <p>£{{money_format('%n',$shipment->value/100)}}</p>
+                            <p>{{$shipment->length}}cm</p>
+                            <p>{{$shipment->width}}cm</p>
+                            <p>{{$shipment->height}}cm</p>
+                            <p>{{$shipment->dead_weight/1000}}kg</p>
                         </div>
                     </div>
                 <!-- END MODAL -->
@@ -110,7 +123,12 @@
     cursor: pointer;
     }
 
-
+    .modalBtn {
+        background: none;
+        border: none;
+        cursor:pointer;
+        
+    }
 
 
 
