@@ -272,10 +272,17 @@ class PersonalBookingController extends Controller
         session()->forget('shipmentDate');
         session()->forget('paypalOrderIdCheck');
 
+
+        session()->put(['shipmentId' => $shipment->id]);
+
         return redirect(route('confirmation'));
     }
 
     public function confirmation() {
-        return view('customer.personal.confirmation');
+        $shipmentId = session('shipmentId');
+
+        $shipment = Shipment::find($shipmentId);
+
+        return view('customer.personal.confirmation', compact('shipment'));
     }
 }
