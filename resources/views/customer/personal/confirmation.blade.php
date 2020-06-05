@@ -14,7 +14,8 @@
                 <div class="top-line">
                     <h2>Your parcel details</h2>
                     <div class="button-container">
-                        <a class="button-black" href="{{route('get-label-pdf', $shipment->id)}}">Get your label</a>
+                        <a class="button-black" href="{{route('account')}}">Your account</a>
+                        <a class="button-black" href="{{route('get-label-pdf', $shipment->id)}}" target="_blank">Get your label</a>
                     </div>
                 </div>
                 <div class="parcel-details">
@@ -30,7 +31,7 @@
                     <p>{{$shipment->consignee_zip}}</p>
                     <p>{{$shipment->consignee_country_iso_code}}</p>
                     <hr>
-                    <h4>Contents details</h4>
+                    <h4>Parcel details</h4>
                     <p>{{$shipment->contents}}</p>
                     <p>£{{money_format('%n',$shipment->value/100)}}</p>
                     <p>Length: {{$shipment->length}}cm</p>
@@ -79,6 +80,10 @@
     }
 }
 @media (min-width: 992px) {
+    .quote-complete {
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
     .quote-stage-2 {
         padding-bottom: 30px;
         margin-bottom: 30px;
