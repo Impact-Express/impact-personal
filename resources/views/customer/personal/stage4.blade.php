@@ -99,7 +99,14 @@
                             </li>
                             <li class="form-row row-6">
                                 <div class="form-input consignee-country-input">
-                                    <input class=" @error('consignee-country') is-invalid @enderror" type="text" name="consignee-country" placeholder="COUNTRY..." value="FR">
+                                    <select class="@error('consignee-country') is-invalid @enderror" id="to" name="consignee-country" type="text">
+                                        <option>Select a country...</option>
+                                        @foreach ($countries as $country)
+                                            @if ($country->zone != 0)
+                                                <option value="{{$country->code}}" {{$country->code == $bookingData['toCountryCode'] ? 'selected' : ''}}>{{$country->name}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                     @error('consignee-country')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

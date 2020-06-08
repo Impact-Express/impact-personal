@@ -82,7 +82,7 @@ class RegisterController extends Controller
             'address_Line_3' => $data['addressLine3'],
             'city' => $data['city'],
             'county' => $data['county'],
-            'country_id' => Country::where('code', $data['countryISOcode'])->first()->code,
+            'country_id' => Country::where('code', $data['countryISOcode'])->first()->id,
             'postcode' => $data['postcode']
         ]);
     }

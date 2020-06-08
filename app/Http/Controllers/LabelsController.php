@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use PDF;
+use App\Models\Country;
 use App\Models\Shipment;
+use PDF;
 
 class LabelsController extends Controller
 {
@@ -15,7 +16,8 @@ class LabelsController extends Controller
         }
         // $label = $shipment->label;
         $data = [
-            'shipment' => $shipment
+            'shipment' => $shipment,
+            'countryName' => Country::where('code', $shipment->consignee_country_iso_code)->first()->name,
         ];
 
         $pdf = PDF::loadView('labels.hermesToImpact', $data);  

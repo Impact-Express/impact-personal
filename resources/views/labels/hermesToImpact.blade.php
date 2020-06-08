@@ -30,7 +30,7 @@
             <li>{{$shipment->consignee_address_1}}</li>
             <li>{{$shipment->consignee_city}}</li>
             <li>{{$shipment->consignee_zip}}</li>
-            <li>{{$shipment->consignee_country_iso_code}}</li>
+            <li>{{$countryName}}</li>
             <li>Tel: {{$shipment->consignee_contact_tel}}</li>
           </ul>
         </div>

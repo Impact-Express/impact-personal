@@ -110,7 +110,9 @@ class PersonalBookingController extends Controller
             return redirect(route('stage1'));
         }
 
-        return view('customer.personal.stage4',compact('bookingData'));
+        $countries = Country::all();
+
+        return view('customer.personal.stage4',compact('bookingData', 'countries'));
     }
 
     public function stage5(Request $request) {
