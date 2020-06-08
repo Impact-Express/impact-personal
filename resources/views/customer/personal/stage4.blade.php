@@ -99,13 +99,14 @@
                             </li>
                             <li class="form-row row-6">
                                 <div class="form-input consignee-country-input">
-                                    <select class="@error('consignee-country') is-invalid @enderror" id="to" name="consignee-country" type="text">
+                                    <select class="@error('consignee-country') is-invalid @enderror country-select" id="to" type="text" disabled>
                                         <option>Select a country...</option>
                                         @foreach ($countries as $country)
                                             @if ($country->zone != 0)
-                                                <option value="{{$country->code}}" {{$country->code == $bookingData['toCountryCode'] ? 'selected' : ''}}>{{$country->name}}</option>
+                                                <option {{$country->code == $bookingData['toCountryCode'] ? 'selected' : ''}}>{{$country->name}}</option>
                                             @endif
                                         @endforeach
+                                        <input type="text" name="consignee-country" value="{{$bookingData['toCountryCode']}}" hidden>
                                     </select>
                                     @error('consignee-country')
                                         <span class="invalid-feedback" role="alert">
@@ -192,7 +193,13 @@
 </main>
 <style>
 
-
+.country-select {
+    background:  white;
+}
+select:disabled {
+    opacity: 1;
+    color: black;
+}
 
 </style>
 @endsection
