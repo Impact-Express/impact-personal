@@ -78,7 +78,7 @@
                     <input id="county"  name="county" type="text" placeholder="COUNTY" value="{{$user->county}}">
                 </li>
                 <li class="form-row">
-                    <input id="country" name="countryISOcode" type="text" Value="GB" placeholder="COUNTRY">
+                    <input id="country" name="countryISOcode" type="text" Value="United Kingdom" placeholder="COUNTRY" readonly>
                 </li>
                 <li class="form-row">
                     <input id="postcode" name="postcode" type="text" placeholder="POSTCODE" value="{{$user->postcode}}">

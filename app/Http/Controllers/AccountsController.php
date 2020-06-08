@@ -56,11 +56,12 @@ class AccountsController extends Controller
             $user->address_line_3 = $request->addressLine3;
             $user->city = $request->city;
             $user->county = $request->county;
-            $user->country_id = Country::where('code', $request->countryISOcode)->first()->id;
+            // $user->country_id = Country::where('code', $request->countryISOcode)->first()->id;
+            $user->country_id = Country::where('code', 'GB')->first()->id;
             $user->postcode = $request->postcode;
             $user->save();
         } catch (\Exception $e) {
-           dd($e->message);
+           dd($e);
         }
 
         return redirect(route('account'));
