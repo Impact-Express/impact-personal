@@ -6,7 +6,7 @@
 </div>
 <nav class="main-nav">
     <a class="navbar-logo" href="{{route('stage1')}}">
-        <img class="nav-logo-img" src="/assets/images/navbar-logo.png" alt="Impact Express Logo">
+        <img class="nav-logo-img" src="/assets/images/logo01.svg" alt="Impact Express Logo">
     </a>
     <div class="hamburger-container">
         <button class="hamburger button-square" type="button">

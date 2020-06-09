@@ -240,7 +240,7 @@ a:hover {
 }
 
 .nav-logo-img {
-  width: 70%;
+  width: 100%;
 }
 
 .form-rows {
@@ -373,7 +373,7 @@ a:hover {
   }
 
   .nav-logo-img {
-    margin-left: 44px;
+    margin-left: 90px;
   }
 
   .nav-items {
@@ -535,6 +535,11 @@ a:hover {
 }
 
 @media (max-width: 991px) {
+  .nav-logo-img {
+    width: 60%;
+    padding: 10px;
+  }
+
   .progress {
     margin: 70px 5% 0 5%;
     display: flex;
