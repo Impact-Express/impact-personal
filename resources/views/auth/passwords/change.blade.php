@@ -11,6 +11,16 @@
             <li class="sep"></li>
             <li class="tab"><h2>Security</h2></li>
         </ul>
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <form action="{{route('change-password')}}" method="POST">
             @csrf
             <ul class="form-rows">
