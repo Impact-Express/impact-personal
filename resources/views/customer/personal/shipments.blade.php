@@ -8,6 +8,8 @@
             <li class="tab"><h2>My Shipments</h2></li>
             <li class="sep"></li>
             <li class="tab"><a class="account" href="{{route('account')}}">My Account</a></li>
+            <li class="sep"></li>
+            <li class="tab"><a class="account" href="{{route('change-password-form')}}">Security</a></li>
         </ul>
         
         <ul>

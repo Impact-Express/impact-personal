@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/shipments', 'AccountsController@shipments')->name('shipments');
     Route::get('/account', 'AccountsController@index')->name('account');
     Route::post('/account', 'AccountsController@update')->name('update-user');
+    Route::get('/changepassword', 'AccountsController@showChangePasswordForm')->name('change-password-form');
+    Route::post('/changepassword', 'AccountsController@changePassword')->name('change-password');
 
     Route::get('label/{shipment}', 'LabelsController@showpdf')->name('get-label-pdf');
 });

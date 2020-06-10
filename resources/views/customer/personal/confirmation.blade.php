@@ -8,7 +8,6 @@
             <div class="arrow-down"></div>
             <h1 class="tc tc-white"><span class="bold">Booking Complete</span></h1>            
         </div>
-
         <div class="quote-container bg-yellow">
             <div class="quote-box">
                 <div class="top-line">
@@ -32,8 +31,8 @@
                     <p>{{$shipment->consignee_country_iso_code}}</p>
                     <hr>
                     <h4>Parcel details</h4>
-                    <p>{{$shipment->contents}}</p>
-                    <p>£{{money_format('%n',$shipment->value/100)}}</p>
+                    <p>Contents: {{$shipment->contents}}</p>
+                    <p>Value: £{{money_format('%n',$shipment->value/100)}}</p>
                     <p>Length: {{$shipment->length}}cm</p>
                     <p>Width: {{$shipment->width}}cm</p>
                     <p>Height: {{$shipment->height}}cm</p>
@@ -45,7 +44,6 @@
         </div>
     </div>
 </main>
-
 <style>
 
 @media (max-width: 991px) {

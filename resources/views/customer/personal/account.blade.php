@@ -7,6 +7,8 @@
             <li class="tab"><a class="account" href="{{route('shipments')}}">My Shipments</a></li>
             <li class="sep"></li>
             <li class="tab"><h2>My Account</h2></li>
+            <li class="sep"></li>
+            <li class="tab"><a class="account" href="{{route('change-password-form')}}">Security</a></li>
         </ul>
         <form action="{{route('update-user')}}" method="POST">
             @csrf
