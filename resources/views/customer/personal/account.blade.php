@@ -3,10 +3,10 @@
 @section('content')
 <main>
     <div class="container shipments-container bg-yellow">
-        <ul>
+        <ul class="tabs">
             <li class="tab"><a class="account" href="{{route('shipments')}}">My Shipments</a></li>
             <li class="sep"></li>
-            <li class="tab"><h2>My Account</h2></li>
+            <li class="tab" style="font-weight:bold;">My Account</li>
             <li class="sep"></li>
             <li class="tab"><a class="account" href="{{route('change-password-form')}}">Security</a></li>
         </ul>
@@ -120,6 +120,10 @@
     }
     .tab {
         padding: 0 10px;
+        margin: 10px;
+    }
+    .tabs {
+        margin-bottom: 50px;
     }
     .sep {
         border: 1px solid black;
@@ -132,6 +136,22 @@
     }
     .title-option {
         color: black;
+    }
+    @media (max-width: 991px) {
+        .sep {
+            display: none;
+        }
+        .tab {
+            display:block;
+        }
+    }
+    @media (min-width: 992px) {
+        .sep {
+            display: inline;
+        }
+        .tab {
+            display:inline;
+        }
     }
 </style>
 @endsection

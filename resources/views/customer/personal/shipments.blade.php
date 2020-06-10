@@ -4,14 +4,13 @@
 
 <main>
     <div class="container shipments-container bg-yellow">
-        <ul>
-            <li class="tab"><h2>My Shipments</h2></li>
+        <ul class="tabs">
+            <li class="tab" style="font-weight:bold;">My Shipments</li>
             <li class="sep"></li>
             <li class="tab"><a class="account" href="{{route('account')}}">My Account</a></li>
             <li class="sep"></li>
             <li class="tab"><a class="account" href="{{route('change-password-form')}}">Security</a></li>
         </ul>
-        
         <ul>
             @forelse ($shipmentsByDate as $shipment)
                 <li class="shipment-box">
@@ -74,6 +73,10 @@
     }
     .tab {
         padding: 0 10px;
+        margin: 10px;
+    }
+    .tabs {
+        margin-bottom: 50px;
     }
     .sep {
         border: 1px solid black;
@@ -85,6 +88,22 @@
         text-decoration: underline;
     }
 
+    @media (max-width: 991px) {
+        .sep {
+            display: none;
+        }
+        .tab {
+            display:block;
+        }
+    }
+    @media (min-width: 992px) {
+        .sep {
+            display: inline;
+        }
+        .tab {
+            display:inline;
+        }
+    }
 
 
     /* The Modal (background) */
