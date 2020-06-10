@@ -24,7 +24,7 @@
         <form action="{{route('change-password')}}" method="POST">
             @csrf
             <ul class="form-rows">
-            <li class="form-row">
+                <li class="form-row">
                     <input class="@error('current-password') is-invalid @enderror" type="password" name="current-password" placeholder="CURRENT PASSWORD...">
                     @error('current-password')
                         <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                     @enderror
                 </li>
                 <li class="form-row">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="button-black">
                         Change Password
                     </button>
                 </li>
