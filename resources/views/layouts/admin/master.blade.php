@@ -59,28 +59,6 @@
 </nav>
     @yield('content')
 
-
-    <div class="mobile-nav">
-    <ul class="mobile-nav-items">
-        <li class="mobile-nav-img">
-            <a href=""><img class="mobile-logo" src="{{asset('assets/images/navbar-logo.png')}}" alt="Impact Express Logo"></a>
-        </li>
-        <li class="mobile-nav-item">Login</li>
-        <li class="mobile-nav-item"><a href="{{route('stage1')}}">Send a Parcel</a></li>
-        <li class="mobile-nav-img"></li>
-        <li class="mobile-nav-item"><a href="https://impactexpress.co.uk/tracking/">Track My Parcel</a></li>
-        <li class="mobile-nav-item"><a href="https://impactexpress.co.uk/services/">Services</a></li>
-        <li class="mobile-nav-item"><a href="https://impactexpress.co.uk/information/">News & Events</a></li>
-        <li class="mobile-nav-item"><a href="https://impactexpress.co.uk/services/international-shipping-destinations/">Shipping Destinations</a></li>
-        <li class="mobile-nav-img"></li>
-        <li class="mobile-nav-item"><a href="https://impactexpress.co.uk/contactus/">Contact Us</a></li>
-    </ul>
-</div>
-
-
-
-
-
 <!-- #main-footer -->
 <!-- <footer id="main-footer">
     
@@ -91,7 +69,11 @@
 
 
 
-
+<style>
+    th.k-header {
+        padding: 16px 47px 13px 24px !important;
+    }
+</style>
 @endsection
 
 @section('styles')
