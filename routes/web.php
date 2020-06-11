@@ -31,6 +31,9 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/changepassword', 'AccountsController@changePassword')->name('change-password');
 
     Route::get('label/{shipment}', 'LabelsController@showpdf')->name('get-label-pdf');
+
+
+    Route::get('/admin', 'AdminController@home')->name('admin');
 });
 
 Route::get('/error', 'PagesController@error')->name('error');
