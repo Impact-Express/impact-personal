@@ -95,5 +95,7 @@
 @endsection
 
 @section('styles')
+<link rel="stylesheet" href="{{asset('css/kendo/kendo.common.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/kendo/kendo.material-v2.min.css')}}">
 <link href="{{ asset('css/personal.master.css') }}" rel="stylesheet">
 @endsection
