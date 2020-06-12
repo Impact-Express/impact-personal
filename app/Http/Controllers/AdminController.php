@@ -9,6 +9,6 @@ class AdminController extends Controller
 {
     public function home() {
         $shipments = Shipment::all();
-        return view('admin.home', compact('shipment'));
+        return view('admin.home', compact('shipments'));
     }
 }
