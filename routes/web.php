@@ -33,8 +33,9 @@ Route::middleware(['auth'])->group(function() {
     Route::get('label/{shipment}', 'LabelsController@showpdf')->name('get-label-pdf');
 });
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin', 'AdminController@home')->name('admin');
+    Route::get('/customers', 'AdminController@customers')->name('customers');
 });
 
 Route::get('/error', 'PagesController@error')->name('error');

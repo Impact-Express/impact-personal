@@ -42,7 +42,7 @@ class LoginController extends Controller
     }
 
     protected function redirectTo() {
-        if (back()->getTargetUrl() == 'http://personal/3') {
+        if (back()->getTargetUrl() == route('stage3')) {
             return '/4';
         } else {
             return '/';
