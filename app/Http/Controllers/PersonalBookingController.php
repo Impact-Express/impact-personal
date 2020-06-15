@@ -41,7 +41,7 @@ class PersonalBookingController extends Controller
                  Rule::in(Country::getCodes()),
             ],
             'postcode' => 'required|string',
-            'weight' => 'required|numeric',
+            'weight' => 'required|numeric|lte:15',
             'length' => 'required|numeric',
             'width' => 'required|numeric',
             'height' => 'required|numeric',
