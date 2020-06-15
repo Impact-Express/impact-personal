@@ -31,15 +31,15 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/changepassword', 'AccountsController@changePassword')->name('change-password');
 
     Route::get('label/{shipment}', 'LabelsController@showpdf')->name('get-label-pdf');
+});
 
-
+Route::middleware(['auth'])->group(function() {
     Route::get('/admin', 'AdminController@home')->name('admin');
 });
 
 Route::get('/error', 'PagesController@error')->name('error');
 
 Route::get('/hermesparcelshop', 'PagesController@locateHermesParcelShop')->name('locateHermesParcelShop');
-
 
 // Route::get('/createOrder', 'PaymentController@createOrder');
 Route::post('/createOrder', 'PaymentController@createOrder')->name('paypal-create');

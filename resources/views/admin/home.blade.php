@@ -119,12 +119,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($shipments as $shipment)
-					<tr>
-                        <td><button class="ref modalBtn" data-ref="{{$shipment->shipment_reference}}">{{$shipment->shipment_reference}}</button></td>
-						<td>{{$shipment->user->email}}</td>
-                    </tr>
-                    @endforeach
+                	@forelse ($shipments as $shipment)
+						<tr>
+							<td><button class="ref modalBtn" data-ref="{{$shipment->shipment_reference}}">{{$shipment->shipment_reference}}</button></td>
+							<td>{{$shipment->user->email}}</td>
+						</tr>
+					@empty
+            		@endforelse
                 </tbody>
             </table>
 		</div>
