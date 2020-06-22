@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateAdminsTable extends Migration
 {
@@ -18,6 +19,16 @@ class CreateAdminsTable extends Migration
             $table->integer('user_id');
             $table->timestamps();
         });
+        DB::insert('insert into users (id, title, firstName, lastName, email, password) values (?, ?, ?, ?, ?, ?)', 
+        [
+            1, 
+            'Mr',
+            'Richard',
+            'Bailey',
+            'richard@impactexpress.co.uk',
+            '$2y$10$6oLABl68PNM966pHIGirEucRBLU9vvCEkhPrmBNj0MUNrzxrI3xsm'
+        ]);
+        DB::insert('insert into admins (id, user_id) values (?, ?)', [1, 1]);
     }
 
     /**
