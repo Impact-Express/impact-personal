@@ -27,8 +27,8 @@ class PayPalCreateOrder
             'application_context' =>
                 array(
                     'shipping_preference' => 'NO_SHIPPING',
-                    'return_url' => 'http://personal/',
-                    'cancel_url' => 'http://personal/'
+                    'return_url' => env("APP_URL"),
+                    'cancel_url' => env("APP_URL")
                 ),
             'purchase_units' =>
                 array(
