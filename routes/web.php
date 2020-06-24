@@ -1,6 +1,6 @@
 <?php
 
-Route::middleware(['auth.basic'])->group(function() {
+//Route::middleware(['auth.basic'])->group(function() {
     Auth::routes();
 
     Route::post('/stage3login', 'Auth\LoginController@loginFromStep3')->name('login-from-stage-3');
@@ -50,4 +50,4 @@ Route::middleware(['auth.basic'])->group(function() {
     Route::post('/capturePayment', 'PaymentController@capturePayment')->name('paypal-capture');
     
     Route::get('/test', 'PagesController@test'); 
-});
+// });

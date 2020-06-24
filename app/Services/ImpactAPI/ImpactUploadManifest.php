@@ -38,7 +38,7 @@ class ImpactUploadManifest extends ImpactRequest
                 },
                 "ManifestRecords": [
                     {
-                        "ParcelReference": "'.$shipmentData->shipment_reference.'",
+                        "ShipmentReference": "'.$shipmentData->shipment_reference.'",
                         "Shipper": "Impact Express Wholesale Ltd",
                         "ShipperAddress1": "Unit 13 Blackthorn Crescent",
                         '.$shipperAddress2.'
