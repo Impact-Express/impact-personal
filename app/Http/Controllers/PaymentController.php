@@ -21,7 +21,7 @@ class PaymentController extends Controller
         $response = PayPalCreateOrder::createOrder(session('bookingData')['price']);
 
 // Debug
-Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
+// Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
         session()->put(['paypalOrderIdCheck' => $response->result->id]);
 
@@ -43,7 +43,7 @@ Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
         session()->put(['paypalResponse' => $response->result]);
 // Debug
-Storage::put('file2.txt', json_encode($response->result, JSON_PRETTY_PRINT));
+// Storage::put('file2.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
         if (session('paypalOrderIdCheck') != $response->result->id) {
             return json_encode(['wot u' => 'playin at?']);
