@@ -70,7 +70,7 @@
       </div>
       <div class="bottom-bottom">
         <img src="{{public_path().'/assets/images/hermes-label.jpg'}}" class="h-logo">
-        <img src="{{public_path().'/assets/images/navbar-logo.png'}}" class="ie-logo">
+        <img src="{{public_path().'/assets/images/logo01.svg'}}" class="ie-logo">
         <div class="h-barcode">
             {!! DNS1D::getBarcodeHTML('6157173010108895', 'I25', 2, 70) !!}
             <span class="h-barcode-number">61-571-73-01010889-5</span>

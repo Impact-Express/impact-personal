@@ -47,7 +47,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left">
-                                                                                        <img src="{{asset('assets/images/navbar-logo.png')}}" alt="">
+                                                                                        <img src="{{asset('assets/images/logo01.svg')}}" alt="">
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -196,6 +196,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td align="center">
+                                                                                        <p><strong>Impact Express Wholesale Ltd </strong></p>
                                                                                         <p><strong>Unit 13 Blackthorne Crescent </strong></p>
                                                                                         <p><strong>Colnbrook, SL3 0QR</strong></p>
                                                                                         <p><strong>Tel: 01753 683 700</strong></p>
