@@ -7,9 +7,6 @@ use App\Services\PayPal\PayPalCreateOrder;
 use App\Services\PayPal\PayPalCapturePayment;
 use App\Models\Payment;
 
-use Illuminate\Support\Facades\Storage;
-
-
 class PaymentController extends Controller
 {
     public function createOrder() {
@@ -19,9 +16,6 @@ class PaymentController extends Controller
         }
 
         $response = PayPalCreateOrder::createOrder(session('bookingData')['price']);
-
-// Debug
-// Storage::put('file1.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
         session()->put(['paypalOrderIdCheck' => $response->result->id]);
 
@@ -42,16 +36,10 @@ class PaymentController extends Controller
         $response = PayPalCapturePayment::getOrder($ppOrderId);
 
         session()->put(['paypalResponse' => $response->result]);
-// Debug
-// Storage::put('file2.txt', json_encode($response->result, JSON_PRETTY_PRINT));
 
         if (session('paypalOrderIdCheck') != $response->result->id) {
             return json_encode(['wot u' => 'playin at?']);
         }
-        
         return json_encode($response->result);
     }
 }
-
-
-// Storage::put('file2.txt', json_encode($response->result, JSON_PRETTY_PRINT));

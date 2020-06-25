@@ -18,7 +18,7 @@ class PagesController extends Controller
 
         $name = "Richard";
         $id = 1;
-
-        return view('emails.bookingConfirmation', compact('name', 'id'));
+return view('test');
+//        return view('emails.bookingConfirmation', compact('name', 'id'));
     }
 }
