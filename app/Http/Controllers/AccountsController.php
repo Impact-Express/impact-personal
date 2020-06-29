@@ -19,7 +19,7 @@ class AccountsController extends Controller
     }
 
     public function shipments(Request $request) {
-        
+
         $user = auth()->user();
 
         $shipmentsByDate = DB::table('shipments')->where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
@@ -46,7 +46,7 @@ class AccountsController extends Controller
         if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
         }
-        
+
         try {
             $user = auth()->user();
             $user->title = $request->title;

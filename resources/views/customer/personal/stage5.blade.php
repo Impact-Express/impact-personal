@@ -51,7 +51,7 @@
                             <p>{{$shipmentData['consignee_city']}}</p>
                             <p>{{$shipmentData['consignee_country_iso_code']}}</p>
                             <p>{{$shipmentData['consignee_zip'] ?? ''}}</p>
-                            
+
                             <h3>Contents</h3>
                             <p>{{$shipmentData['contents']}}</p>
                             <h3>Value</h3>
@@ -69,7 +69,7 @@
                                 <div class="inner-quote-content">
                                     <div><span class="bold">From: </span>{{$bookingData['fromCountry']}}</div>
                                     <div><span class="bold">To: </span>{{$bookingData['toCountry']}}</div>
-                                    
+
                                     <div><span class="bold">Weight: </span>{{$bookingData['weight']}}kg</div>
                                     <div><span class="bold">Length: </span>{{$bookingData['length']}}cm</div>
                                     <div><span class="bold">Width: </span>{{$bookingData['width']}}cm</div>
@@ -118,7 +118,7 @@
 @section('scripts')
 <script src="https://www.paypal.com/sdk/js?client-id={{$paypalClientId}}&currency=GBP"></script>
 <script>
-    paypal.Buttons({  
+    paypal.Buttons({
         createOrder: function() {
             return fetch("{{route('paypal-create')}}", {
                 method: "post",
@@ -136,7 +136,7 @@
             });
         },
         onApprove: function(data, actions) {
-            console.log("data2",data);
+            // console.log("data2",data);
             let ov = document.getElementById("overlay");
             ov.classList.remove("hidden");
             ov.classList.add("visible");
