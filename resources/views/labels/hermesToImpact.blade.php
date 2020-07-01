@@ -179,7 +179,7 @@
   }
   .ie-logo {
     position: absolute;
-    height: 50px;
+    height: 40px;
     top:185px;
     left: 20px;
   }
