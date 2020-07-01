@@ -220,10 +220,6 @@ a:hover {
 
 /* Navigation Bar */
 
-.nav-logo-img {
-  width: auto;
-}
-
 .nav-items {
   display: none;
 }
@@ -237,6 +233,11 @@ a:hover {
     width: 45vw;
     color: #2D3332;
   }
+}
+
+.nav-logo {
+  margin-left: 10%;
+  width: 400px;
 }
 
 .nav-logo-img {
@@ -370,10 +371,6 @@ a:hover {
     background: white;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .nav-logo-img {
-    margin-left: 90px;
   }
 
   .nav-items {

@@ -5,7 +5,7 @@
     <img class="top-strip-img" src="/assets/images/dhl-strip-img.png" alt="DHL Authorised Service Partner">
 </div>
 <nav class="main-nav">
-    <a class="navbar-logo" href="{{route('stage1')}}">
+    <a class="nav-logo" href="{{route('stage1')}}">
         <img class="nav-logo-img" src="/assets/images/logo01.svg" alt="Impact Express Logo">
     </a>
     <div class="hamburger-container">
@@ -45,10 +45,9 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item button-main" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
+                        document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}
                     </a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -83,8 +82,8 @@
 
 <!-- #main-footer -->
 <!-- <footer id="main-footer">
-    
-    
+
+
 
 </footer> -->
 
