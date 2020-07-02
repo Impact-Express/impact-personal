@@ -47,7 +47,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left">
-                                                                                        <img src="{{asset('assets/images/logo01.svg')}}" alt="">
+                                                                                        <img src="{{asset('assets/images/logo01dark.svg')}}" alt="">
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
