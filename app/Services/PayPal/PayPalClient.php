@@ -4,6 +4,7 @@ namespace App\Services\PayPal;
 
 use PayPalCheckoutSdk\Core\PayPalHttpClient;
 use PayPalCheckoutSdk\Core\SandboxEnvironment;
+use PayPalCheckoutSdk\Core\ProductionEnvironment;
 
 ini_set('error_reporting', E_ALL); // or error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -24,13 +25,13 @@ class PayPalClient
      * This for development use SandboxEnvironment. In production, use LiveEnvironment.
      */
     protected static function environment() {
-
-        /**
-         * TODO: Add to .env and add logic to select function based on environment
-         */
+        if (app()->environment('production')) {
+            $clientId = config('app.paypal_live_client_id');
+            $clientSecret = config('app.paypal_live_client_secret');
+            return new ProductionEnvironment($clientId, $clientSecret);
+        }
         $clientId = config('app.paypal_sandbox_client_id');
         $clientSecret = config('app.paypal_sandbox_client_secret');
-
         return new SandboxEnvironment($clientId, $clientSecret);
     }
 }

@@ -21,6 +21,12 @@ return [
     'paypal_sandbox_client_secret' => env('PAYPAL_SANDBOX_CLIENT_SECRET'),
 
     /**
+     * PayPal live config
+     */
+    'paypal_live_client_id' => env('PAYPAL_LIVE_CLIENT_ID'),
+    'paypal_live_client_secret' => env('PAYPAL_LIVE_CLIENT_SECRET'),
+
+    /**
      * Impact API config
      */
     'impact_username' => env('IMPACT_USERNAME'),
