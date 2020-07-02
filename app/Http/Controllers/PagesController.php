@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class PagesController extends Controller
 {
@@ -16,8 +17,8 @@ class PagesController extends Controller
 
     public function test() {
 
-        $name = "Richard";
-        $id = 1;
+        dd( Carbon::now(new \DateTimeZone('Europe/London'))->add(1, 'day')->format('Y-m-d')   );
+
 return view('test');
 //        return view('emails.bookingConfirmation', compact('name', 'id'));
     }

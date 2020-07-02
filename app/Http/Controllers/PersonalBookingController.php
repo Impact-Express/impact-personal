@@ -83,7 +83,7 @@ class PersonalBookingController extends Controller
         ];
 
         session()->put(['bookingData' => $bookingData]);
-        
+
         return view('customer.personal.stage2', compact('price'));
     }
 
@@ -98,7 +98,7 @@ class PersonalBookingController extends Controller
         if (Auth::check()) {
             return redirect(route('stage4'));
         }
-        
+
         return view('customer.personal.stage3', compact('bookingData'));
     }
 
@@ -195,7 +195,7 @@ class PersonalBookingController extends Controller
 
         // Create shipment
         $shipment = Shipment::create($shipmentData);
-        
+
         // Create payment
         $payment = Payment::create([
             'user_id' => auth()->user()->id,
@@ -209,7 +209,7 @@ class PersonalBookingController extends Controller
             'shipment_id' => $shipment->id,
             'amount' => round($paypalResponse->purchase_units[0]->amount->value*100,0),
         ]);
- 
+
         // Book Hermes
         $hermesShipmentDetails = new HermesShipmentDetails([
             'lastName' => 'Impact Express Ltd',
@@ -220,15 +220,16 @@ class PersonalBookingController extends Controller
             'postCode' => 'SL3 0QR',
             'workPhoneNo' => '01753683700',
             'ref' => $shipment->shipment_reference,
-            'weight' => $shipment->dead_weight, 
+            'weight' => $shipment->dead_weight,
             'length' => $shipment->length,
             'width' => $shipment->width,
             'depth' => $shipment->height,
             'girth' => 0,
-            'combinedDimention' => 0,
+            'combinedDimension' => 0,
             'volume' => 0,
             'currency' => 'GBP',
             'value' => $shipment->value,
+            'contents' => $shipment->contents,
             'senderAddress1' => $user->address_line_1,
             'senderAddress2' => $user->address_line_2,
             'senderAddress3' => $user->city,
