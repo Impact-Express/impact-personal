@@ -16,10 +16,10 @@ class PagesController extends Controller
     }
 
     public function test() {
-
         if (app()->environment('production')) {
             abort(404);
         }
+
         dd( Carbon::now(new \DateTimeZone('Europe/London'))->add(1, 'day')->format('Y-m-d')   );
 
 return view('test');
