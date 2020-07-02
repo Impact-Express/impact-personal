@@ -34,7 +34,7 @@
                                 <tr></tr>
                                 <tr>
                                     <td align="center">
-                                        <table style="background-color: #FECE00;" width="600" cellspacing="0" cellpadding="0" bgcolor="#FECE00" align="center">
+                                        <table style="background-color: #FECE00;padding:5px;" width="600" cellspacing="0" cellpadding="0" bgcolor="#FECE00" align="center">
                                             <tbody>
                                                 <tr>
                                                     <td align="left">
