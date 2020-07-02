@@ -175,8 +175,11 @@ class PersonalBookingController extends Controller
         ];
 
         session()->put(['shipmentData' => $shipmentData]);
-
-        $paypalClientId = config('app.paypal_sandbox_client_id');
+        if (app()->environment('production')) {
+            $paypalClientId = config('app.paypal_live_client_id');
+        } else {
+            $paypalClientId = config('app.paypal_sandbox_client_id');
+        }
 
         return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'paypalClientId'));
     }
