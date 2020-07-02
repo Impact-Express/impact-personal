@@ -11,6 +11,12 @@ return [
     /**
      * Hermes sandbox config
      */
+    'hermes_live_username' => env('HERMES_LIVE_USERNAME'),
+    'hermes_live_password' => env('HERMES_LIVE_PASSWORD'),
+
+    /**
+     * PayPal sandbox config
+     */
     'paypal_sandbox_client_id' => env('PAYPAL_SANDBOX_CLIENT_ID'),
     'paypal_sandbox_client_secret' => env('PAYPAL_SANDBOX_CLIENT_SECRET'),
 

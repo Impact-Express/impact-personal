@@ -11,7 +11,7 @@ abstract class HermesRequest extends Model
     protected $username;
     protected $password;
     public $requestBody;
-    public $baseUri = 'https://sit.hermes-europe.co.uk/routing/service/rest/v4/';
+    public $baseUri;
     public $endpoints = [
         'VALIDATE_DELIVERY_ADDRESS' => 'validateDeliveryAddress',
         'DETERMINE_DELIVERY_ROUTING' => 'determineDeliveryRouting',
@@ -23,8 +23,15 @@ abstract class HermesRequest extends Model
 
     public function __construct()
     {
-        $this->username = config('app.hermes_sandpit_username');
-        $this->password = config('app.hermes_sandpit_password');
+        if (app()->environment('production')) {
+            $this-> baseUri = 'https://www.hermes-europe.co.uk/routing/service/rest/v4/';
+            $this->username = config('app.hermes_live_username');
+            $this->password = config('app.hermes_live_password');
+        } else {
+            $this-> baseUri = 'https://sit.hermes-europe.co.uk/routing/service/rest/v4/';
+            $this->username = config('app.hermes_sandpit_username');
+            $this->password = config('app.hermes_sandpit_password');
+        }
         parent::__construct();
     }
 

@@ -2,15 +2,12 @@
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 }
-
 body {
     background: black;
 }
-
 .main-nav {
     background: white;
 }
-
 .button-grey {
     color: white;
     background: #868080;
@@ -54,9 +51,6 @@ body {
 .mb30 {
     margin-bottom: 30px;
 }
-
-
-
 
 a {
     text-decoration: none;
@@ -192,16 +186,10 @@ a:hover {
     display: block;
     margin: 0 auto;
 }
-
-/* Navigation Bar */
-//.nav-logo-img {
-//    width: auto;
-//}
 .nav-items {
     display:none;
 }
 
-// Begin media query
 @media (min-width: 768px) {
 
     .mobile-nav {
@@ -296,21 +284,17 @@ a:hover {
 /******************************************/
 @media (min-width: 992px) {
     body {
-        // background:#2D3332;
-        //  background: #e5e5e5;
         background: black;
     }
     .container {
         max-width: 1500px;
     }
-
     /***********************************
         *? HIDE BORGAR
     ***********************************/
     .hamburger {
         display: none;
     }
-
     /***********************************************
         *? Top "Authorised Service Partner" Strip
     ************************************************/
@@ -323,7 +307,6 @@ a:hover {
         height: 20px;
         float: right;
     }
-
     /***********************************
         *? Navigation Bar Styles
     ***********************************/
@@ -352,7 +335,6 @@ a:hover {
         text-transform: uppercase;
         color: #000;
     }
-
     /* Mega Menu */
     .nav-dropdown button:hover+.mega-menu {
 	    display:block;
@@ -362,8 +344,6 @@ a:hover {
         padding: 10px;
         float: left;
     }
-
-
     /* Dropdown button */
     .nav-dropdown .dropbtn {
         font-size: 16px;
@@ -376,12 +356,9 @@ a:hover {
         padding-bottom: 10px;
         padding-top: 0px;
     }
-
-
     /*****************/
     /* Navigation Bar /
     /*****************/
-
     /* Personal Quote stage 1 */
     .progress {
         margin: 70px 10% 0 10%;
@@ -449,20 +426,15 @@ a:hover {
         border:none;
         height: 50px;
     }
-
-
-
     .loggedin {
         display:flex;
     }
     .loggedin span {
         margin-right: 10px;
     }
-
     .terms-text {
         padding-top: 3px;
     }
-
     // Main Footer
     #main-footer {
         margin-top: 30px;
@@ -473,11 +445,8 @@ a:hover {
     #main-footer-content {
 
     }
-
-
-
-// End media query
 }
+
 @media (max-width: 991px) {
     .nav-logo-img {
         width: 60%;
