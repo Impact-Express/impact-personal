@@ -191,9 +191,8 @@ class PersonalBookingController extends Controller
         $shipmentData = session('shipmentData');
         $paypalResponse = session('paypalResponse');
 
-
-        if ($paypalResponse->status !== 'APPROVED') {
-            dd('declined');
+        if ($paypalResponse->status !== 'COMPLETED') {
+            dd($paypalResponse->status);
         }
 
         // Create shipment
@@ -208,9 +207,9 @@ class PersonalBookingController extends Controller
             'paypal_payer_given_name' => $paypalResponse->payer->name->given_name,
             'paypal_payer_surname' => $paypalResponse->payer->name->surname,
             'paypal_payer_email_address' => $paypalResponse->payer->email_address,
-            'paypal_merchant_id' => $paypalResponse->purchase_units[0]->payee->merchant_id,
+//            'paypal_merchant_id' => $paypalResponse->purchase_units[0]->payee->merchant_id,
             'shipment_id' => $shipment->id,
-            'amount' => round($paypalResponse->purchase_units[0]->amount->value*100,0),
+            'amount' => round($paypalResponse->purchase_units[0]->payments->captures[0]->amount->value*100,0),
         ]);
 
         // Book Hermes

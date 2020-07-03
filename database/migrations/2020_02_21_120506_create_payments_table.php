@@ -22,7 +22,7 @@ class CreatePaymentsTable extends Migration
             $table->string('paypal_payer_given_name');
             $table->string('paypal_payer_surname');
             $table->string('paypal_payer_email_address');
-            $table->string('paypal_merchant_id');
+            $table->string('paypal_merchant_id')->nullable();
             $table->integer('shipment_id');
             $table->integer('amount');
             $table->timestamps();

@@ -3,7 +3,7 @@
 namespace App\Services\PayPal;
 
 use App\Services\PayPal\PayPalClient;
-use PayPalCheckoutSdk\Orders\OrdersGetRequest;
+use PayPalCheckoutSdk\Orders\OrdersCaptureRequest;
 
 class PayPalCapturePayment
 {
@@ -15,6 +15,6 @@ class PayPalCapturePayment
     // 3. Call PayPal to get the transaction details
     $client = PayPalClient::client();
 
-    return $client->execute(new OrdersGetRequest($orderId));
+    return $client->execute(new OrdersCaptureRequest($orderId));
   }
 }
