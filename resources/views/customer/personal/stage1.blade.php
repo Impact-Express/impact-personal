@@ -11,7 +11,7 @@
             </p>
             <div class="progress">
                 <div class="stage-border">
-                    <div class="stage-number">1</div>    
+                    <div class="stage-number">1</div>
                 </div>
                 <div class="stage-line"></div>
                 <div class="stage-border">
@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-input postcode-input">
                                 <label for="postcode">YOUR POSTCODE (UK):</label>
-                                <input class="@error('postcode') is-invalid @enderror" id="postcode" name="postcode" type="text" value="SL09BU">
+                                <input class="@error('postcode') is-invalid @enderror" id="postcode" name="postcode" type="text">
                                 @error('postcode')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@
                             <div class="row-2-left">
                                 <div class="form-input weight-input">
                                     <label for="weight">WEIGHT:</label>
-                                    <input class="@error('weight') is-invalid @enderror" id="weight" name="weight" type="text" value="10">
+                                    <input class="@error('weight') is-invalid @enderror" id="weight" name="weight" type="text">
                                     <div class="unit-tag">
                                         <span class="unit-text">kg</span>
                                     </div>
@@ -90,7 +90,7 @@
                             <div class="row-2-right">
                                 <div class="form-input dim-input length-input">
                                     <label for="length">LENGTH:</label>
-                                    <input class="@error('length') is-invalid @enderror" id="length" name="length" type="text" value="10">
+                                    <input class="@error('length') is-invalid @enderror" id="length" name="length" type="text">
                                     <div class="unit-tag">
                                         <span class="unit-text">cm</span>
                                     </div>
@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="form-input dim-input width-input">
                                     <label for="width">WIDTH:</label>
-                                    <input class="@error('width') is-invalid @enderror" id="width" name="width" type="text" value="10">
+                                    <input class="@error('width') is-invalid @enderror" id="width" name="width" type="text">
                                     <div class="unit-tag">
                                         <span class="unit-text">cm</span>
                                     </div>
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="form-input dim-input height-input">
                                     <label for="height">HEIGHT:</label>
-                                    <input class="@error('height') is-invalid @enderror" id="height" name="height" type="text" value="10">
+                                    <input class="@error('height') is-invalid @enderror" id="height" name="height" type="text">
                                     <div class="unit-tag">
                                         <span class="unit-text">cm</span>
                                     </div>
