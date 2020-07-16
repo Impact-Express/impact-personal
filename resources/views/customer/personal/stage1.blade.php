@@ -5,10 +5,10 @@
     <div class="container">
         <div class="quote-stage-1 bg-yellow">
             <div class="arrow-down"></div>
-            <h1 class="tc tc-white"><span class="bold">Send a Parcel</span></h1>
-            <p class="tc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-            </p>
+{{--            <h1 class="tc tc-white"><span class="bold">Send a Parcel</span></h1>--}}
+{{--            <p class="tc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>--}}
+{{--                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.--}}
+{{--            </p>--}}
             <div class="progress">
                 <div class="stage-border">
                     <div class="stage-number">1</div>
@@ -57,15 +57,6 @@
                                     @endforeach
                                 </select>
                                 @error('toCountryCode')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-input postcode-input">
-                                <label for="postcode">YOUR POSTCODE (UK):</label>
-                                <input class="@error('postcode') is-invalid @enderror" id="postcode" name="postcode" type="text">
-                                @error('postcode')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -5,13 +5,13 @@
     <div class="container">
         <div class="quote-stage-2 bg-yellow">
             <div class="arrow-down"></div>
-            <h1 class="tc tc-white"><span class="bold">Send a Parcel</span></h1>
-            <p class="tc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-            </p>
+{{--            <h1 class="tc tc-white"><span class="bold">Send a Parcel</span></h1>--}}
+{{--            <p class="tc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>--}}
+{{--                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.--}}
+{{--            </p>--}}
             <div class="progress">
                 <div class="stage-border tick">
-                    <div class="stage-number"><i class="fas fa-check"></i></div>    
+                    <div class="stage-number"><i class="fas fa-check"></i></div>
                 </div>
                 <div class="stage-line"></div>
                 <div class="stage-border">

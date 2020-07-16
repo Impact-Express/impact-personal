@@ -98,20 +98,19 @@
   }
 
   .row-1 input {
-    width: 100%;
-    margin: 10px 30px 10px 0;
-    padding-left: 10px;
+    margin-top: 10px;
   }
 
   .row-1 select {
-    width: 100%;
-    margin: 10px 30px 10px 0;
-    padding-left: 10px;
+    margin-top: 10px;
+  }
+
+  .to-input {
+    margin-right: 30px;
   }
 
   .row-1 .form-input {
-    width: 28%;
-    margin: 10px 30px 10px 0;
+    width: 47%;
   }
 
   .row-2 {
