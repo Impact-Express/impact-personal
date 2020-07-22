@@ -50,6 +50,9 @@
                                 <label for="to">TO:</label>
                                 <select class="@error('toCountryCode') is-invalid @enderror" id="to" name="toCountryCode" type="text">
                                     <option>Select a country...</option>
+                                    <option value="">--------------------------</option>
+                                    <option value="US">United States of America</option>
+                                    <option value="">--------------------------</option>
                                     @foreach ($countries as $country)
                                         @if ($country->zone != 0)
                                             <option value="{{$country->code}}">{{$country->name}}</option>

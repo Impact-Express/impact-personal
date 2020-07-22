@@ -40,8 +40,7 @@ class PersonalBookingController extends Controller
                 'required',
                  Rule::in(Country::getCodes()),
             ],
-            'postcode' => 'required|string',
-            'weight' => 'required|numeric|lte:15',
+            'weight' => 'required|numeric|between:0,15',
             'length' => 'required|numeric',
             'width' => 'required|numeric',
             'height' => 'required|numeric',
@@ -51,7 +50,7 @@ class PersonalBookingController extends Controller
             'length.numeric' => 'The weight must be a number.',
             'width.numeric' => 'The weight must be a number.',
             'height.numeric' => 'The weight must be a number.',
-            'terms.required' => 'Please read and accept out terms and conditions.',
+            'terms.required' => 'Please read and accept our terms and conditions.',
         ]);
 
         if ($validator->fails()) {
