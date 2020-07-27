@@ -41,7 +41,7 @@
             <div class="island-container">
                 <div class="left-islands">
                     <div class="payment-island bg-yellow">
-                        <div class="payment-container bg-white">
+                        <div class="bg-white">
                             <h2>Booking Summary</h2>
                             <h3>Destination</h3>
                             <p>{{$shipmentData['consignee']}}</p>
@@ -116,53 +116,5 @@
 @endsection
 
 @section('scripts')
-<script src="https://www.paypal.com/sdk/js?client-id={{$paypalClientId}}&currency=GBP"></script>
-<script>
-    paypal.Buttons({
-        createOrder: function() {
-            return fetch("{{route('paypal-create')}}", {
-                method: "post",
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify({
-                    _token: "{{ csrf_token() }}"
-                })
-            }).then(function(res) {
-                return res.json();
-            }).then(function(data) {
-                // console.log("data1",data);
-                return data.id;
-            });
-        },
-        onApprove: function(data, actions) {
-            // console.log("data2",data);
-            let ov = document.getElementById("overlay");
-            ov.classList.remove("hidden");
-            ov.classList.add("visible");
 
-            return fetch("{{route('paypal-capture')}}", {
-                method: 'post',
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify({
-                    _token: "{{ csrf_token() }}",
-                    orderID: data.orderID
-                })
-            }).then(function(res) {
-                return res.json();
-            }).then(function(details) {
-                // console.log("data3",details);
-                if (details.error === "INSTRUMENT_DECLINED") {
-                    let ov = document.getElementById("overlay");
-                    ov.classList.remove("visible");
-                    ov.classList.add("hidden");
-                    return actions.restart();
-                }
-                window.location.replace("{{route('complete')}}");
-            });
-        }
-    }).render(".payment-container");
-</script>
 @endsection
