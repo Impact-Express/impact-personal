@@ -50,7 +50,7 @@
                     <p class="delivery-estimate">Delivery in 3 to 5 days</p>
                 </div>
                 <div class="price-container">
-                    <p class="price">£{{money_format('%n',$price)}}</p>
+                    <p class="price">£{{sprintf('%01.2f',$price)}}</p>
                 </div>
                 <div class="button-container">
                     <form action="{{route('stage3')}}" method="post">

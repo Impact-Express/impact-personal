@@ -178,7 +178,7 @@
                                 <div><span class="bold">Length: </span>{{$bookingData['length']}}cm</div>
                                 <div><span class="bold">Width: </span>{{$bookingData['width']}}cm</div>
                                 <div><span class="bold">Height: </span>{{$bookingData['height']}}cm</div>
-                                <div><span class="bold">Price: </span>£{{money_format('%n',$bookingData['price'])}}</div>
+                                <div><span class="bold">Price: </span>£{{sprintf('%01.2f',$bookingData['price'])}}</div>
                             </div>
                         </div>
                     </div>

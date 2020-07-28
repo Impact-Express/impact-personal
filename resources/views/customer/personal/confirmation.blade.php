@@ -6,7 +6,7 @@
     <div class="container">
         <div class="quote-complete bg-yellow">
             <div class="arrow-down"></div>
-            <h1 class="tc tc-white"><span class="bold">Booking Complete</span></h1>            
+            <h1 class="tc tc-white"><span class="bold">Booking Complete</span></h1>
         </div>
         <div class="quote-container bg-yellow">
             <div class="quote-box">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="parcel-details">
                     <hr>
-                    <p>Parcel reference: {{$shipment->shipment_reference}}</p>  
+                    <p>Parcel reference: {{$shipment->shipment_reference}}</p>
                     <hr>
                     <h4>Delivery address</h4>
                     <p>{{$shipment->consignee}}</p>
@@ -32,13 +32,13 @@
                     <hr>
                     <h4>Parcel details</h4>
                     <p>Contents: {{$shipment->contents}}</p>
-                    <p>Value: £{{money_format('%n',$shipment->value/100)}}</p>
+                    <p>Value: £{{sprintf('%01.2f',$shipment->value/100)}}</p>
                     <p>Length: {{$shipment->length}}cm</p>
                     <p>Width: {{$shipment->width}}cm</p>
                     <p>Height: {{$shipment->height}}cm</p>
                     <p>Weight: {{$shipment->dead_weight/1000}}kg</p>
                     <hr>
-                    <p>Price: £{{money_format('%n',$shipment->price/100)}}</p>
+                    <p>Price: £{{sprintf('%01.2f',$shipment->price/100)}}</p>
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
     }
     .quote-box {
         background-color: whitesmoke;
-        
+
         padding: 2% 4%;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }

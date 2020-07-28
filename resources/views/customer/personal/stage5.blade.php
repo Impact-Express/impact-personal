@@ -55,7 +55,7 @@
                             <h3>Contents</h3>
                             <p>{{$shipmentData['contents']}}</p>
                             <h3>Value</h3>
-                            <p>£{{money_format('%n', $shipmentData['value']/100)}}</p>
+                            <p>£{{sprintf('%01.2f', $shipmentData['value']/100)}}</p>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                                     <div><span class="bold">Length: </span>{{$bookingData['length']}}cm</div>
                                     <div><span class="bold">Width: </span>{{$bookingData['width']}}cm</div>
                                     <div><span class="bold">Height: </span>{{$bookingData['height']}}cm</div>
-                                    <div><span class="bold">Price: </span>£{{money_format('%n',$bookingData['price'])}}</div>
+                                    <div><span class="bold">Price: </span>£{{sprintf('%01.2f',$bookingData['price'])}}</div>
                                 </div>
                             </div>
                         </div>
