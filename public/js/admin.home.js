@@ -115,7 +115,7 @@ $("#grid").kendoGrid({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/impact-personal/resources/js/admin.home.js */"./resources/js/admin.home.js");
+module.exports = __webpack_require__(/*! /var/www/personal/resources/js/admin.home.js */"./resources/js/admin.home.js");
 
 
 /***/ })

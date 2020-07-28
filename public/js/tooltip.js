@@ -109,7 +109,7 @@ tippy('#printer-logo', {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/impact-personal/resources/js/tooltip.js */"./resources/js/tooltip.js");
+module.exports = __webpack_require__(/*! /var/www/personal/resources/js/tooltip.js */"./resources/js/tooltip.js");
 
 
 /***/ })

@@ -117,7 +117,7 @@ modalBtns.on('click', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /var/www/impact-personal/resources/js/modal.js */"./resources/js/modal.js");
+module.exports = __webpack_require__(/*! /var/www/personal/resources/js/modal.js */"./resources/js/modal.js");
 
 
 /***/ })
