@@ -56,6 +56,14 @@
                             <p>{{$shipmentData['contents']}}</p>
                             <h3>Value</h3>
                             <p>£{{sprintf('%01.2f', $shipmentData['value']/100)}}</p>
+
+                            <form method="POST" id="SagePayForm" action="https://test.sagepay.com/gateway/service/vspform-register.vsp">
+                                <input type="hidden" name="VPSProtocol" value= "3.00">
+                                <input type="hidden" name="TxType" value= "PAYMENT">
+                                <input type="hidden" name="Vendor" value= "impactexpres853">
+                                <input type="hidden" name="Crypt" value= "{{ $encrypted_code }}">
+                                <input type="submit" value="Pay">
+                            </form>
                         </div>
                     </div>
                 </div>

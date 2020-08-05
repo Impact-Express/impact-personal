@@ -17,6 +17,7 @@ use App\Services\Weighting;
 use App\Services\ImpactAPI\ImpactUploadManifest;
 use App\Services\Carriers\HERMES\HermesParcelShopBackToImpact;
 use App\Services\Carriers\HERMES\HermesShipmentDetails;
+use App\Services\SagePay\SagePay;
 
 class PersonalBookingController extends Controller
 {
@@ -180,7 +181,23 @@ class PersonalBookingController extends Controller
             $paypalClientId = config('app.paypal_sandbox_client_id');
         }
 
-        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'paypalClientId'));
+
+        $s = new SagePay();
+        $s->setAmount('100');
+        $s->setDescription('Lorem ipsum');
+        $s->setBillingFirstnames('Steve');
+        $s->setBillingSurname('Stevens');
+        $s->setBillingCity('Slough');
+        $s->setBillingPostCode('sl09bu');
+        $s->setBillingAddress1('10 Grand Union House');
+        $s->setBillingCountry('gb');
+        $s->setDeliverySameAsBilling();
+        $s->setSuccessURL(config('sagepay_success_url'));
+        $s->setFailureURL(config('sagepay_failure_url'));
+
+        $encrypted_code = $s->getCrypt();
+
+        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'paypalClientId', 'encrypted_code'));
     }
 
     public function complete() {
@@ -196,20 +213,6 @@ class PersonalBookingController extends Controller
 
         // Create shipment
         $shipment = Shipment::create($shipmentData);
-
-        // Create payment
-        $payment = Payment::create([
-            'user_id' => auth()->user()->id,
-            'status' => $paypalResponse->status,
-            'paypal_order_id' => $paypalResponse->id,
-            'paypal_payer_id' => $paypalResponse->payer->payer_id,
-            'paypal_payer_given_name' => $paypalResponse->payer->name->given_name,
-            'paypal_payer_surname' => $paypalResponse->payer->name->surname,
-            'paypal_payer_email_address' => $paypalResponse->payer->email_address,
-//            'paypal_merchant_id' => $paypalResponse->purchase_units[0]->payee->merchant_id,
-            'shipment_id' => $shipment->id,
-            'amount' => round($paypalResponse->purchase_units[0]->payments->captures[0]->amount->value*100,0),
-        ]);
 
         // Book Hermes
         $hermesShipmentDetails = new HermesShipmentDetails([

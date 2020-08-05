@@ -3,43 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\PayPal\PayPalCreateOrder;
-use App\Services\PayPal\PayPalCapturePayment;
+
 use App\Models\Payment;
 
 class PaymentController extends Controller
 {
-    public function createOrder() {
+    public function success(Request $request) {
 
-        if (!auth()->check()) {
-            return json_encode(['you are' => 'not logged in']);
-        }
+        dd(\App\Services\SagePay\SagePay::decode($request->crypt));
 
-        $response = PayPalCreateOrder::createOrder(session('bookingData')['price']);
-
-        session()->put(['paypalOrderIdCheck' => $response->result->id]);
-
-        return json_encode($response->result);
+        return view('customer.personal.confirmation');
     }
 
+    public function failure(Request $request) {
 
-    public function capturePayment(Request $request) {
-
-        $paypalOrderIdCheck = session('paypalOrderIdCheck');
-
-        if (!auth()->check() || !isset($paypalOrderIdCheck)) {
-            return json_encode(['you are' => 'not logged in']);
-        }
-
-        $ppOrderId = json_decode($request->getContent())->orderID;
-
-        $response = PayPalCapturePayment::getOrder($ppOrderId);
-
-        session()->put(['paypalResponse' => $response->result]);
-
-        if (session('paypalOrderIdCheck') != $response->result->id) {
-            return json_encode(['wot u' => 'playin at?']);
-        }
-        return json_encode($response->result);
+        return view('customer.personal.failure');
     }
 }

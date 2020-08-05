@@ -3,6 +3,15 @@
 return [
 
     /**
+     * SagePay Test Config
+     */
+    'sagepay_test_encrypt_password' => env('SAGEPAY_TEST_PASSWORD'),
+    'sagepay_live_encrypt_password' => env('SAGEPAY_LIVE_PASSWORD'),
+    'sagepay_currency' => strtoupper('GBP'),
+    'sagepay_success_url' => env('SAGEPAY_SUCCESS_URL'),
+    'sagepay_failure_url' => env('SAGEPAY_FAILURE_URL'),
+
+    /**
      * Hermes sandbox config
      */
     'hermes_sandpit_username' => env('HERMES_SANDPIT_USERNAME'),

@@ -8,14 +8,21 @@ class Payment extends Model
 {
     protected $fillable =[
         'user_id',
-        'status',
-        'paypal_order_id',
-        'paypal_payer_id',
-        'paypal_payer_given_name',
-        'paypal_payer_surname',
-        'paypal_payer_email_address',
-        'paypal_merchant_id',
         'shipment_id',
+        'vendor_tx_Code',
+        'vpstx_id',
+        'status',
+        'status_detail',
+        'tx_auth_no',
+        'avscv2',
+        'address_result',
+        'postcode_result',
+        'cv2_result',
+        '3d_secure_status',
+        'card_type',
+        'last_4_digits',
+        'decline_code',
+        'expiry_date',
         'amount',
     ];
 }

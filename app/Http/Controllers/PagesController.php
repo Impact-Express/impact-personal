@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\Services\SagePay\SagePay;
 
 class PagesController extends Controller
 {
@@ -15,14 +16,19 @@ class PagesController extends Controller
         return view('pages.error');
     }
 
-    public function test() {
+    public function test(Request $request) {
         if (app()->environment('production')) {
             abort(404);
         }
 
-        dd( Carbon::now(new \DateTimeZone('Europe/London'))->add(1, 'day')->format('Y-m-d')   );
+//        dd($request->all(), SagePay::decodeAndDecrypt($request->crypt));
 
-return view('test');
+        dd(SagePay::decode($request->crypt));
+
+
+//        dd( Carbon::now(new \DateTimeZone('Europe/London'))->add(1, 'day')->format('Y-m-d')   );
+
+        return view('test');
 //        return view('emails.bookingConfirmation', compact('name', 'id'));
     }
 }

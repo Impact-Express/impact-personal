@@ -16,14 +16,20 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->string('status');
-            $table->string('paypal_order_id');
-            $table->string('paypal_payer_id');
-            $table->string('paypal_payer_given_name');
-            $table->string('paypal_payer_surname');
-            $table->string('paypal_payer_email_address');
-            $table->string('paypal_merchant_id')->nullable();
             $table->integer('shipment_id');
+            $table->string('vendor_tx_code');
+            $table->string('vpstx_id');
+            $table->string('status');
+            $table->string('status_detail');
+            $table->string('tx_auth_no');
+            $table->string('avscv2');
+            $table->string('address_result');
+            $table->string('cv2_result');
+            $table->string('3d_secure_status');
+            $table->string('card_type');
+            $table->string('last_4_digits');
+            $table->string('decline_code');
+            $table->string('expiry_date');
             $table->integer('amount');
             $table->timestamps();
         });
