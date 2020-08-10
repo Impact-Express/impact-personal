@@ -228,10 +228,11 @@ class SagePay
     /**
      * SagePay constructor.
      * Anytime the object is created, create a VendorTxCode. This code should be unique at all times.
+     * @param string optional VendorTxCode ref
      */
-    public function __construct()
+    public function __construct(string $ref = '')
     {
-        $this->setVendorTxCode($this->createVendorTxCode());
+        $this->setVendorTxCode($this->createVendorTxCode($ref));
         $this->setCurrency('GBP');
     }
 

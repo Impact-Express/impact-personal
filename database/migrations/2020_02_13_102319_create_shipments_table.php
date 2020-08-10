@@ -32,6 +32,7 @@ class CreateShipmentsTable extends Migration
             $table->string('consignee_address_2')->nullable();
             $table->string('consignee_address_3')->nullable();
             $table->string('consignee_city');
+            $table->string('consignee_state')->nullable();
             $table->string('consignee_zip')->nullable();
             $table->string('consignee_country_iso_code');
             $table->string('consignee_contact_name');

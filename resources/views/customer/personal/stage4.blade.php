@@ -48,10 +48,18 @@
                                 <h4 class="tc-white">DELIVERY DETAILS</h4>
                             </li>
                             <li class="form-row row-1">
-                                <div class="form-input consignee-name-input">
-                                    <input class="@error('consignee-name') is-invalid @enderror" type="text" name="consignee-name" placeholder="NAME...">
-                                    @error('consignee-name')
+                                <div class="form-input consignee-firstname-input">
+                                    <input class="@error('consignee-firstname') is-invalid @enderror" type="text" name="consignee-firstname" placeholder="FIRST NAME...">
+                                    @error('consignee-firstname')
                                         <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="form-input consignee-lastname-input">
+                                    <input class="@error('consignee-lastname') is-invalid @enderror" type="text" name="consignee-lastname" placeholder="LAST NAME...">
+                                    @error('consignee-lastname')
+                                    <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
@@ -97,17 +105,30 @@
                                     @enderror
                                 </div>
                             </li>
-                            <li class="form-row row-6">
+                            @if($bookingData['toCountryCode'] === 'US')
+                                <li class="form-row row-6">
+                                    <div class="form-input consignee-state-input">
+                                        <input class=" @error('consignee-state') is-invalid @enderror" type="text" name="consignee-state" placeholder="STATE...">
+                                        @error('consignee-state')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </li>
+                            @endif
+                            <li class="form-row row-7">
                                 <div class="form-input consignee-country-input">
-                                    <select class="@error('consignee-country') is-invalid @enderror country-select" id="to" type="text" disabled>
-                                        <option>Select a country...</option>
-                                        @foreach ($countries as $country)
-                                            @if ($country->zone != 0)
-                                                <option {{$country->code == $bookingData['toCountryCode'] ? 'selected' : ''}}>{{$country->name}}</option>
-                                            @endif
-                                        @endforeach
-                                        <input type="text" name="consignee-country" value="{{$bookingData['toCountryCode']}}" hidden>
-                                    </select>
+{{--                                    <select class="@error('consignee-country') is-invalid @enderror country-select" id="to" type="text" disabled>--}}
+{{--                                        <option>Select a country...</option>--}}
+{{--                                        @foreach ($countries as $country)--}}
+{{--                                            @if ($country->zone != 0)--}}
+{{--                                                <option {{$country->code == $bookingData['toCountryCode'] ? 'selected' : ''}}>{{$country->name}}</option>--}}
+{{--                                            @endif--}}
+{{--                                        @endforeach--}}
+{{--                                    </select>--}}
+                                    <input type="text" name="dummy-1" value="{{$country->name}}" readonly >
+                                    <input type="text" name="consignee-country" value="{{$bookingData['toCountryCode']}}" hidden>
                                     @error('consignee-country')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -115,7 +136,7 @@
                                     @enderror
                                 </div>
                             </li>
-                            <li class="form-row row-7">
+                            <li class="form-row row-8">
                                 <div class="form-input consignee-postcode-input">
                                     <input class=" @error('consignee-postcode') is-invalid @enderror" type="text" name="consignee-postcode" placeholder="POSTCODE...">
                                     @error('consignee-postcode')
@@ -125,7 +146,7 @@
                                     @enderror
                                 </div>
                             </li>
-                            <li class="form-row row-8">
+                            <li class="form-row row-9">
                                 <div class="form-input consignee-phone-input">
                                     <input class=" @error('consignee-phone') is-invalid @enderror" type="text" name="consignee-phone" placeholder="PHONE NO...">
                                     @error('consignee-phone')

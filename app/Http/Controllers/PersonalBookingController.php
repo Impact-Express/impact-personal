@@ -22,18 +22,14 @@ use App\Services\SagePay\SagePay;
 class PersonalBookingController extends Controller
 {
     public function stage1() {
-
         session()->forget('bookingData');
-        session()->forget('shipmentDate');
-        session()->forget('paypalOrderIdCheck');
-
+        session()->forget('shipmentData');
         // Get countries for dropdown selector
         $countries = Country::all();
         return view('customer.personal.stage1', compact('countries'));
     }
 
     public function stage2(Request $request) {
-
         // validate request
         $validator = Validator::make($request->all(), [
             'from' => 'required|string|in:UK,GB',
@@ -53,7 +49,6 @@ class PersonalBookingController extends Controller
             'height.numeric' => 'The weight must be a number.',
             'terms.required' => 'Please read and accept our terms and conditions.',
         ]);
-
         if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
         }
@@ -81,51 +76,51 @@ class PersonalBookingController extends Controller
             'height' => request('height'),
             'price' => $price
         ];
-
         session()->put(['bookingData' => $bookingData]);
 
         return view('customer.personal.stage2', compact('price'));
     }
 
     public function stage3() {
-
         $bookingData = session('bookingData');
-
         if (!$bookingData) {
             return redirect(route('stage1'));
         }
-
         if (Auth::check()) {
             return redirect(route('stage4'));
         }
-
         return view('customer.personal.stage3', compact('bookingData'));
     }
 
     public function stage4() {
-
         $bookingData = session('bookingData');
-
         if (!$bookingData) {
             return redirect(route('stage1'));
         }
-
-        $countries = Country::all();
-
-        return view('customer.personal.stage4',compact('bookingData', 'countries'));
+        $country = Country::where('code', $bookingData['toCountryCode'])->first();
+        return view('customer.personal.stage4',compact('bookingData', 'country'));
     }
 
     public function stage5(Request $request) {
 
+        $bookingData = session('bookingData');
+        if (!$bookingData) {
+            return redirect(route('stage1'));
+        }
+
         // Validate request
         $validator = Validator::make($request->all(), [
-            'consignee-name' => 'required|string',
+            'consignee-firstname' => 'required|string',
+            'consignee-lastname' => 'required|string',
             'consignee-address-line-1' => 'required|string',
-            // 'consignee-address-line-2' => 'string',
-            // 'consignee-address-line-3' => 'string',
+            'consignee-address-line-2' => 'nullable|string',
+            'consignee-address-line-3' => 'nullable|string',
             'consignee-city' => 'required|string',
-            'consignee-country' => 'required|string',
-            // 'consignee-postcode' => 'required|string',
+            'consignee-country' => [
+                'required',
+                Rule::in([$bookingData['toCountryCode']]),
+            ],
+            'consignee-postcode' => 'nullable|string',
             'consignee-phone' => 'required|string',
             'contents-description' => 'required|string',
             'contents-value' => 'required|string|numeric',
@@ -134,11 +129,6 @@ class PersonalBookingController extends Controller
             return back()->withInput()->withErrors($validator);
         }
 
-
-        $bookingData = session('bookingData');
-        if (!$bookingData) {
-            abort(404);
-        }
         $user = auth()->user();
 
         $shipmentData = [
@@ -154,11 +144,12 @@ class PersonalBookingController extends Controller
             'shipper_country_iso_code' => 'GB',
             'true_shipper_contact_name' => $user->getFullName(),
             'true_shipper_contact_tel' => $user->phone,
-            'consignee' => $request['consignee-name'],
+            'consignee' => $request['consignee-firstname'].' '.$request['consignee-lastname'],
             'consignee_address_1' => $request['consignee-address-line-1'],
             'consignee_address_2' => $request['consignee-address-line-2'],
             'consignee_address_3' => $request['consignee-address-line-3'],
             'consignee_city' => $request['consignee-city'],
+            'consignee_state' => '',
             'consignee_country_iso_code' => $request['consignee-country'],
             'consignee_zip' => $request['consignee-postcode'],
             'consignee_contact_name' => $request['consignee-name'],
@@ -173,31 +164,33 @@ class PersonalBookingController extends Controller
             'volumetric_weight' => round(Weighting::calculateVolumetricWeight($bookingData['length'], $bookingData['width'], $bookingData['height'])*1000, 0),
             'service_code' => 'exp'
         ];
-
         session()->put(['shipmentData' => $shipmentData]);
-        if (app()->environment('production')) {
-            $paypalClientId = config('app.paypal_live_client_id');
-        } else {
-            $paypalClientId = config('app.paypal_sandbox_client_id');
-        }
 
-
-        $s = new SagePay();
-        $s->setAmount('100');
-        $s->setDescription('Lorem ipsum');
-        $s->setBillingFirstnames('Steve');
-        $s->setBillingSurname('Stevens');
-        $s->setBillingCity('Slough');
-        $s->setBillingPostCode('sl09bu');
-        $s->setBillingAddress1('10 Grand Union House');
+        $s = new SagePay($shipmentData['shipment_reference']);
+        $s->setAmount($bookingData['price']);
+        $s->setDescription('Express Delivery');
+        $s->setBillingFirstnames($user->firstName);
+        $s->setBillingSurname($user->lastName);
+        $s->setBillingCity($user->city);
+        $s->setBillingPostCode($user->postcode);
+        $s->setBillingAddress1($user->address_line_1);
         $s->setBillingCountry('gb');
-        $s->setDeliverySameAsBilling();
-        $s->setSuccessURL(config('sagepay_success_url'));
-        $s->setFailureURL(config('sagepay_failure_url'));
+        $s->setDeliveryFirstnames($request['consignee-firstname']);
+        $s->setDeliverySurname($request['consignee-lastname']);
+        $s->setDeliveryAddress1($request['consignee-address-line-1']);
+        $s->setDeliveryAddress2($request['consignee-address-line-2']);
+        $s->setDeliveryCity($request['consignee-city']);
+        $s->setDeliveryPostCode($request['consignee-city']);
+        $s->setDeliveryCountry($request['consignee-country']);
+        $s->setDeliveryState($request['consignee-state']);
+        $s->setDeliveryPhone($request['consignee-phone']);
+
+        $s->setSuccessURL(config('app.sagepay_success_url'));
+        $s->setFailureURL(config('app.sagepay_failure_url'));
 
         $encrypted_code = $s->getCrypt();
 
-        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'paypalClientId', 'encrypted_code'));
+        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'encrypted_code'));
     }
 
     public function complete() {
@@ -205,11 +198,6 @@ class PersonalBookingController extends Controller
         $user = auth()->user();
         $bookingData = session('bookingData');
         $shipmentData = session('shipmentData');
-        $paypalResponse = session('paypalResponse');
-
-        if ($paypalResponse->status !== 'COMPLETED') {
-            dd($paypalResponse->status);
-        }
 
         // Create shipment
         $shipment = Shipment::create($shipmentData);
@@ -277,8 +265,7 @@ class PersonalBookingController extends Controller
         Mail::to(auth()->user()->email)->send(new BookingConfirmation($customerName, $shipment->id));
 
         session()->forget('bookingData');
-        session()->forget('shipmentDate');
-        session()->forget('paypalOrderIdCheck');
+        session()->forget('shipmentData');
 
 
         session()->put(['shipmentId' => $shipment->id]);
