@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\BookingConfirmation;
 use App\Models\Country;
+use App\Models\State;
 use App\Models\Shipment;
 use App\Models\Label;
 use App\Models\Payment;
@@ -98,11 +99,12 @@ class PersonalBookingController extends Controller
             return redirect(route('stage1'));
         }
         $country = Country::where('code', $bookingData['toCountryCode'])->first();
-        return view('customer.personal.stage4',compact('bookingData', 'country'));
+        $states = State::all();
+        return view('customer.personal.stage4',compact('bookingData', 'country', 'states'));
     }
 
     public function stage5(Request $request) {
-
+dd($request->all());
         $bookingData = session('bookingData');
         if (!$bookingData) {
             return redirect(route('stage1'));

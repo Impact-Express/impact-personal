@@ -108,7 +108,12 @@
                             @if($bookingData['toCountryCode'] === 'US')
                                 <li class="form-row row-6">
                                     <div class="form-input consignee-state-input">
-                                        <input class=" @error('consignee-state') is-invalid @enderror" type="text" name="consignee-state" placeholder="STATE...">
+                                        <select class="@error('consignee-state') is-invalid @enderror state-select" name="state" type="text">
+                                            <option>Select a state...</option>
+                                            @foreach ($states as $state)
+                                                <option value="{{$state->code}}">{{$state->name}}</option>
+                                            @endforeach
+                                        </select>
                                         @error('consignee-state')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -119,15 +124,7 @@
                             @endif
                             <li class="form-row row-7">
                                 <div class="form-input consignee-country-input">
-{{--                                    <select class="@error('consignee-country') is-invalid @enderror country-select" id="to" type="text" disabled>--}}
-{{--                                        <option>Select a country...</option>--}}
-{{--                                        @foreach ($countries as $country)--}}
-{{--                                            @if ($country->zone != 0)--}}
-{{--                                                <option {{$country->code == $bookingData['toCountryCode'] ? 'selected' : ''}}>{{$country->name}}</option>--}}
-{{--                                            @endif--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-                                    <input type="text" name="dummy-1" value="{{$country->name}}" readonly >
+                                    <input type="text" value="{{$country->name}}" readonly >
                                     <input type="text" name="consignee-country" value="{{$bookingData['toCountryCode']}}" hidden>
                                     @error('consignee-country')
                                         <span class="invalid-feedback" role="alert">
@@ -179,13 +176,11 @@
                                     @enderror
                                 </div>
                             </li>
-
                             <li class="form-row row-13">
                                 <input class="cont bold button-black" type="submit" value="PROCEED">
                             </li>
                         </ul>
                     </form>
-
                 </div>
             </div>
             <div class="right-islands">
@@ -198,7 +193,6 @@
                             <div class="inner-quote-content">
                                 <div><span class="bold">From: </span>{{$bookingData['fromCountry']}}</div>
                                 <div><span class="bold">To: </span>{{$bookingData['toCountry']}}</div>
-
                                 <div><span class="bold">Weight: </span>{{$bookingData['weight']}}kg</div>
                                 <div><span class="bold">Length: </span>{{$bookingData['length']}}cm</div>
                                 <div><span class="bold">Width: </span>{{$bookingData['width']}}cm</div>
@@ -214,14 +208,10 @@
 </main>
 <style>
 
-.country-select {
+.state-select {
     background:  white;
+    padding-left: 10px;
 }
-select:disabled {
-    opacity: 1;
-    color: black;
-}
-
 </style>
 @endsection
 
