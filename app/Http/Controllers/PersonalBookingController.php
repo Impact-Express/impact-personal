@@ -104,7 +104,7 @@ class PersonalBookingController extends Controller
     }
 
     public function stage5(Request $request) {
-dd($request->all());
+//dd($request->all(), isset($request['consignee-state']));
         $bookingData = session('bookingData');
         if (!$bookingData) {
             return redirect(route('stage1'));
@@ -130,6 +130,17 @@ dd($request->all());
         if ($validator->fails()) {
             return back()->withInput()->withErrors($validator);
         }
+        if ($request['consignee-country'] === 'US') {
+            $validator = Validator::make($request->all(), [
+                'consignee-state' => [
+                    'nullable',
+                    Rule::in(State::getCodes()),
+                ],
+            ]);
+            if ($validator->fails()) {
+                return back()->withInput()->withErrors($validator);
+            }
+        }
 
         $user = auth()->user();
 
@@ -151,7 +162,7 @@ dd($request->all());
             'consignee_address_2' => $request['consignee-address-line-2'],
             'consignee_address_3' => $request['consignee-address-line-3'],
             'consignee_city' => $request['consignee-city'],
-            'consignee_state' => '',
+            'consignee_state' => isset($request['consignee-state']) ? $request['consignee-state'] : '',
             'consignee_country_iso_code' => $request['consignee-country'],
             'consignee_zip' => $request['consignee-postcode'],
             'consignee_contact_name' => $request['consignee-name'],

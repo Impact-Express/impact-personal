@@ -108,7 +108,7 @@
                             @if($bookingData['toCountryCode'] === 'US')
                                 <li class="form-row row-6">
                                     <div class="form-input consignee-state-input">
-                                        <select class="@error('consignee-state') is-invalid @enderror state-select" name="state" type="text">
+                                        <select class="@error('consignee-state') is-invalid @enderror state-select" name="consignee-state" type="text">
                                             <option>Select a state...</option>
                                             @foreach ($states as $state)
                                                 <option value="{{$state->code}}">{{$state->name}}</option>
