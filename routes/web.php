@@ -33,8 +33,8 @@
 
         Route::get('label/{shipment}', 'LabelsController@showpdf')->name('get-label-pdf');
 
-        Route:: get('/success', 'PaymentController@success')->name('success');
-        Route:: get('/failure', 'PaymentController@failure')->name('failure');
+        Route:: get('/success', 'PersonalBookingController@success')->name('success');
+        Route:: get('/failure', 'PersonalBookingController@failure')->name('failure');
     });
 
     Route::middleware(['auth', 'admin'])->group(function() {

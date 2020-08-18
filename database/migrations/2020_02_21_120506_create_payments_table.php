@@ -29,8 +29,8 @@ class CreatePaymentsTable extends Migration
             $table->string('cv2_result');
             $table->string('3d_secure_status');
             $table->string('cavv')->nullable();
-            $table->string('address_status');
-            $table->string('payer_status');
+            $table->string('address_status')->nullable();
+            $table->string('payer_status')->nullable();
             $table->string('card_type');
             $table->string('last_4_digits');
             $table->string('fraud_response')->nullable();

@@ -17,6 +17,7 @@ class CreateShipmentsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('price'); // pence
+            $table->boolean('paid')->default(false);
             $table->string('shipment_reference');
             $table->string('shipper');
             $table->string('shipper_address_1');

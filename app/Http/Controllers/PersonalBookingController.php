@@ -104,13 +104,16 @@ class PersonalBookingController extends Controller
     }
 
     public function stage5(Request $request) {
-//dd($request->all(), isset($request['consignee-state']));
+
         $bookingData = session('bookingData');
         if (!$bookingData) {
             return redirect(route('stage1'));
         }
 
+        $user = auth()->user();
+
         // Validate request
+        // <editor-fold desc="Validation...">
         $validator = Validator::make($request->all(), [
             'consignee-firstname' => 'required|string',
             'consignee-lastname' => 'required|string',
@@ -141,9 +144,9 @@ class PersonalBookingController extends Controller
                 return back()->withInput()->withErrors($validator);
             }
         }
+        // </editor-fold>
 
-        $user = auth()->user();
-
+        // <editor-fold desc="Set Shipment data...">
         $shipmentData = [
             'user_id' => $user->id,
             'shipment_reference' => Shipment::generateReference(),
@@ -162,10 +165,10 @@ class PersonalBookingController extends Controller
             'consignee_address_2' => $request['consignee-address-line-2'],
             'consignee_address_3' => $request['consignee-address-line-3'],
             'consignee_city' => $request['consignee-city'],
-            'consignee_state' => isset($request['consignee-state']) ? $request['consignee-state'] : '',
+            'consignee_state' => $request['consignee-state'] ?? '',
             'consignee_country_iso_code' => $request['consignee-country'],
             'consignee_zip' => $request['consignee-postcode'],
-            'consignee_contact_name' => $request['consignee-name'],
+            'consignee_contact_name' => $request['consignee-firstname'].' '.$request['consignee-lastname'],
             'consignee_contact_tel' => $request['consignee-phone'],
             'contents' => $request['contents-description'],
             'value' => round($request['contents-value']*100,0),
@@ -177,8 +180,12 @@ class PersonalBookingController extends Controller
             'volumetric_weight' => round(Weighting::calculateVolumetricWeight($bookingData['length'], $bookingData['width'], $bookingData['height'])*1000, 0),
             'service_code' => 'exp'
         ];
+        // </editor-fold>
         session()->put(['shipmentData' => $shipmentData]);
+        // Create shipment
+        $shipment = Shipment::create($shipmentData);
 
+        // <editor-fold desc="Build SagePay crypt field...">
         $s = new SagePay($shipmentData['shipment_reference']);
         $s->setAmount($bookingData['price']);
         $s->setDescription('Express Delivery');
@@ -202,20 +209,66 @@ class PersonalBookingController extends Controller
         $s->setFailureURL(config('app.sagepay_failure_url'));
 
         $encrypted_code = $s->getCrypt();
+        // </editor-fold>
 
         return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'encrypted_code'));
     }
 
-    public function complete() {
+    public function success(Request $request) {
+
+        if (!$request->crypt) {
+            abort(404);
+        }
+        $decodedRequest = (object)SagePay::decode($request->crypt);
 
         $user = auth()->user();
-        $bookingData = session('bookingData');
-        $shipmentData = session('shipmentData');
 
-        // Create shipment
-        $shipment = Shipment::create($shipmentData);
+        // Get the shipment reference from the VendorTxCode
+        $shipmentRef = substr($decodedRequest->VendorTxCode, -10);
+
+        // Check if the encoded payment data corresponds to the current shipment being booked.
+        $shipmentData = session('shipmentData');
+        if (!$shipmentData || ($shipmentRef !== $shipmentData['shipment_reference'])) {
+            abort(404);
+        }
+
+        $shipment = Shipment::where('shipment_reference', $shipmentRef)->first();
+
+        // Check whether the shipment has already been processed.
+        if ($shipment->paid) {
+            abort(404);
+        }
+//dd($decodedRequest);
+        // TODO: Check transaction details here, and update db.
+        $p = Payment::create([
+            'user_id' => $user->id,
+            'shipment_id' => $shipment->id,
+            'status' => $decodedRequest->Status,
+            'status_detail' => $decodedRequest->StatusDetail,
+            'vendor_tx_code' => $decodedRequest->VendorTxCode,
+            'vpstx_id' => $decodedRequest->VPSTxId ?? null,
+            'tx_auth_no' => $decodedRequest->TxAuthNo ?? null,
+            'amount' => $decodedRequest->Amount,
+            'avscv2' => $decodedRequest->AVSCV2,
+            'address_result' => $decodedRequest->AddressResult,
+            'postcode_result' => $decodedRequest->PostCodeResult,
+            'cv2_result' => $decodedRequest->CV2Result,
+            '3d_secure_status' => $decodedRequest->{"3DSecureStatus"},
+            'cavv' => $decodedRequest->CAVV ?? null,
+            'address_status' => $decodedRequest->AddressStatus ?? null,
+            'payer_status' => $decodedRequest->PayerStatus ?? null,
+            'card_type' => $decodedRequest->CardType,
+            'last_4_digits' => $decodedRequest->Last4Digits,
+            'fraud_response' => $decodedRequest->FraudResponse ?? null,
+            'surcharge' => $decodedRequest->Surcharge ?? null,
+            'expiry_date' => $decodedRequest->ExpiryDate,
+            'bank_auth_code' => $decodedRequest->BankAuthCode ?? null,
+            'decline_code' => $decodedRequest->DeclineCode ?? null,
+        ]);
+        dd($p);
 
         // Book Hermes
+        // <editor-fold desc="Book Hermes...">
         $hermesShipmentDetails = new HermesShipmentDetails([
             'lastName' => 'Impact Express Ltd',
             'houseNo' => 13,
@@ -245,8 +298,10 @@ class PersonalBookingController extends Controller
         $hermes->buildRequestBody($hermesShipmentDetails);
         $hermesResponse = $hermes->send();
         $hermesCarrierDetails = $hermesResponse->routingResponseEntries->routingResponseEntry->outboundCarriers->carrier1;
+        // </editor-fold>
 
         // Save label image to database
+        // <editor-fold desc="Create Label...">
         Label::create([
             'user_id' => auth()->user()->id,
             'shipment_id' => $shipment->id,
@@ -267,20 +322,19 @@ class PersonalBookingController extends Controller
             'sort_level_4' => $hermesCarrierDetails->sortLevel4,
             'sort_level_5' => $hermesCarrierDetails->sortLevel5
         ]);
+        // </editor-fold>
 
-        // Send booking to impact via api
+        // Send booking to impact via manifest api
         $impact = new ImpactUploadManifest();
         $impact->buildRequestBody($shipmentData);
         $response = $impact->send();
 
-        // Send confirmation email with link to label
+        // Send confirmation email to customer with link to label
         $customerName = auth()->user()->firstName;
         Mail::to(auth()->user()->email)->send(new BookingConfirmation($customerName, $shipment->id));
 
         session()->forget('bookingData');
         session()->forget('shipmentData');
-
-
         session()->put(['shipmentId' => $shipment->id]);
 
         return redirect(route('confirmation'));
@@ -290,6 +344,8 @@ class PersonalBookingController extends Controller
         $shipmentId = session('shipmentId');
 
         $shipment = Shipment::find($shipmentId);
+
+        // TODO: Check if shipment belongs to logged in user.
 
         return view('customer.personal.confirmation', compact('shipment'));
     }
