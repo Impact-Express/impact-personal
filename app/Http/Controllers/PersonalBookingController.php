@@ -265,7 +265,7 @@ class PersonalBookingController extends Controller
             'bank_auth_code' => $decodedRequest->BankAuthCode ?? null,
             'decline_code' => $decodedRequest->DeclineCode ?? null,
         ]);
-        dd($p);
+//        dd($p);
 
         // Book Hermes
         // <editor-fold desc="Book Hermes...">

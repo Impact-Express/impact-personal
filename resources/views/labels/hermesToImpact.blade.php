@@ -13,7 +13,7 @@
           <ul>
             <li>Package: 1 of 1</li>
               <li>Contents: {{$shipment->contents}}</li>
-            <li>Value: GBP {{money_format('%n', $shipment->value/100)}}</li>
+            <li>Value: GBP {{sprintf('%01.2f',$shipment->value/100)}}</li>
           </ul>
         </div>
         <div class="top-left-bottom">
