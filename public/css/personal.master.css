@@ -4,7 +4,7 @@
 }
 
 body {
-  background: black;
+  background: #f2ecec;
 }
 
 .main-nav {
@@ -326,7 +326,7 @@ a:hover {
 
 @media (min-width: 992px) {
   body {
-    background: black;
+    background: #f2ecec;
   }
 
   .container {

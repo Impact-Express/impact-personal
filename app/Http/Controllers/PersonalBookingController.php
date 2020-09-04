@@ -234,12 +234,13 @@ class PersonalBookingController extends Controller
 
         $shipment = Shipment::where('shipment_reference', $shipmentRef)->first();
 
-        // Check whether the shipment has already been processed.
+        // Check whether the shipment has already been processed. Also check status.
         if ($shipment->paid) {
             abort(404);
         }
-//dd($decodedRequest);
-        // TODO: Check transaction details here, and update db.
+
+        // Create the payment
+        // <editor-fold desc="Create Payment...">
         $p = Payment::create([
             'user_id' => $user->id,
             'shipment_id' => $shipment->id,
@@ -265,7 +266,10 @@ class PersonalBookingController extends Controller
             'bank_auth_code' => $decodedRequest->BankAuthCode ?? null,
             'decline_code' => $decodedRequest->DeclineCode ?? null,
         ]);
-//        dd($p);
+        // </editor-fold>
+
+        $shipment->paid = true;
+        $shipment->save();
 
         // Book Hermes
         // <editor-fold desc="Book Hermes...">
