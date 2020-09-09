@@ -181,9 +181,12 @@ class PersonalBookingController extends Controller
             'service_code' => 'exp'
         ];
         // </editor-fold>
-        session()->put(['shipmentData' => $shipmentData]);
+
         // Create shipment
-        $shipment = Shipment::create($shipmentData);
+        if (!session('shipmentData')) {
+            $shipment = Shipment::create($shipmentData);
+            session()->put(['shipmentData' => $shipmentData]);
+        }
 
         // <editor-fold desc="Build SagePay crypt field...">
         $s = new SagePay($shipmentData['shipment_reference']);

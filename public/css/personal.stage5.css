@@ -105,6 +105,11 @@ input[type=email] {
     padding: 4%;
   }
 
+  .payment-island div {
+    width: 100%;
+    padding: 4%;
+  }
+
   .payment-container {
     width: 70%;
     padding: 15px;

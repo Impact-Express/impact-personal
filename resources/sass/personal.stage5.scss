@@ -84,6 +84,10 @@ input[type=email] {
         display:flex;
         justify-content: center;
         padding: 4%;
+        div {
+            width: 100%;
+            padding: 4%;
+        }
     }
     .payment-container {
         width: 70%;

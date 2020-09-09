@@ -5,10 +5,6 @@
         <div class="container">
             <div class="quote-stage-5 bg-yellow">
                 <div class="arrow-down"></div>
-{{--                <h1 class="tc tc-white"><span class="bold">Send a Parcel</span></h1>--}}
-{{--                <p class="tc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>--}}
-{{--                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.--}}
-{{--                </p>--}}
                 <div class="progress">
                     <div class="stage-border tick">
                         <div class="stage-number"><i class="fas fa-check"></i></div>
@@ -43,6 +39,7 @@
                     <div class="payment-island bg-yellow">
                         <div class="bg-white">
                             <h2>Booking Summary</h2>
+                            <hr>
                             <h3>Destination</h3>
                             <p>{{$shipmentData['consignee']}}</p>
                             <p>{{$shipmentData['consignee_address_1']}}</p>
@@ -51,18 +48,18 @@
                             <p>{{$shipmentData['consignee_city']}}</p>
                             <p>{{$shipmentData['consignee_country_iso_code']}}</p>
                             <p>{{$shipmentData['consignee_zip'] ?? ''}}</p>
-
+                            <hr>
                             <h3>Contents</h3>
                             <p>{{$shipmentData['contents']}}</p>
                             <h3>Value</h3>
                             <p>£{{sprintf('%01.2f', $shipmentData['value']/100)}}</p>
-
+                            <hr><brit isn't getting any etter>
                             <form method="POST" id="SagePayForm" action="https://test.sagepay.com/gateway/service/vspform-register.vsp">
                                 <input type="hidden" name="VPSProtocol" value= "3.00">
                                 <input type="hidden" name="TxType" value= "PAYMENT">
                                 <input type="hidden" name="Vendor" value= "impactexpres853">
                                 <input type="hidden" name="Crypt" value= "{{ $encrypted_code }}">
-                                <input type="submit" value="Pay">
+                                <input class="button-black" type="submit" value="Continue to payment">
                             </form>
                         </div>
                     </div>
