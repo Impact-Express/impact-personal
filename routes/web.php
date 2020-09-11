@@ -33,6 +33,8 @@
 
         Route::get('label/{shipment}', 'LabelsController@showpdf')->name('get-label-pdf');
 
+
+        Route:: get('/finalise', 'PersonalBookingController@finalise')->name('finalise');
         Route:: get('/success', 'PersonalBookingController@success')->name('success');
         Route:: get('/failure', 'PersonalBookingController@failure')->name('failure');
     });

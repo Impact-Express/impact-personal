@@ -211,10 +211,23 @@ class PersonalBookingController extends Controller
         $s->setSuccessURL(config('app.sagepay_success_url'));
         $s->setFailureURL(config('app.sagepay_failure_url'));
 
-        $encrypted_code = $s->getCrypt();
+        $encryptedCode = $s->getCrypt();
         // </editor-fold>
 
-        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'encrypted_code'));
+        session()->put(['encryptedCode' => $encryptedCode]);
+        return redirect()->action('PersonalBookingController@finalise');
+
+        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'encryptedCode'));
+    }
+
+    public function finalise() {
+
+        $user = auth()->user();
+        $bookingData = session('bookingData');
+        $shipmentData = session('shipmentData');
+        $encryptedCode = session('encryptedCode');
+
+        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'encryptedCode'));
     }
 
     public function success(Request $request) {
@@ -345,6 +358,13 @@ class PersonalBookingController extends Controller
         session()->put(['shipmentId' => $shipment->id]);
 
         return redirect(route('confirmation'));
+    }
+
+    public function failure(Request $request) {
+
+        $decodedRequest = (object)SagePay::decode($request->crypt);
+
+        dd($decodedRequest);
     }
 
     public function confirmation() {

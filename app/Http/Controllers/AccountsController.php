@@ -22,7 +22,7 @@ class AccountsController extends Controller
 
         $user = auth()->user();
 
-        $shipmentsByDate = DB::table('shipments')->where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+        $shipmentsByDate = DB::table('shipments')->where('paid', true)->where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
 
         return view('customer.personal.shipments', compact('shipmentsByDate'));
     }

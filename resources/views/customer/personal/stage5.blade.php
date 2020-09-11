@@ -58,7 +58,7 @@
                                 <input type="hidden" name="VPSProtocol" value= "3.00">
                                 <input type="hidden" name="TxType" value= "PAYMENT">
                                 <input type="hidden" name="Vendor" value= "impactexpres853">
-                                <input type="hidden" name="Crypt" value= "{{ $encrypted_code }}">
+                                <input type="hidden" name="Crypt" value= "{{ $encryptedCode }}">
                                 <input class="button-black" type="submit" value="Continue to payment">
                             </form>
                         </div>
