@@ -23,14 +23,16 @@ use App\Services\SagePay\SagePay;
 class PersonalBookingController extends Controller
 {
     public function stage1() {
-        session()->forget('bookingData');
-        session()->forget('shipmentData');
+//        session()->forget('bookingData');
+//        session()->forget('shipmentData');
         // Get countries for dropdown selector
         $countries = Country::all();
         return view('customer.personal.stage1', compact('countries'));
     }
 
     public function stage2(Request $request) {
+        session()->forget('bookingData');
+        session()->forget('shipmentData');
         // validate request
         $validator = Validator::make($request->all(), [
             'from' => 'required|string|in:UK,GB',
@@ -104,7 +106,9 @@ class PersonalBookingController extends Controller
     }
 
     public function stage5(Request $request) {
-
+        if (url()->previous() != env('APP_URL').'/4') {
+            abort(404);
+        }
         $bookingData = session('bookingData');
         if (!$bookingData) {
             return redirect(route('stage1'));
