@@ -7,7 +7,7 @@
     margin: 20px;
     padding: 1px 15px 15px 15px;
     background: whitesmoke;
-    border-radius: 5px; 
+    border-radius: 5px;
 }
 
 .sidenav {
@@ -146,7 +146,7 @@
 		<p>{{$shipment->consignee_zip}}</p>
 		<p>{{$shipment->consignee_country_iso_code}}</p>
 		<p>{{$shipment->contents}}</p>
-		<p>£{{money_format('%n',$shipment->value/100)}}</p>
+		<p>£{{sprintf('%01.2f',$shipment->value/100)}}</p>
 		<p>{{$shipment->length}}cm</p>
 		<p>{{$shipment->width}}cm</p>
 		<p>{{$shipment->height}}cm</p>

@@ -11,7 +11,7 @@ class Payment extends Model
         'shipment_id',
         'status',
         'status_detail',
-        'vendor_tx_Code',
+        'vendor_tx_code',
         'vpstx_id',
         'tx_auth_no',
         'amount',
