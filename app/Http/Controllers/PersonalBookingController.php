@@ -321,7 +321,7 @@ class PersonalBookingController extends Controller
         $hermes = new HermesParcelShopBackToImpact();
         $hermes->buildRequestBody($hermesShipmentDetails);
         $hermesResponse = $hermes->send();
-        $hermesCarrierDetails = $hermesResponse->routingResponseEntries->routingResponseEntry->outboundCarriers->carrier1;
+        $hermesCarrierDetails = $hermesResponse->routingResponseEntries->routingResponseEntry->inboundCarriers->carrier1;
         // </editor-fold>
 
         // Save label image to database
@@ -340,11 +340,11 @@ class PersonalBookingController extends Controller
             'barcode_length' => $hermesCarrierDetails->barcode1->barcodeLength,
             'barcode_symbology' => $hermesCarrierDetails->barcode1->barcodeSymbology,
             'barcode_display' => $hermesCarrierDetails->barcode1->barcodeDisplay,
-            'sort_level_1' => $hermesCarrierDetails->sortLevel1,
-            'sort_level_2' => $hermesCarrierDetails->sortLevel2,
-            'sort_level_3' => $hermesCarrierDetails->sortLevel3,
-            'sort_level_4' => $hermesCarrierDetails->sortLevel4,
-            'sort_level_5' => $hermesCarrierDetails->sortLevel5
+            'sort_level_1' => $hermesCarrierDetails->sortLevel1 ?? null,
+            'sort_level_2' => $hermesCarrierDetails->sortLevel2 ?? null,
+            'sort_level_3' => $hermesCarrierDetails->sortLevel3 ?? null,
+            'sort_level_4' => $hermesCarrierDetails->sortLevel4 ?? null,
+            'sort_level_5' => $hermesCarrierDetails->sortLevel5 ?? null
         ]);
         // </editor-fold>
 

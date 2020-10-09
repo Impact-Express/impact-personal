@@ -19,6 +19,7 @@ abstract class HermesRequest extends Model
         'ROUTE_DELIVERY_CREATE_PREADVICE_AND_LABEL' => 'routeDeliveryCreatePreadviceAndLabel',
         'ROUTE_DELIVERY_CREATE_PREADVICE_RETURN_BARCODE' => 'routeDeliveryCreatePreadviceReturnBarcode',
         'ROUTE_DELIVERY_CREATE_PREADVICE_RETURN_BARCODE_AND_LABEL' => 'routeDeliveryCreatePreadviceReturnBarcodeAndLabel',
+        'CREATE_RETURN_BARCODE' => 'createReturnBarcode',
     ];
 
     public function __construct()
