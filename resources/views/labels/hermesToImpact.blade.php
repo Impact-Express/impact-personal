@@ -72,7 +72,7 @@
         <img src="{{public_path().'/assets/images/hermes-label.jpg'}}" class="h-logo">
         <img src="{{public_path().'/assets/images/logo01.svg'}}" class="ie-logo">
         <div class="h-barcode">
-            {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'I25', 2, 70) !!}
+            {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'C128', 2, 70) !!}
             <span class="h-barcode-number">{{$shipment->label->barcode_display}}</span>
           </div>
       </div>
@@ -186,7 +186,7 @@
   .h-barcode {
     position: absolute;
     top: 150px;
-    left: 380px;
+    left: 350px;
   }
   .box {
     border: 1px solid block;
