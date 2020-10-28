@@ -87,7 +87,7 @@
   }
   .label {
     width: 100%;
-    height: 45%;
+    height: 46%;
     border: 1px dashed black;
   }
   .top {
