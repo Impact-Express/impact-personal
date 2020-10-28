@@ -22,8 +22,7 @@ class PagesController extends Controller
         }
 
 //        dd($request->all(), SagePay::decodeAndDecrypt($request->crypt));
-
-        dd(SagePay::decode($request->crypt));
+//        dd(SagePay::decode($request->crypt));
 
 
 //        dd( Carbon::now(new \DateTimeZone('Europe/London'))->add(1, 'day')->format('Y-m-d')   );

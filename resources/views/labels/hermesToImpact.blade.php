@@ -12,14 +12,15 @@
         <div class="top-left-top">
           <ul>
             <li>Package: 1 of 1</li>
-              <li>Contents: {{$shipment->contents}}</li>
-            <li>Value: GBP {{sprintf('%01.2f',$shipment->value/100)}}</li>
+{{--              <li>Contents: {{$shipment->contents}}</li>--}}
+{{--            <li>Value: GBP {{sprintf('%01.2f',$shipment->value/100)}}</li>--}}
           </ul>
         </div>
         <div class="top-left-bottom">
           <div class="ie-barcode">
-            {!! DNS1D::getBarcodeHTML($shipment->shipment_reference, 'C128', 2, 60) !!}
+            {!! DNS1D::getBarcodeHTML($shipment->shipment_reference, 'C128', 2, 40) !!}
             <span class="ie-barcode-number">{{$shipment->shipment_reference}}</span>
+            <img src="{{public_path().'/assets/images/logo01.svg'}}" class="ie-logo">
           </div>
         </div>
       </div>
@@ -59,26 +60,22 @@
             </ul>
           </div>
           <div class="bottom-top-right-right">
-            <ul>
-              <li class="box">{{$shipment->label->sort_level_1}} {{$shipment->label->sort_level_2}}</li>
-              <li>{{$shipment->label->sort_level_3}}</li>
-              <li>{{$shipment->label->sort_level_4}}</li>
-              <li>{{$shipment->label->sort_level_5}}</li>
-            </ul>
+              <img src="{{public_path().'/assets/images/hermes-label.jpg'}}" class="h-logo">
+              <ul>
+                  <li class="box sort-box">{{$shipment->label->sort_level_1}} {{$shipment->label->sort_level_2}}</li>
+              </ul>
           </div>
         </div>
       </div>
       <div class="bottom-bottom">
-        <img src="{{public_path().'/assets/images/hermes-label.jpg'}}" class="h-logo">
-        <img src="{{public_path().'/assets/images/logo01.svg'}}" class="ie-logo">
-        <div class="h-barcode">
-            {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'C128', 2, 70) !!}
-            <span class="h-barcode-number">{{$shipment->label->barcode_display}}</span>
+          <div class="h-barcode">
+              {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'C128', 2, 90) !!}
+              <span class="h-barcode-number">{{$shipment->label->barcode_display}}</span>
           </div>
+        <img class="h-barcode2d" src="{{Storage::path('test1.svg')}}">
       </div>
     </div>
   </div>
-
 <style>
    * {
     box-sizing: border-box;
@@ -95,7 +92,7 @@
   }
   .top {
     width: 100%;
-    height: 20%;
+    height: 18%;
   }
   .top-left {
     display:inline-block;
@@ -104,7 +101,7 @@
     height: 10%;
   }
   .top-left-top {
-    height:8%;
+    height:2%;
   }
   .top-left-bottom {
     padding-left:30px;
@@ -120,7 +117,7 @@
     height:15%;
     width:300px;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 15px;
   }
   .bottom {
     width: 100%;
@@ -134,7 +131,7 @@
   }
   .bottom-top-right {
     display:inline-block;
-    float:right;
+    position: absolute;
     width: 50%;
     height:15%;
   }
@@ -174,26 +171,38 @@
   .h-logo {
     position: absolute;
     height: 50px;
-    top:125px;
-    left: 30px;
+    top:10px;
+    left: 700px;
   }
   .ie-logo {
     position: absolute;
     height: 40px;
-    top:185px;
+    top:130px;
     left: 20px;
   }
   .h-barcode {
     position: absolute;
-    top: 150px;
-    left: 350px;
+    top: 160px;
+    left: 25px;
   }
   .box {
-    border: 1px solid block;
+    border: 1px solid black;
     width:70%;
     height:30px;
     padding: 5px 0 0 10px;
     margin-bottom: 10px;
+  }
+  .sort-box {
+      position: absolute;
+      height: 30px;
+      top:60px;
+      left: 700px;
+  }
+  .h-barcode2d {
+      position:absolute;
+      right: 5px;
+      top:100px;
+      width:330px;
   }
 </style>
 </body>
