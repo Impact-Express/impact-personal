@@ -8,7 +8,6 @@ use App\Models\Country;
 use App\Models\Shipment;
 use PDF;
 use DNS2D;
-use Carbon\Carbon;
 
 class LabelsController extends Controller
 {
@@ -18,7 +17,7 @@ class LabelsController extends Controller
             abort(404);
         }
 
-        $now = Carbon::now()->isoFormat('D    M   Y');
+        $now = Date('dmY');
 
         // [)1.3++HZYBDD0000000079++780||++||++++||||||||||||||||GB||||||++||||||||||||++++105||||||||34||03++++Impact Express ||13 Blackthorne Crescent||Colnbrook||Berkshire||||||||++26102020||(]
         $barcode2D = DNS2D::getBarcodeSVG("[)1.3++{$shipment->label->barcode_number}++780||++||++++||||||||||||||||GB||||||++||||||||||||++++105||||||||34||03++++Impact Express ||13 Blackthorne Crescent||Colnbrook||Berkshire||||||||++{$now}||(]", 'PDF417');
