@@ -72,8 +72,8 @@
         <li class="mobile-nav-item"><a href="https://impactexpress.co.uk/contactus/">Contact Us</a></li>
         <li class="mobile-nav-img"></li>
         @guest
-            <li class="mobile-nav-item">Login</li>
-            <li class="mobile-nav-item">Sign up</li>
+            <li class="mobile-nav-item"><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+            <li class="mobile-nav-item"><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
         @else
             <li class="mobile-nav-item"><a  href="{{route('account')}}">Account</a></li>
             <li class="mobile-nav-item">

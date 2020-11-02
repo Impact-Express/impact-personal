@@ -44,9 +44,9 @@
           <div class="ie-address">
             <ul>
               <li>Impact Express Wholesale Ltd</li>
-              <li>13 Blackthorne Crescent</li>
+              <li>Unit 5, Britannia Industrial</li>
               <li>Slough</li>
-              <li>SL3 0QR</li>
+              <li>SL3 0BH</li>
             </ul>
           </div>
         </div>
@@ -54,7 +54,7 @@
           <div class="bottom-top-right-left">
             <ul>
               <li>{{$shipment->shipment_reference}}</li>
-              <li>{{$shipment->label->delivery_method_desc}}</li>
+              <li style="font-weight:bolder;font-size:22px;">{{$shipment->label->delivery_method_desc}}</li>
               <li>04/05/2020</li>
               <li>{{$shipment->dead_weight/1000}}kg</li>
             </ul>
@@ -69,7 +69,7 @@
       </div>
       <div class="bottom-bottom">
           <div class="h-barcode">
-              {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'C128', 2, 90) !!}
+              {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'C128', 1.5, 90) !!}
               <span class="h-barcode-number">{{$shipment->label->barcode_display}}</span>
           </div>
         <img class="h-barcode2d" src="{{Storage::path('test1.svg')}}">
@@ -172,7 +172,7 @@
     position: absolute;
     height: 50px;
     top:10px;
-    left: 700px;
+    left: 720px;
   }
   .ie-logo {
     position: absolute;
@@ -195,14 +195,14 @@
   .sort-box {
       position: absolute;
       height: 30px;
-      top:60px;
-      left: 700px;
+      top:65px;
+      left: 720px;
   }
   .h-barcode2d {
       position:absolute;
-      right: 5px;
-      top:100px;
-      width:330px;
+      right: 50px;
+      top:120px;
+      width:275px;
   }
 </style>
 </body>

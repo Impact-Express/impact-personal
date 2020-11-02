@@ -220,16 +220,17 @@ class PersonalBookingController extends Controller
 
         session()->put(['encryptedCode' => $encryptedCode]);
         return redirect()->action('PersonalBookingController@finalise');
-
-        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'encryptedCode'));
     }
 
     public function finalise() {
 
-        $user = auth()->user();
         $bookingData = session('bookingData');
         $shipmentData = session('shipmentData');
         $encryptedCode = session('encryptedCode');
+
+        if ($shipmentData['user_id'] != auth()->id()) {
+            abort(404);
+        }
 
         return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'encryptedCode'));
     }
@@ -369,6 +370,8 @@ class PersonalBookingController extends Controller
         $decodedRequest = (object)SagePay::decode($request->crypt);
 
         dd($decodedRequest);
+
+        return redirect()->action('PersonalBookingController@finalise')->with();
     }
 
     public function confirmation() {
@@ -376,7 +379,9 @@ class PersonalBookingController extends Controller
 
         $shipment = Shipment::find($shipmentId);
 
-        // TODO: Check if shipment belongs to logged in user.
+        if ($shipment->user_id != auth()->user()->id) {
+            abort(404);
+        }
 
         return view('customer.personal.confirmation', compact('shipment'));
     }

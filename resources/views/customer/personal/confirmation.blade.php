@@ -6,7 +6,7 @@
     <div class="container">
         <div class="quote-complete bg-yellow">
             <div class="arrow-down"></div>
-            <h1 class="tc tc-white"><span class="bold">Booking Complete</span></h1>
+            <h1 class="tc tc-white title"><span class="bold">Booking Complete</span></h1>
         </div>
         <div class="quote-container bg-yellow">
             <div class="quote-box">
@@ -47,9 +47,8 @@
 <style>
 
 @media (max-width: 991px) {
-    .quote-stage-2 {
-        padding-bottom: 30px;
-        margin-bottom: 30px;
+    .title {
+        padding-bottom: 20px;
     }
     .quote-container {
         width: 100%;
@@ -59,22 +58,17 @@
     .quote-box {
         background-color: whitesmoke;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         padding: 2% 4%;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
-    .carrier-logo {
-        height: 100px;
+    .button-container {
+        display: grid;
     }
-    .service-name {
-        font-size: 20px;
-    }
-    .delivery-estimate {
-        font-size: 15px;
-    }
-    .price {
-        font-size: 20px;
+    .button-container a {
+        margin-bottom: 10px;
     }
 }
 @media (min-width: 992px) {
@@ -82,10 +76,7 @@
         padding-bottom: 30px;
         margin-bottom: 30px;
     }
-    .quote-stage-2 {
-        padding-bottom: 30px;
-        margin-bottom: 30px;
-    }
+
     .quote-container {
         width: 100%;
         padding: 100px 15%;
@@ -102,18 +93,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-    .carrier-logo {
-        height: 100px;
-    }
-    .service-name {
-        font-size: 20px;
-    }
-    .delivery-estimate {
-        font-size: 15px;
-    }
-    .price {
-        font-size: 20px;
     }
 }
 </style>
