@@ -44,7 +44,7 @@
           <div class="ie-address">
             <ul>
               <li>Impact Express Wholesale Ltd</li>
-              <li>Unit 5, Britannia Industrial</li>
+              <li>Unit 5, Britannia Industrial Estate</li>
               <li>Slough</li>
               <li>SL3 0BH</li>
             </ul>
@@ -69,7 +69,7 @@
       </div>
       <div class="bottom-bottom">
           <div class="h-barcode">
-              {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'C128', 1.5, 90) !!}
+              {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'C128', 1.75, 90) !!}
               <span class="h-barcode-number">{{$shipment->label->barcode_display}}</span>
           </div>
         <img class="h-barcode2d" src="{{Storage::path('test1.svg')}}">
@@ -183,7 +183,7 @@
   .h-barcode {
     position: absolute;
     top: 160px;
-    left: 25px;
+    left: 42px;
   }
   .box {
     border: 1px solid black;
@@ -200,9 +200,8 @@
   }
   .h-barcode2d {
       position:absolute;
-      right: 50px;
-      top:120px;
-      width:275px;
+      left: 390px;
+      top:115px;
   }
 </style>
 </body>

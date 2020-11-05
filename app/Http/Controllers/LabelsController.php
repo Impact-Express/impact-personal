@@ -20,7 +20,11 @@ class LabelsController extends Controller
         $now = Date('dmY');
 
         // [)1.3++HZYBDD0000000079++780||++||++++||||||||||||||||GB||||||++||||||||||||++++105||||||||34||03++++Impact Express ||13 Blackthorne Crescent||Colnbrook||Berkshire||||||||++26102020||(]
-        $barcode2D = DNS2D::getBarcodeSVG("[)1.3++{$shipment->label->barcode_number}++780||++||++++||||||||||||||||GB||||||++||||||||||||++++105||||||||34||03++++Impact Express ||Unit 5 Britannia Industrial Estate||Colnbrook||Berkshire||||||||++{$now}||(]", 'PDF417');
+        $barcode2D = DNS2D::getBarcodeSVG("[)1.3++{$shipment->label->barcode_number}++780||++||++++||||||||||||||||GB||||||++||||||||||||++++105||||||||34||03++++Impact Express ||Unit 5 Britannia Industrial Estate||Colnbrook||Berkshire||||||||++{$now}||(]",
+            'PDF417',
+            1.5,
+            1.65
+        );
 
         Storage::put('test1.svg', $barcode2D);
 
