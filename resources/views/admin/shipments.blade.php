@@ -73,7 +73,7 @@
 
 <div class="main">
 	<div class="card">
-		<h4 style="margin-top:20px;margin-bottom:20px;">Customers</h4>
+		<h4 style="margin-top:20px;margin-bottom:20px;">Shipments</h4>
 		<div id="example">
             <table id="grid">
                 <colgroup>
@@ -82,13 +82,15 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th data-field="cust">Customer</th>
+                        <th data-field="ref">Shipment Ref</th>
+                        <th data-field="sender">Sender</th>
                     </tr>
                 </thead>
                 <tbody>
-                	@forelse ($customers as $customer)
+                	@forelse ($shipments as $shipment)
 						<tr>
-							<td><button class="ref modalBtn" data-ref="{{$customer->id}}">{{$customer->email}}</button></td>
+							<td><button class="ref modalBtn" data-ref="{{$shipment->shipment_reference}}">{{$shipment->shipment_reference}}</button></td>
+							<td>{{$shipment->user->email}}</td>
 						</tr>
 					@empty
             		@endforelse
@@ -98,13 +100,26 @@
 	</div>
 </div>
 
-@forelse ($customers as $customer)
+@forelse ($shipments as $shipment)
   <!-- MODAL -->
-  <div id="modal-{{$customer->id}}" class="modal">
+  <div id="modal-{{$shipment->shipment_reference}}" class="modal">
 	<!-- Modal content -->
 	<div class="modal-content">
-        <span class="close" id='close-{{$customer->id}}'>&times;</span>
-        <p>blah blah blah</p>
+		<span class="close" id='close-{{$shipment->shipment_reference}}'>&times;</span>
+		<p>{{$shipment->shipment_reference}}</p>
+		<p>{{$shipment->consignee}}</p>
+		<p>{{$shipment->consignee_address_1}}</p>
+		<p>{{$shipment->consignee_address_2}}</p>
+		<p>{{$shipment->consignee_address_3}}</p>
+		<p>{{$shipment->consignee_city}}</p>
+		<p>{{$shipment->consignee_zip}}</p>
+		<p>{{$shipment->consignee_country_iso_code}}</p>
+		<p>{{$shipment->contents}}</p>
+		<p>£{{sprintf('%01.2f',$shipment->value/100)}}</p>
+		<p>{{$shipment->length}}cm</p>
+		<p>{{$shipment->width}}cm</p>
+		<p>{{$shipment->height}}cm</p>
+		<p>{{$shipment->dead_weight/1000}}kg</p>
 	</div>
 </div>
 <!-- END MODAL -->

@@ -9,7 +9,6 @@
             background: whitesmoke;
             border-radius: 5px;
         }
-
         .main {
             margin-left: 160px; /* Same as the width of the sidenav */
             font-size: 28px; /* Increased text to enable scrolling */
@@ -69,17 +68,47 @@
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 18px;}
         }
+
+        ul {
+            list-style-type: none;
+        }
+        .charge-item {
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #0da394;
+            padding: 5px;
+        }
     </style>
 
     <div class="main">
         <div class="card">
-            <h4 style="margin-top:20px;margin-bottom:20px;">Admin Dashboard</h4>
-
+            <h4 style="margin-top:20px;margin-bottom:20px;">SuperAdmin</h4>
+            <ul>
+                @foreach($surcharges as $sc)
+                    <li class="charge-item">{{$sc['name'] .": ".sprintf($sc['format'], $sc['value'])}} <button>Change</button> </li>
+                @endforeach
+            </ul>
         </div>
     </div>
+
+    @forelse ($surcharges as $sc)
+        <!-- MODAL -->
+        <div id="modal-" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" id='close-'>&times;</span>
+                <p>blah blah blah</p>
+            </div>
+        </div>
+        <!-- END MODAL -->
+    @empty
+    @endforelse
+
 @endsection
 
 @section('scripts')
-    {{--    <script src="{{ asset('js/admin.home.js') }}"></script>--}}
-    {{--    <script src="{{ asset('js/modal.js') }}" defer></script>--}}
+    <script src="{{ asset('js/admin.home.js') }}"></script>
+    <script src="{{ asset('js/modal.js') }}" defer></script>
 @endsection

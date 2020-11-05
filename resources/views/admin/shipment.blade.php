@@ -7,7 +7,7 @@
     margin: 20px;
     padding: 1px 15px 15px 15px;
     background: whitesmoke;
-    border-radius: 5px; 
+    border-radius: 5px;
 }
 
 .sidenav {
@@ -48,7 +48,7 @@
 </style>
 
 <div class="sidenav">
-  <a href="{{route('admin')}}">Shipments</a>
+  <a href="{{route('admin.shipments')}}">Shipments</a>
   <a href="#admin">Admin</a>
   <!-- <a href="#clients">Clients</a>
   <a href="#contact">Contact</a> -->
@@ -56,7 +56,7 @@
 
 <div class="main">
 	<div class="card">
-		
+
 	</div>
 </div>
 @endsection

@@ -40,8 +40,14 @@
     });
 
     Route::middleware(['auth', 'admin'])->group(function() {
-        Route::get('/admin', 'AdminController@home')->name('admin');
-        Route::get('/customers', 'AdminController@customers')->name('customers');
+        Route::get('/admin', 'AdminController@home')->name('admin.home');
+        Route::get('/admin/superadmin', 'AdminController@superadmin')->name('admin.superadmin');
+        Route::get('/admin/shipments', 'AdminController@shipments')->name('admin.shipments');
+        Route::get('/admin/customers', 'AdminController@customers')->name('admin.customers');
+
+        Route::post('/charge/hermespickup', 'ChargesController@hermespickup')->name('surcharge.hermespickup');
+        Route::post('/charge/fuel', 'ChargesController@fuel')->name('surcharge.fuel');
+        Route::post('/charge/dhlcovid', 'ChargesController@dhlcovid')->name('surcharge.dhlcovid');
     });
 
     Route::get('/error', 'PagesController@error')->name('error');

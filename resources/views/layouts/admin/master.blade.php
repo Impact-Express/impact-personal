@@ -39,7 +39,7 @@
         @else
             <li class="nav-item dropdown loggedin">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                   <span><a href="{{route('shipments')}}">Hi, {{ strtoupper(Auth::user()->firstName) }}</a>&nbsp;&nbsp;</span>
+                   <span><a href="{{route('admin.shipments')}}">Hi, {{ strtoupper(Auth::user()->firstName) }}</a>&nbsp;&nbsp;</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -57,21 +57,48 @@
         @endguest
     </ul>
 </nav>
+    <div class="sidenav">
+        <a href="{{route('admin.home')}}">Home</a>
+        <a href="{{route('admin.shipments')}}">Shipments</a>
+        <a href="{{route('admin.customers')}}">Customers</a>
+        <a href="{{route('admin.superadmin')}}">Admin</a>
+    </div>
     @yield('content')
 
 <!-- #main-footer -->
 <!-- <footer id="main-footer">
-    
-    
+
+
 
 </footer> -->
-
-
-
 
 <style>
     th.k-header {
         padding: 16px 47px 13px 24px !important;
+    }
+    .sidenav {
+        height: 40%;
+        width: 160px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        margin-top: 120px;
+        padding-top: 30px;
+    }
+
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: #f1f1f1;
     }
 </style>
 @endsection
