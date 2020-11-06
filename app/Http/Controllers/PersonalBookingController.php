@@ -212,8 +212,8 @@ class PersonalBookingController extends Controller
         $s->setDeliveryState($request['consignee-state']);
         $s->setDeliveryPhone($request['consignee-phone']);
 
-        $s->setSuccessURL(config('app.sagepay_success_url'));
-        $s->setFailureURL(config('app.sagepay_failure_url'));
+        $s->setSuccessURL(env('APP_URL').config('app.sagepay_success_url'));
+        $s->setFailureURL(env('APP_URL').config('app.sagepay_failure_url'));
 
         $encryptedCode = $s->getCrypt();
         // </editor-fold>

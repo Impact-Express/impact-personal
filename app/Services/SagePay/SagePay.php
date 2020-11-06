@@ -1131,10 +1131,12 @@ class SagePay
      */
     protected function encryptAndEncode(string $strIn) : string
     {
+        if (app()->environment('production')) {
+            return "@" . bin2hex(openssl_encrypt($strIn, 'AES-128-CBC', config('app.sagepay_live_encrypt_password'), OPENSSL_RAW_DATA, config('app.sagepay_live_encrypt_password')));
+        }
         return "@" . bin2hex(openssl_encrypt($strIn, 'AES-128-CBC', config('app.sagepay_test_encrypt_password'), OPENSSL_RAW_DATA, config('app.sagepay_test_encrypt_password')));
     }
-
-
+    
     /**
      * Code to decrypt the response string SagePay attaches to the failure or success URL
      *
@@ -1145,6 +1147,9 @@ class SagePay
     {
         $strIn = substr($strIn, 1);
         $strIn = pack('H*', $strIn);
+        if (app()->environment('production')) {
+            return openssl_decrypt($strIn, 'AES-128-CBC', config('app.sagepay_live_encrypt_password'), OPENSSL_RAW_DATA, config('app.sagepay_live_encrypt_password'));
+        }
         return openssl_decrypt($strIn, 'AES-128-CBC', config('app.sagepay_test_encrypt_password'), OPENSSL_RAW_DATA, config('app.sagepay_test_encrypt_password'));
     }
 }
