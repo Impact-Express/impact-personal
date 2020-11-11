@@ -87,7 +87,7 @@
             <h4 style="margin-top:20px;margin-bottom:20px;">SuperAdmin</h4>
             <ul>
                 @foreach($surcharges as $sc)
-                    <li class="charge-item">{{$sc['name'] .": ".sprintf($sc['format'], $sc['value'])}} <button>Change</button> </li>
+                    <li class="charge-item">{{$sc['name'] .": ".sprintf($sc['format'], $sc['value'])}} <button class="k-button modalBtn" data-ref="{{$sc['id']}}">Change</button> </li>
                 @endforeach
             </ul>
         </div>
@@ -95,11 +95,19 @@
 
     @forelse ($surcharges as $sc)
         <!-- MODAL -->
-        <div id="modal-" class="modal">
+        <div id="modal-{{$sc['id']}}" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
-                <span class="close" id='close-'>&times;</span>
-                <p>blah blah blah</p>
+                <span class="close" id='close-{{$sc['id']}}'>&times;</span>
+                <h4>{{$sc['name']}}</h4>
+                <p>Warning! Changing this will affect pricing on the website.</p>
+                <form action="" method="POST" style="display:flex;justify-content:space-between;">
+                    <input type="text" value="{{$sc['value']}}">
+                    <span>
+                        <button class="close-{{$sc['id']}} k-button" type="button">Cancel</button>
+                        <button class="k-button" style="background:red;color:white;font-weight:bolder;">Submit</button>
+                    </span>
+                </form>
             </div>
         </div>
         <!-- END MODAL -->

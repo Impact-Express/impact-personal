@@ -1136,7 +1136,7 @@ class SagePay
         }
         return "@" . bin2hex(openssl_encrypt($strIn, 'AES-128-CBC', config('app.sagepay_test_encrypt_password'), OPENSSL_RAW_DATA, config('app.sagepay_test_encrypt_password')));
     }
-    
+
     /**
      * Code to decrypt the response string SagePay attaches to the failure or success URL
      *

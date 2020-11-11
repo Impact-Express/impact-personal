@@ -30,7 +30,7 @@ class AdminController extends Controller
                 'id' => 1,
                 'name' => 'Hermes Pickup Charge',
                 'value' => 4.20,
-                'format' => "£%s",
+                'format' => "£%.2f",
                 'route' => 'surcharge.hermespickup',
             ],
             [
