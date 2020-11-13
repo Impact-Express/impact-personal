@@ -69,7 +69,11 @@
       </div>
       <div class="bottom-bottom">
           <div class="h-barcode">
-              {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'C128', 1.75, 90) !!}
+              @if ($shipment->label->barcode_symbology == 'I')
+                  {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'I25', 1.75, 90) !!}
+              @elseif ($shipment->label->barcode_symbology == 'C128')
+                  {!! DNS1D::getBarcodeHTML($shipment->label->barcode_number, 'C128', 1.75, 90) !!}
+              @endif
               <span class="h-barcode-number">{{$shipment->label->barcode_display}}</span>
           </div>
         <img class="h-barcode2d" src="{{Storage::path('test1.svg')}}">

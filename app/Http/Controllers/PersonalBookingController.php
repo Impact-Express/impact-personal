@@ -41,9 +41,9 @@ class PersonalBookingController extends Controller
                  Rule::in(Country::getCodes()),
             ],
             'weight' => 'required|numeric|between:0,15',
-            'length' => 'required|numeric',
-            'width' => 'required|numeric',
-            'height' => 'required|numeric',
+            'length' => 'required|numeric|between:0,120',
+            'width' => 'required|numeric|between:0,120',
+            'height' => 'required|numeric|between:0,120',
             'terms' => 'required'
         ],[
             'weight.numeric' => 'The weight must be a number.',
