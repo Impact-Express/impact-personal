@@ -232,7 +232,13 @@ class PersonalBookingController extends Controller
             abort(404);
         }
 
-        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'encryptedCode'));
+        if (app()->environment('production')) {
+            $sagepayURL = "https://live.sagepay.com/gateway/service/vspform-register.vsp";
+        } else {
+            $sagepayURL = "https://test.sagepay.com/gateway/service/vspform-register.vsp";
+        }
+
+        return view('customer.personal.stage5', compact('shipmentData', 'bookingData', 'encryptedCode', 'sagepayURL'));
     }
 
     public function success(Request $request) {
