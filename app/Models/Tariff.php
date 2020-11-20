@@ -8,8 +8,8 @@ use League\Csv\Reader;
 
 class Tariff extends Model
 {
-    public static function createTariff($request)
-    {
+    public static function create($request)
+    {dd('bobalobalob :)');
         $reader = Reader::createFromString(File::get($request->file('file')));
         $records = $reader->getRecords();
         $data = [];

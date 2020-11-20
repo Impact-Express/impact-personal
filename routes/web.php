@@ -48,6 +48,7 @@
         Route::post('/charge/hermespickup', 'ChargesController@hermespickup')->name('surcharge.hermespickup');
         Route::post('/charge/fuel', 'ChargesController@fuel')->name('surcharge.fuel');
         Route::post('/charge/dhlcovid', 'ChargesController@dhlcovid')->name('surcharge.dhlcovid');
+        Route::post('/tariff/update', 'TariffController@update')->name('tariff.update');
     });
 
     Route::get('/error', 'PagesController@error')->name('error');

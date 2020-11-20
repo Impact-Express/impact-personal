@@ -85,6 +85,7 @@
     <div class="main">
         <div class="card">
             <h4 style="margin-top:20px;margin-bottom:20px;">SuperAdmin</h4>
+            <span style="font-size:20px;color:red;">Danger zone! These options affect pricing on the site.</span>
         </div>
         <div class="card">
             <h4 style="margin-top:20px;margin-bottom:20px;">Charges</h4>
@@ -95,7 +96,12 @@
             </ul>
         </div>
         <div class="card">
-            <h4 style="margin-top:20px;margin-bottom:20px;">Tariffs</h4>
+            <h4 style="margin-top:20px;margin-bottom:20px;">Update Tariff</h4>
+            <form action="{{route('tariff.update')}}" method="POST">
+                @csrf
+                <input class="k-button" type="file" required>
+                <button class="k-button">Update</button>
+            </form>
         </div>
     </div>
 
