@@ -17,7 +17,7 @@ class CreateTariffsTable extends Migration
             $table->bigIncrements('id');
             $table->decimal('weight', 8, 2);
             $table->integer('zone');
-            $table->boolean('documents');
+            $table->boolean('documents')->default(false);
             $table->decimal('amount', 10, 5);
             $table->timestamps();
         });

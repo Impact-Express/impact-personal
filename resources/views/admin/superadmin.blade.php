@@ -85,11 +85,17 @@
     <div class="main">
         <div class="card">
             <h4 style="margin-top:20px;margin-bottom:20px;">SuperAdmin</h4>
+        </div>
+        <div class="card">
+            <h4 style="margin-top:20px;margin-bottom:20px;">Charges</h4>
             <ul>
                 @foreach($surcharges as $sc)
                     <li class="charge-item">{{$sc->display_name .": ".sprintf($sc->format, $sc->value)}} <button class="k-button modalBtn" data-ref="{{$sc->id}}">Change</button> </li>
                 @endforeach
             </ul>
+        </div>
+        <div class="card">
+            <h4 style="margin-top:20px;margin-bottom:20px;">Tariffs</h4>
         </div>
     </div>
 

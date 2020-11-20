@@ -53,7 +53,7 @@
                             <p>{{$shipmentData['contents']}}</p>
                             <h3>Value</h3>
                             <p>£{{sprintf('%01.2f', $shipmentData['value']/100)}}</p>
-                            <hr><brit isn't getting any etter>
+                            <hr>
                             <form method="POST" id="SagePayForm" action="{{$sagepayURL}}">
                                 <input type="hidden" name="VPSProtocol" value= "3.00">
                                 <input type="hidden" name="TxType" value= "PAYMENT">
