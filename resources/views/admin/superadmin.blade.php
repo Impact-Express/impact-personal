@@ -96,12 +96,15 @@
             </ul>
         </div>
         <div class="card">
-            <h4 style="margin-top:20px;margin-bottom:20px;">Update Tariff</h4>
-            <form action="{{route('tariff.update')}}" method="POST">
+            <h4 style="margin-top:20px;margin-bottom:20px;">Update DHL Tariff</h4>
+            <form action="{{route('tariff.update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input class="k-button" type="file" required>
+                <input class="k-button" type="file" name="file" required>
                 <button class="k-button">Update</button>
             </form>
+        </div>
+        <div class="card">
+            <h4 style="margin-top:20px;margin-bottom:20px;">Admin Users</h4>
         </div>
     </div>
 
@@ -126,7 +129,6 @@
         <!-- END MODAL -->
     @empty
     @endforelse
-
 @endsection
 
 @section('scripts')
