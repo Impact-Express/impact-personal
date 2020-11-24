@@ -26,7 +26,8 @@ class AdminController extends Controller
     public function superadmin() {
 
         $surcharges = Surcharge::all();
+        $admins = User::join('admins', 'users.id', '=', 'admins.user_id')->get();
 
-        return view('admin.superadmin', compact('surcharges'));
+        return view('admin.superadmin', compact('surcharges', 'admins'));
     }
 }

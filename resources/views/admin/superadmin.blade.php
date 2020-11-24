@@ -105,6 +105,27 @@
         </div>
         <div class="card">
             <h4 style="margin-top:20px;margin-bottom:20px;">Admin Users</h4>
+            <div id="example">
+                <table id="grid">
+                    <colgroup>
+                        <col />
+                        <col />
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th data-field="cust">Customer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse ($admins as $admin)
+                        <tr>
+                            <td><button class="ref modalBtn" data-ref="admin{{$admin->id}}">{{$admin->email}}</button></td>
+                        </tr>
+                    @empty
+                    @endforelse
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -124,6 +145,19 @@
                         <button class="k-button" style="background:#ff0000;color:#ffffff;font-weight:bolder;">Submit</button>
                     </span>
                 </form>
+            </div>
+        </div>
+        <!-- END MODAL -->
+    @empty
+    @endforelse
+
+    @forelse ($admins as $admin)
+        <!-- MODAL -->
+        <div id="modal-admin{{$admin->id}}" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close" id='close-admin{{$admin->id}}'>&times;</span>
+                <p>blah blah blah</p>
             </div>
         </div>
         <!-- END MODAL -->
