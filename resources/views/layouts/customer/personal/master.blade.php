@@ -14,18 +14,18 @@
         </button>
     </div>
     <ul class="nav-items">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Navigation Tab 1</a>
-        </li>
-        <li class="nav-dropdown">
-            <a class="nav-link" href="#">Navigation Tab 2</a>
-        </li>
-        <li class="nav-dropdown">
-            <a class="nav-link" href="#">Navigation Tab 3</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Navigation Tab 4</a>
-        </li>
+{{--        <li class="nav-item">--}}
+{{--            <a class="nav-link" href="#">Navigation Tab 1</a>--}}
+{{--        </li>--}}
+{{--        <li class="nav-dropdown">--}}
+{{--            <a class="nav-link" href="#">Navigation Tab 2</a>--}}
+{{--        </li>--}}
+{{--        <li class="nav-dropdown">--}}
+{{--            <a class="nav-link" href="#">Navigation Tab 3</a>--}}
+{{--        </li>--}}
+{{--        <li class="nav-item">--}}
+{{--            <a class="nav-link" href="#">Navigation Tab 4</a>--}}
+{{--        </li>--}}
         <!-- Authentication Links -->
         @guest
             <li class="nav-item">
