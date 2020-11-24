@@ -73,7 +73,7 @@
 
 <div class="main">
 	<div class="card">
-		<h4 style="margin-top:20px;margin-bottom:20px;">Customers</h4>
+		<h4 style="margin-top:20px;margin-bottom:20px;">Users</h4>
 		<div id="example">
             <table id="grid">
                 <colgroup>

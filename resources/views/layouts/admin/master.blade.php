@@ -60,7 +60,7 @@
     <div class="sidenav">
         <a href="{{route('admin.home')}}">Home</a>
         <a href="{{route('admin.shipments')}}">Shipments</a>
-        <a href="{{route('admin.customers')}}">Customers</a>
+        <a href="{{route('admin.customers')}}">Users</a>
         <a href="{{route('admin.superadmin')}}">Admin</a>
     </div>
     @yield('content')

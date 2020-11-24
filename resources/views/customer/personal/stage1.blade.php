@@ -124,7 +124,7 @@
                                 <input type="checkbox" name="terms">
                                 <span class="checkmark"></span>
                             </label>
-                            <span class="bold terms-text">I agree to the terms and conditions. They can be found <a style="color:white;" href="#">here</a>.</span>
+                            <span class="bold terms-text">I agree to the terms and conditions. They can be found <a style="color:white;" href="https://impactexpress.co.uk/wp-content/themes/impact-express-current/impact-express_terms-and-conditions.pdf" target="_blank">here</a>.</span>
                         </li>
                         @error('terms')
                             <p class="invalid-feedback" role="alert">
