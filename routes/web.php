@@ -44,7 +44,7 @@
         Route::get('/admin/superadmin', 'AdminController@superadmin')->name('admin.superadmin');
         Route::get('/admin/shipments', 'AdminController@shipments')->name('admin.shipments');
         Route::get('/admin/customers', 'AdminController@customers')->name('admin.customers');
-        Route::get('/admin/revoke', 'AdminController@customers')->name('admin.revoke');
+        Route::post('/admin/revoke', 'AdminController@revoke')->name('admin.revoke');
 
         Route::post('/charge/hermespickup', 'ChargesController@hermespickup')->name('surcharge.hermespickup');
         Route::post('/charge/fuel', 'ChargesController@fuel')->name('surcharge.fuel');

@@ -121,7 +121,9 @@
                     @forelse ($admins as $admin)
                         <tr>
                             <td><button class="ref modalBtn" data-ref="admin{{$admin->id}}">{{$admin->email}}</button></td>
-                            <td><button class="k-button modalBtn" style="background-color:red;color:white;" data-ref="admin-toggle{{$admin->id}}">Revoke Admin</button></td>
+                            @if ($admin->id != auth()->id())
+                                <td><button class="k-button modalBtn" style="background-color:red;color:white;" data-ref="admin-toggle{{$admin->id}}">Revoke Admin</button></td>
+                            @endif
                         </tr>
                     @empty
                     @endforelse
@@ -178,6 +180,8 @@
                     <span class="close" id="close-admin-toggle{{$a->id}}">&times;</span>
                     <div>Really revoke admin access?</div>
                     <br>
+                    @csrf
+                    <input name="userId" type="hidden" value="{{$a->id}}" required>
                     <button class="close-admin-toggle{{$a->id}} k-button" type="button">Cancel</button>
                     <button class="k-button" style="background-color:red;color:white;">Yes, revoke</button>
                 </form>
