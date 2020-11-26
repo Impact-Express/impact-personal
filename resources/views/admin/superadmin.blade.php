@@ -113,13 +113,15 @@
                     </colgroup>
                     <thead>
                     <tr>
-                        <th data-field="cust">Customer</th>
+                        <th data-field="cust">User</th>
+                        <th data-field="actions">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     @forelse ($admins as $admin)
                         <tr>
                             <td><button class="ref modalBtn" data-ref="admin{{$admin->id}}">{{$admin->email}}</button></td>
+                            <td><button class="k-button modalBtn" style="background-color:red;color:white;" data-ref="admin-toggle{{$admin->id}}">Revoke Admin</button></td>
                         </tr>
                     @empty
                     @endforelse
@@ -168,6 +170,17 @@
                 @if (isset($a->county)) <p><span>{{$a->county}}</span></p> @endif
                 @if (isset($a->country_id)) <p><span>{{$a->countryName()}}</span></p> @endif
                 @if (isset($a->postcode)) <p><span>{{$a->postcode}}</span></p> @endif
+            </div>
+        </div>
+        <div id="modal-admin-toggle{{$a->id}}" class="modal">
+            <div class="modal-content">
+                <form action="{{route('admin.revoke')}}" method="POST">
+                    <span class="close" id="close-admin-toggle{{$a->id}}">&times;</span>
+                    <div>Really revoke admin access?</div>
+                    <br>
+                    <button class="close-admin-toggle{{$a->id}} k-button" type="button">Cancel</button>
+                    <button class="k-button" style="background-color:red;color:white;">Yes, revoke</button>
+                </form>
             </div>
         </div>
         <!-- END MODAL -->
