@@ -98,13 +98,23 @@
 	</div>
 </div>
 
-@forelse ($customers as $customer)
+@forelse ($customers as $c)
   <!-- MODAL -->
-  <div id="modal-{{$customer->id}}" class="modal">
+  <div id="modal-{{$c->id}}" class="modal">
 	<!-- Modal content -->
 	<div class="modal-content">
-        <span class="close" id='close-{{$customer->id}}'>&times;</span>
-        <p>blah blah blah</p>
+        <span class="close" id='close-{{$c->id}}'>&times;</span>
+        <p><span>{{$c->title}}</span>&nbsp;<span>{{$c->firstName}}</span>&nbsp;<span>{{$c->lastName}}</span></p>
+        <p><span>{{$c->email}}</span></p>
+        @if (isset($c->building_name)) <p><span>{{$c->building_name}}</span></p> @endif
+        @if (isset($c->building_number)) <p><span>{{$c->building_number}}</span></p> @endif
+        @if (isset($c->address_line_1)) <p><span>{{$c->address_line_1}}</span></p> @endif
+        @if (isset($c->address_line_2)) <p><span>{{$c->address_line_2}}</span></p> @endif
+        @if (isset($c->address_line_3)) <p><span>{{$c->address_line_3}}</span></p> @endif
+        @if (isset($c->city)) <p><span>{{$c->city}}</span></p> @endif
+        @if (isset($c->county)) <p><span>{{$c->county}}</span></p> @endif
+        @if (isset($c->country_id)) <p><span>{{$c->countryName()}}</span></p> @endif
+        @if (isset($c->postcode)) <p><span>{{$c->postcode}}</span></p> @endif
 	</div>
 </div>
 <!-- END MODAL -->

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Admin;
+use App\Models\Country;
 
 class User extends Authenticatable
 {
@@ -60,6 +61,9 @@ class User extends Authenticatable
         return $this->title.' '.$this->firstName.' '.$this->lastName;
     }
 
+    public function countryName() {
+        return Country::where('id', $this->country_id)->first()->name;
+    }
 
     /**
      * Relationships
