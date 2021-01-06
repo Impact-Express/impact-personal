@@ -118,7 +118,7 @@
                             </li>
                             <li class="form-row row-3">
                                 <div class="form-input su-password-input">
-                                    <input class=" @error('password') is-invalid @enderror" type="text" name="password" placeholder="ENTER A PASSWORD...">
+                                    <input class=" @error('password') is-invalid @enderror" type="password" name="password" placeholder="ENTER A PASSWORD...">
                                 </div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -126,7 +126,7 @@
                                     </span>
                                 @enderror
                                 <div class="form-input password-confirm-input">
-                                    <input class=" @error('password_confirmation') is-invalid @enderror" type="text" name="password_confirmation" placeholder="CONFIRM PASSWORD...">
+                                    <input class=" @error('password_confirmation') is-invalid @enderror" type="password" name="password_confirmation" placeholder="CONFIRM PASSWORD...">
                                 </div>
                                 @error('password_confirmation')
                                     <span class="invalid-feedback" role="alert">
