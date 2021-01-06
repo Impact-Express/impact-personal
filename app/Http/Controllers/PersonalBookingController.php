@@ -374,7 +374,7 @@ class PersonalBookingController extends Controller
     public function failure(Request $request) {
 
         $decodedRequest = (object)SagePay::decode($request->crypt);
-
+        // TODO: Redirect to finalise, with reason for payment failure. Show flash message or modal asking to try again
         dd($decodedRequest);
 
         return redirect()->action('PersonalBookingController@finalise')->with();
